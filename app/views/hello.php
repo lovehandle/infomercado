@@ -35,17 +35,9 @@
 
 <body>
 <div id="main" class="container" align="center">
-	<div class="row">
-    	<h2>infomercado</h2>
-        <p>Portal de informacion de Mercados Publicos en la Ciudad de Mexico</p>
-    </div>
-    <div id="busqueda" class="row">
-    	<div class="col-md-10" align="left">
-        <input class="form-control buscar" id="buscar" name="buscar" type="text" placeholder="Busca por Nombre, Colonia o Código Postal">
-        </div>
-    	<div class="col-md-2">
-        	<a class="buscar-link" href="#"><strong>Buscar</strong></a>
-        </div>
+	<div class="row offset-superior">
+    	<h2 class="site-title">infomercado.mx</h2>
+        <p class="headline">Plataforma de información y participación ciudadana en los <br>Mercados Públicos de la Ciudad de México</p>
     </div>
 </div>
 <script language="javascript">
