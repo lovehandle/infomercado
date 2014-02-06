@@ -99,12 +99,18 @@ body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
 	height: 200px;
 	display: block;
 	overflow: hidden;
+	font-weight: 700;
 }
-.mercado h4{
+.mercado-link{
 	position: absolute;
 	bottom: 0;
 	left: 5px;
 	padding: 6px;
+	color: #000;
+	font-size: 16pt;
+}
+.mercado-link:hover {
+	color: #fff;
 }
 .mercado:hover {
 	background-color: #DB5E2F;

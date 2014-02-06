@@ -32,7 +32,7 @@
 	?>
 		<div class="col-md-6 rowded">
 			<div class="mercado">
-				<h4><?php print($mercado->nombre); ?></h4>
+				<a href="/mercados/<?php print($mercado->numero); ?>" class="mercado-link"><?php print($mercado->nombre); ?></a>
 			</div>
 		</div>
 <?php } ?>	
