@@ -10,7 +10,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
-<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWX7tAZp_D_L7lNblmdOAK6onhvmk6mhc&sensor=false"></script>
 <style>
 * {
 	border-radius:0 !important;
@@ -27,6 +26,9 @@
 	position:absolute;
 	bottom:12px;
 }
+
+ext 107 angelica valencia
+
 .conoce{background-color:#D9B74B;}
 .opina{background-color:#F17A4F;}
 .otro{}
@@ -38,6 +40,20 @@
 	<div class="row offset-superior">
     	<h2 class="site-title">infomercado.mx</h2>
         <p class="headline">Plataforma de información y participación ciudadana en los <br>Mercados Públicos de la Ciudad de México</p>
+    </div>
+    <div class="row">
+    	<?php foreach($delegaciones as $delegacion){ ?>
+    	<div class="col-md-delegaciones rowded">
+	    	<a href="/mercados/<?php print($delegacion->link); ?>" class="delegaciones"><?php print($delegacion->delegacion_nombre); ?></a>
+    	</div>
+    	<?php } ?>
+    </div>
+    <div class="row">
+	    <?php foreach($tipos as $tipo){ ?>
+    	<div class="col-md-tipos rowded">
+	    	<a href="/mercados/<?php print($tipo->link); ?>" class="delegaciones"><?php print($tipo->tipo_desc); ?></a>
+    	</div>
+    	<?php } ?>
     </div>
 </div>
 <script language="javascript">

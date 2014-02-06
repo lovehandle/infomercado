@@ -20,7 +20,7 @@
 </ol>
 <div class="row"><!-- row1 -->
  <div class="col-md-12">
-  <h1>Mercados en la delegaci&oacute;n <?php print($delegacion); ?></h1>
+  <h1><?php print($delegacion); ?></h1>
  </div>
 </div><!-- row1 -->
 
@@ -30,7 +30,7 @@
 	foreach($mercados as $mercado) {
 		
 	?>
-		<div class="col-md-6 rowded">
+		<div class="col-md-3 rowded">
 			<div class="mercado">
 				<a href="/mercados/<?php print($mercado->numero); ?>" class="mercado-link"><?php print($mercado->nombre); ?></a>
 			</div>

@@ -10,7 +10,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
-<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWX7tAZp_D_L7lNblmdOAK6onhvmk6mhc&sensor=false"></script>
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGEM2AtRMpdnI3yoQTOu9hMQsOz3yvBaE&sensor=false"></script>
 <script language="javascript">
 //google maps
 var map;
@@ -42,9 +42,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div id="main" class="container">
 <ol class="breadcrumb">
   <li><a href="/">Inicio</a></li>
-  <li>Mercados en <?php print($mercado->delegacion_nombre); ?></li>
+  <li>Mercados en <a href="/mercados/<?php print(str_replace(" ","-",strtolower($mercado->delegacion_nombre))); ?>"><?php print($mercado->delegacion_nombre); ?></a></li>
   <li class="active"><?php print($mercado->nombre); ?></li>
-  <li><a href="/mercado/<?php print(($mercado->numero+1)); ?>"> Siguiente >></a></li>
 </ol>
 <div class="row"><!-- row1 -->
  <div class="col-md-12">
@@ -67,8 +66,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
    
 </div>
 </div>
-  
-    <h3>Locales</h3>
     <?php if($mercado->tipo == 3) { //categorias tradicionales?>
     <div id="cats" class="row">
     	  <div class="col-md-2">
@@ -107,28 +104,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
          </div>
     </div>
     <?php }//categorias tradicionales ?>
-    <div class="row">
-    	<div class="col-md-4">
-       		<div class="local"><img src="/img/locales1.jpg"></div>
-       </div>
-       <div class="col-md-4">
-       		<div class="local"><img src="/img/locales3.jpg"></div>
-       </div>
-       <div class="col-md-4">
-       		<div class="local"><img src="/img/locales2.jpg"></div>
-       </div>
-    </div>
-    <div class="row">
-    	<div class="col-md-4">
-       		<div class="local"><img src="/img/locales4.jpg"></div>
-       </div>
-       <div class="col-md-4">
-       		<div class="local"><img src="/img/locales2.jpg"></div>
-       </div>
-       <div class="col-md-4">
-       		<div class="local"><img src="/img/locales1.jpg"></div>
-       </div>
-    </div>
     <div id="footer" class="row">
     	<div class="col-md-12">
        </div>

@@ -27,11 +27,11 @@ class MercadoController extends BaseController {
 	    $mercados = DB::select("SELECT * FROM mercados WHERE replace(lower(delegacion_nombre),' ','-')=?",array($ruta));
 	    
 	    //checar si existen o si la ruta no refleja nada
-	    /*
+	    
 	    if(sizeof($mercados) <= 0) {
 	    	//buscar por categoria
 			$mercados = DB::select("SELECT * FROM mercados WHERE replace(lower(tipo_desc),' ','-')=?",array($ruta));		  
-	    }*/
+	    }
 	    
 	    //checar nuevamente y lanzar la respuesta correcta
 	    if(sizeof($mercados) > 0){

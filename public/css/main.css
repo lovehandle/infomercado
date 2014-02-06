@@ -92,14 +92,16 @@ body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
 	 color:#777;
 	 font-family: 'Questrial', Helvetica, sans-serif;
  }
+ /* lista de mercados */
 .mercado {
 	position: relative;
 	background-color:#F17A4F;
-	width: 470px;
+	width: 100%;
 	height: 200px;
 	display: block;
 	overflow: hidden;
 	font-weight: 700;
+	font-family: 'Questrial', Helvetica, sans-serif;
 }
 .mercado-link{
 	position: absolute;
@@ -107,7 +109,7 @@ body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
 	left: 5px;
 	padding: 6px;
 	color: #000;
-	font-size: 16pt;
+	font-size: 14pt;
 }
 .mercado-link:hover {
 	color: #fff;
@@ -117,4 +119,33 @@ body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
 }
 .rowded {
 	margin-bottom: 30px;
+}
+/* delegaciones . ? */
+.delegaciones {
+	position: relative;
+	background-color:#FFF;
+	width: 100%;
+	height: 100px;
+	display: block;
+	font-family: 'Questrial', Helvetica, sans-serif;
+	font-size: 8pt;
+}
+.delegaciones:hover {
+	background-color:#F6E2AD ;
+}
+.col-md-delegaciones {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 12.5%;
+}
+.col-md-tipos {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 20%;
 }

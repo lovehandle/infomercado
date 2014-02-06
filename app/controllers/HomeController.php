@@ -17,11 +17,18 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+		$delegaciones = DB::select("SELECT distinct delegacion_nombre, replace(lower(delegacion_nombre),' ','-') as link from mercados order by delegacion_nombre asc");
+		
+		$tipos = DB::select("SELECT DISTINCT tipo_desc, replace(lower(tipo_desc),' ','-') as link FROM mercados ORDER BY tipo_desc ASC");
+		
+		//var_dump($delegaciones);
+		
+		
 		//hace la consulta con los mercados aleatorios para la prueba
-		$results = DB::select('SELECT * FROM mercados ORDER BY RANDOM() LIMIT 5');	
+		//$results = DB::select('SELECT * FROM mercados ORDER BY RANDOM() LIMIT 5');	
 		
 		//genera la vista
-		return View::make('hello', array("results"=>$results));
+		return View::make('hello', array("delegaciones"=>$delegaciones,"tipos"=>$tipos));
 	}
 
 }
