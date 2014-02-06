@@ -35,4 +35,7 @@ Route::get('dump', function () {
 });
 
 //ruta para el mercado
-Route::get('mercado/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
+Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
+
+//ruta para listado de mercados
+Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');	
