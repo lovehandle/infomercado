@@ -9,7 +9,7 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the Closure to execute when that URI is requested.
 |
-*/
+*/ 
 
 //ruta principal
 Route::get('/', 'HomeController@showWelcome');
@@ -38,4 +38,9 @@ Route::get('dump-ubicaciones', function () {
 Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
 
 //ruta para listado de mercados
-Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');	
+Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');
+
+//ruta para comerciantes
+Route::get('comerciantes','ComerciantesController@principal');
+
+//operaciones en la seccion de comerciantes

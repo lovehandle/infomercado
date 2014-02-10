@@ -2,6 +2,7 @@
 
 body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
 #main{margin-left:auto; margin-right:auto; width:1000px;}
+#main-registro{margin-left:auto; margin-right:auto; width:640px;}
 #prueba{width:400px; margin-top:80px;}
 .gris{color:#333;} .gris-2{color:#999;}
 .container div.row {
