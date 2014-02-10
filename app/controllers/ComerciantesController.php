@@ -15,6 +15,18 @@ class ComerciantesController extends BaseController {
 		return View::make('comerciantes/principal');
 	}
 	
+	//registro
+	public function registro() {
+		return View::make('comerciantes/registro');
+	}
+	
+	//registrar persona
+	public function registrar() {
+		
+		
+		
+	}
+	
 }
 
 ?>
