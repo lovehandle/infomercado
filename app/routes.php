@@ -19,13 +19,13 @@ Route::get('info', function() {
 	phpinfo();
 });
 
-Route::get('dump', function () {
+Route::get('dump-ubicaciones', function () {
 	
 	$results = DB::select('select * from mercados');
 	
 	//var_dump($results);
 	print("<pre>");
-	print("INSERT INTO ubicacions_temp(nombre, id_delegacion, direccion, id_categoria, dataset, coordenadas)\n VALUES\n"); 
+	print("INSERT INTO ubicaciones(nombre, id_delegacion, direccion, id_categoria, dataset, coordenadas)\n VALUES\n"); 
 	
 	foreach($results as $mercado) {
 		print("('MERCADO ".$mercado->nombre."', ".$mercado->delegacion.", '".$mercado->numero."', 2, 'mercados', ST_GeomFromText('SRID=4326; POINT(".$mercado->longitud." ".$mercado->latitud.")')),\n");
