@@ -36,7 +36,7 @@
 <div id="main" class="container" align="center">
 	<div class="row offset-superior">
     	<h2 class="site-title">infomercado.mx</h2>
-        <p class="headline">Ooops.<br>Nada aqui</p>
+        <p class="headline">Ooops.<br>Nada aqu&iacute;</p>
     </div>
 </div>
 <script language="javascript">
