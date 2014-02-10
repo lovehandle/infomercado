@@ -15,7 +15,7 @@
 <div id="main-registro" class="container" align="center">
 	<h1>Comerciantes</h1>
 	<div class="row">
-    	<div class="col-md-6"><a href="/comerciantes/registro" class="btn btn-success">Registrate</a></div>
+    	<div class="col-md-6"><a href="/comerciantes/registro" class="btn btn-primary">Registrate</a></div>
     	<div class="col-md-6">
 	    	<input class="form-control" type="text" name="usuario" id="usuario" placeholder="usuario"><br>
 	    	<input class="form-control" type="password" name="pass" id="pass"><br><br>

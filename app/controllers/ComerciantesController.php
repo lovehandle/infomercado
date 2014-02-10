@@ -6,8 +6,7 @@
  
 
 class ComerciantesController extends BaseController {
-	
-	
+
 	
 	//procesa la pagina prin
 	public function principal() {
@@ -15,17 +14,11 @@ class ComerciantesController extends BaseController {
 		return View::make('comerciantes/principal');
 	}
 	
-	//registro
+	//procesar un registro
 	public function registro() {
-		return View::make('comerciantes/registro');
+		
 	}
 	
-	//registrar persona
-	public function registrar() {
-		
-		
-		
-	}
 	
 }
 

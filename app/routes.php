@@ -44,4 +44,9 @@ Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[
 Route::get('comerciantes','ComerciantesController@principal');
 
 //operaciones en la seccion de comerciantes
-Route::get('comerciantes/registro','ComerciantesController@registro');
+Route::get('comerciantes/registro', function() {
+	return View::make('comerciantes/registro');
+});
+
+//operaciones en la seccion de comerciantes
+Route::put('comerciantes/registro','ComerciantesController@registro');
