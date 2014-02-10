@@ -55,12 +55,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="row"><!-- row2 -->
 <div class="col-md-9"><div id="map-canvas"></div></div>
 <div class="col-md-3">
-  <div class="row"><div class="col-md-12"><div class="info fondo-info">
+  <div class="row aabb"><div class="col-md-12"><div class="info fondo-info">
            <p>Horario: <?php print($mercado->horario); ?></p>
            <p>Direcci&oacute;n: <?php print($mercado->direccion); ?></p>
            <p>Locales: <?php print($mercado->locales); ?></p></div>
          </div></div><!-- int-row-3-->
-  <div class="row">
+  <div class="row bbcc">
     <div class="col-md-12"><div align="center" class="tipo fondo-tipo-<?php print($mercado->tipo); ?>"><img src="/img/tipo-<?php print($mercado->tipo); ?>.png" width="150" height="150"> <h3><?php print($mercado->tipo_desc); ?></h3></div></div>
   </div> <!-- int-row-1-->
    

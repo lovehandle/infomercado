@@ -55,8 +55,11 @@ body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
  .locales{font-size:60pt; color:#FFF; font-weight:700; margin:0; padding:0; line-height:0.8;}
  .back{display:block;}
  #precios{margin-top:20px; margin-bottom:25px;}
+ 
  .info{font-size:10pt;}
  .info,.loc,.tipo {padding:10px;}
+ .aabb{height:60% !important; position: relative;}
+ .bbcc{height:40% !important; position: relative;}
  
  /* Pagina Principal */
  .buscar {
