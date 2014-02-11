@@ -17,6 +17,8 @@ class ComerciantesController extends BaseController {
 	//procesar un registro
 	public function registro() {
 		
+		return 1
+		
 	}
 	
 	

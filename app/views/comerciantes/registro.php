@@ -37,7 +37,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-				  <button type="submit" class="btn btn-success">Registrar</button>
+				  <a id="registrar" href="#" class="btn btn-success">Registrar</a>
 				</div>
 			</div>
 		</form>
@@ -45,7 +45,36 @@
 </div>
 <script lang="javascript" type="text/javascript">
 $(document).ready(function(){
-	//aqui va toda la logica chida
+	
+	$("#registrar").click(function(){
+		console.log('Registrando ... ');
+		
+		//validar aqui - pendiente
+		var form-data = {
+			usuario : $("#usuario").val(),
+			nombre : $("#nombre").val(),
+			pass : $("#inputPassword").val()
+		};
+		
+		//ajax aqui
+		$.ajax({
+			url : '/comerciantes/registro',
+			method : 'post',
+			data : form-data,
+			success : function(response) {
+				console.log(reponse);
+				if(response) {
+					console.log('todo bien');
+				}else{
+					console.log('algo mal');
+				}
+			},
+			error : function() {
+				console.log('ajax error');
+			}
+		});
+		
+	});
 	
 });
 </script>
