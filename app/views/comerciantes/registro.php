@@ -50,7 +50,7 @@ $(document).ready(function(){
 		console.log('Registrando ... ');
 		
 		//validar aqui - pendiente
-		var form-data = {
+		var formData = {
 			usuario : $("#usuario").val(),
 			nombre : $("#nombre").val(),
 			pass : $("#inputPassword").val()
@@ -60,9 +60,9 @@ $(document).ready(function(){
 		$.ajax({
 			url : '/comerciantes/registro',
 			method : 'post',
-			data : form-data,
+			data : formData,
 			success : function(response) {
-				console.log(reponse);
+				console.log(response);
 				if(response) {
 					console.log('todo bien');
 				}else{

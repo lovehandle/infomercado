@@ -49,4 +49,4 @@ Route::get('comerciantes/registro', function() {
 });
 
 //operaciones en la seccion de comerciantes
-Route::put('comerciantes/registro','ComerciantesController@registro');
+Route::post('comerciantes/registro','ComerciantesController@registro');
