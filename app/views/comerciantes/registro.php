@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="main-registro" class="container" align="center">
-	<div class="row offset-superior">
+	<div id="reg-data" class="row offset-superior">
     	<h2 class="site-title">Registro de Comerciantes</h2>
     	<p>Para registrarte escribe tu nombre, un nombre de usuario y una contraseña</p>
     	<form class="form-horizontal" role="form">
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
+				<div id="info" class="col-sm-offset-2 col-sm-10">
 				  <a id="registrar" href="#" class="btn btn-success">Registrar</a>
 				</div>
 			</div>
@@ -44,9 +44,17 @@
     </div>
 </div>
 <script lang="javascript" type="text/javascript">
+
 $(document).ready(function(){
 	
 	$("#registrar").click(function(){
+	
+		//eliminar el boton de registro
+		$("#registrar").hide();
+		$("#usuario").prop("disabled",true);
+		$("#nombre").prop("disabled",true);
+		$("#inputPassword").prop("disabled",true);
+		
 		console.log('Registrando ... ');
 		
 		//validar aqui - pendiente

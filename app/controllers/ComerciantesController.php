@@ -16,8 +16,18 @@ class ComerciantesController extends BaseController {
 	
 	//procesar un registro
 	public function registro() {
+	
+		//sacar los datos del POST
+		$nombre = Input::get('nombre');
+		$usuario = Input::get('usuario');
+		$password = Hash::make(Input::get('pass'));
 		
-		return "1";
+		//insertar en la db
+		if(DB::insert('INSERT INTO comerciantes(nombre, hash, mercado_number, local, categoria_principal, categoria_adicional, usuario) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario))) {
+			return "1";	
+		}else{
+			return "0";
+		}
 		
 	}
 	
