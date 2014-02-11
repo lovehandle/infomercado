@@ -12,20 +12,110 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="main-registro" class="container" align="center">
+<div id="main-registro" class="container">
 	<h1>Comerciantes</h1>
-	<div class="row">
-    	<div class="col-md-6"><a href="/comerciantes/registro" class="btn btn-primary">Registrate</a></div>
-    	<div class="col-md-6">
-	    	<input class="form-control" type="text" name="usuario" id="usuario" placeholder="usuario"><br>
-	    	<input class="form-control" type="password" name="pass" id="pass"><br><br>
-	    	<a href="#" class="btn btn-success">Inicia Sesion</a>
-    	</div>
-    </div>
+	<div class="panel panel-success">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Iniciar Sesi&oacute;n</h3>
+	  </div>
+	  <div class="panel-body">
+	    <form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="usuario-login" class="col-sm-2 control-label">Usuario</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="usuario-login" placeholder="juanperez">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="pass-login" class="col-sm-2 control-label">Contraseña</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="pass-login">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+				  <a id="go-login" href="#" class="btn btn-success">Iniciar Sesi&oacute;n</a>
+				</div>
+			</div>
+		</form>
+	  </div>
+	</div><!-- panel login -->
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Registro</h3>
+	  </div>
+	  <div class="panel-body">
+	    <p>Si eres comerciante en un Mercado Público puedes registrarte en el portal gratuitamente. Solo necesitas proporcionar tu nombre, un usuario y una contraseña.</p>
+	    <form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="nombre" placeholder="Juan Perez Lopez">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="usuario" class="col-sm-2 control-label">Usuario</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="usuario" placeholder="juanperez">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword">
+				</div>
+			</div>
+			<div class="form-group">
+				<div id="info" class="col-sm-offset-2 col-sm-10">
+				  <a id="registrar" href="#" class="btn btn-success">Registrar</a>
+				</div>
+			</div>
+		</form>
+	  </div>
+	</div><!-- panel registro -->
 </div>
 <script lang="javascript" type="text/javascript">
+
 $(document).ready(function(){
-	//aqui va toda la logica chida 
+	
+	$("#registrar").click(function(){
+	
+		//eliminar el boton de registro
+		$("#registrar").hide();
+		$("#usuario").prop("disabled",true);
+		$("#nombre").prop("disabled",true);
+		$("#inputPassword").prop("disabled",true);
+		
+		console.log('Registrando ... ');
+		
+		//validar aqui - pendiente
+		var formData = {
+			usuario : $("#usuario").val(),
+			nombre : $("#nombre").val(),
+			pass : $("#inputPassword").val()
+		};
+		
+		//ajax aqui
+		$.ajax({
+			url : '/comerciantes/registro',
+			method : 'post',
+			data : formData,
+			success : function(response) {
+				console.log(response);
+				if(response) {
+					console.log('todo bien');
+					$("#info").append('<p class="bs-callout bs-callout-success">Has sido registado ! Para comenzar a utilizar el portal inicia sesion con el usuario y contraseña que acabas de crear.</p>');
+				}else{
+					$("#info").append('<p class="bg-danger">No se pudo completar tu registro.</p>');
+				}
+			},
+			error : function() {
+				console.log('ajax error');
+			}
+		});
+		
+	});
+	
 });
 </script>
 </body>
