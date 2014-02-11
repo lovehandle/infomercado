@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Questrial);
 
-body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
+body{font-family: 'Oxygen', sans-serif; background-color:#FFF;}
 #main{margin-left:auto; margin-right:auto; width:1000px;}
 #main-registro{margin-left:auto; margin-right:auto; width:800px;}
 #prueba{width:400px; margin-top:80px;}
@@ -83,7 +83,7 @@ body{font-family: 'Oxygen', sans-serif; background-color:#F5F5F5; }
  }
  
  .offset-superior {
-	 margin-top: 100px !important;
+	 margin-top: 25px !important;
  }
  .site-title {
  color: #F2C64A;
