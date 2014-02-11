@@ -22,9 +22,6 @@ class ComerciantesController extends BaseController {
 		$usuario = Input::get('usuario');
 		$password = Hash::make(Input::get('pass'));
 		
-		//1 busca si el usuario ya existe
-		
-		
 		//insertar en la db
 		try {
 			DB::insert('INSERT INTO comerciantes(nombre, hash, mercado_number, local, categoria_principal, categoria_adicional, usuario) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario));

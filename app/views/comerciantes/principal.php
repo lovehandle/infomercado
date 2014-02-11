@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css">
 <title>infomercado.mx - Comerciantes</title>
 <!-- Latest compiled and minified JavaScript -->
@@ -44,7 +44,7 @@
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Registro</h3>
 	  </div>
-	  <div class="panel-body">
+	  <div id="panel-registro" class="panel-body">
 	    <p>Si eres comerciante en un Mercado Público puedes registrarte en el portal gratuitamente. Solo necesitas proporcionar tu nombre, un usuario y una contraseña.</p>
 	    <form class="form-horizontal" role="form">
 			<div class="form-group">
@@ -66,8 +66,9 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div id="info" class="col-sm-offset-2 col-sm-10">
-				  <a id="registrar" href="#" class="btn btn-success">Registrar</a>
+				<div class="col-sm-offset-2 col-sm-10">
+				  <a id="registrar" href="#" class="btn btn-primary">Registrar</a>
+				  <div id="info"></div>
 				</div>
 			</div>
 		</form>
@@ -78,7 +79,10 @@
 
 $(document).ready(function(){
 	
-	$("#registrar").click(function(){
+	$("#registrar").click(function(evt){
+		evt.preventDefault();
+		
+		$("#info").empty();
 	
 		//eliminar el boton de registro
 		$("#registrar").hide();
@@ -102,11 +106,19 @@ $(document).ready(function(){
 			data : formData,
 			success : function(response) {
 				console.log(response);
-				if(response) {
+				if(response == '1') {
 					console.log('todo bien');
-					$("#info").append('<p class="bs-callout bs-callout-success">Has sido registado ! Para comenzar a utilizar el portal inicia sesion con el usuario y contraseña que acabas de crear.</p>');
+					$("#panel-registro").empty();
+					$("#panel-registro").append('<p class="bg-success text-success" style="padding:15px">Has sido registado ! Para comenzar a utilizar el portal inicia sesion con el usuario y contraseña que acabas de crear.</p>');
+					
 				}else{
-					$("#info").append('<p class="bg-danger">No se pudo completar tu registro.</p>');
+					$("#registrar").show();
+					$("#usuario").prop("disabled",false);
+					$("#nombre").prop("disabled",false);
+					$("#inputPassword").prop("disabled",false);
+					
+					$("#info").empty();
+					$("#info").append('<p class="bg-danger text-danger" style="padding:15px">No se pudo completar tu registro.</p>');
 				}
 			},
 			error : function() {

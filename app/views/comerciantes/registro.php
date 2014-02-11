@@ -73,8 +73,8 @@ $(document).ready(function(){
 				console.log(response);
 				if(response) {
 					console.log('todo bien');
+					$("#info").empty();
 					$("#info").append("<p>Has sido registado ! Para comenzar a utilizar el portal inicia sesion con el usuario y contraseña que acabas de crear.</p>");
-					$("#info").append('<a id="registrar" href="/comerciantes" class="btn btn-primary">Comenzar</a>');
 				}else{
 					console.log('algo mal');
 				}
