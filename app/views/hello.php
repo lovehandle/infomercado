@@ -55,6 +55,11 @@ ext 107 angelica valencia
     	</div>
     	<?php } ?>
     </div>
+    <div id="footer" class="row" align="left">
+    	<div class="col-md-12">
+		<a href="/comerciantes">Acceso a comerciantes</a>
+       </div>
+    </div>
 </div>
 <script language="javascript">
 </script>
