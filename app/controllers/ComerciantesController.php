@@ -11,7 +11,14 @@ class ComerciantesController extends BaseController {
 	//procesa la pagina prin
 	public function principal() {
 		
-		return View::make('comerciantes/principal');
+		if(Auth::check()) {
+		
+			return View::make('comerciantes/dashboard');
+			
+		} else {
+		
+			return View::make('comerciantes/principal');	
+		}
 	}
 	
 	//procesar un registro
