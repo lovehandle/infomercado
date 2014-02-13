@@ -102,8 +102,9 @@ $(document).ready(function(){
 			method : 'post',
 			data : loginData,
 			success : function(response) {
-				
+				console.log(response);
 				if(response == '1') {
+					
 					document.location = '/comerciantes';
 				}else{
 					
