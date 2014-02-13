@@ -31,7 +31,7 @@ class ComerciantesController extends BaseController {
 		
 		//insertar en la db
 		try {
-			DB::insert('INSERT INTO comerciantes(nombre, hash, mercado_number, local, categoria_principal, categoria_adicional, usuario) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario));
+			DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, usuario) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario));
 			
 			//devolver
 			return "1";
@@ -47,13 +47,13 @@ class ComerciantesController extends BaseController {
 		
 		//ejecutar la autentificacion
 		
-		if(Auth::attempt(array('usuario'=>Input::get('usuario'),'hash'=>Hash::make(Input::get('pass'))))){
+		if(Auth::attempt(array('usuario'=>Input::get('usuario'),'password'=>Input::get('pass')))){
 			
 			return '1';
 			
 		} else {
 			
-			return '00';
+			return '00'.Input::get('usuario')."::".Input::get('pass');
 		}
 		
 	}
