@@ -58,7 +58,6 @@ class ComerciantesController extends BaseController {
 		
 	}
 	
-	
 }
 
 ?>

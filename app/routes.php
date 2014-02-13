@@ -48,3 +48,9 @@ Route::post('comerciantes/registro','ComerciantesController@registro');
 
 //login de comerciantes
 Route::post('comerciantes/login','ComerciantesController@login');
+
+//logout
+Route::get('comerciantes/logout',function(){
+	Auth::logout();
+	 return Redirect::to('comerciantes');
+});

@@ -14,8 +14,9 @@
 <body>
 <div id="main" class="container" align="center">
 	<div class="row offset-superior">
-    	<h3 class="site-title">Bienvenido comerciante</h3>
+    	<h3>Bienvenido <?php print(Auth::user()->nombre);?></h3>
     </div>
+    <div class="row"><a href="/comerciantes/logout">Salir</a></div>
 </div>
 </body>
 </html>
