@@ -8,12 +8,17 @@
 class ComerciantesController extends BaseController {
 
 	
-	//procesa la pagina prin
+	//procesa la pagina principal de comerciantes
 	public function principal() {
 		
+		//checar si el comerciante esta logueado
 		if(Auth::check()) {
 		
-			return View::make('comerciantes/dashboard');
+			//checar si el comerciante ya completo su registro
+			if(Auth::user()->mercado_number == 0)
+				return View::make('comerciantes/completareg');
+			else
+				return View::make('comerciantes/dashboard');
 			
 		} else {
 		
@@ -26,7 +31,7 @@ class ComerciantesController extends BaseController {
 	
 		//sacar los datos del POST
 		$nombre = Input::get('nombre');
-		$usuario = Input::get('usuario');
+		$usuario = strtolower(Input::get('usuario'));
 		$password = Hash::make(Input::get('pass'));
 		
 		//insertar en la db
