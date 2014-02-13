@@ -35,6 +35,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 				  <a id="go-login" href="#" class="btn btn-success">Iniciar Sesi&oacute;n</a>
+				  <div id="info-login"></div>
 				</div>
 			</div>
 		</form>
@@ -78,6 +79,48 @@
 <script lang="javascript" type="text/javascript">
 
 $(document).ready(function(){
+
+	$("#registrar").click(function(evt){
+		evt.preventDefault();
+		
+		//limpia la info
+		$("#info-login").empty();
+		
+		//bloquea UI
+		$("#go-login").hide();
+		$("#usuario-login").prop("disabled",true);
+		$("#pass-login").prop("disabled",true);
+		
+		//validar aqui - pendiente
+		var loginData = {
+			usuario : $("#usuario-login").val(),
+			pass : $("#pass-login").val()
+		};
+		
+		$.ajax({
+			url : '/comerciantes/login',
+			method : 'post',
+			data : loginData,
+			success : function(response) {
+				
+				if(response == '1') {
+					document.location = '/comerciantes';
+				}else{
+					
+					$("#go-login").show();
+					$("#usuario-login").prop("disabled",false);
+					$("#pass-login").prop("disabled",false);
+					
+					$("#info-login").empty();
+					$("#info-login").append('<p class="bg-danger text-danger" style="padding:15px">Usuario o contraseña invalidos.</p>');
+				}
+				
+			},
+			error : function() {
+				console.log('Error Ajax');
+			}
+		});
+	});
 	
 	$("#registrar").click(function(evt){
 		evt.preventDefault();
