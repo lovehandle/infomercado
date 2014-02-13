@@ -80,7 +80,7 @@
 
 $(document).ready(function(){
 
-	$("#registrar").click(function(evt){
+	$("#go-login").click(function(evt){
 		evt.preventDefault();
 		
 		//limpia la info
