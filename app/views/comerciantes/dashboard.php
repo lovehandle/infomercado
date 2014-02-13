@@ -12,7 +12,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="main" class="container" align="center">
+<div id="main-registro" class="container" align="left">
 	<div class="row offset-superior">
     	<h3>Bienvenido <?php print(Auth::user()->nombre);?></h3>
     </div>
@@ -33,12 +33,20 @@
 			<div class="form-group">
 				<label for="pass-login" class="col-sm-2 control-label">Numero de Local</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="local">
+					<input type="number" class="form-control" id="mercado-local">
 				</div>
 			</div>
 			<label for="pass-login" class="col-sm-2 control-label">Categoria</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="local">
+					<select class="form-control" id="mercado-categoria">
+					  <option value="1">Carne, Pescado y Aves</option>
+					  <option value="2">Frutas y Verduras</option>
+					  <option value="3">Cremeria y Salchichoneria</option>
+					  <option value="4">Abarrotes, Chiles y Semillas</option>
+					  <option value="5">Comida, Bebidas y Postres</option>
+					  <option value="6">Varios</option>
+					  <option value="7">Especializado</option>
+					</select>
 				</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
