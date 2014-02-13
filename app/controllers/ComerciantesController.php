@@ -35,6 +35,21 @@ class ComerciantesController extends BaseController {
 		
 	}
 	
+	//login
+	public function login() {
+		
+		//ejecutar la autentificacion
+		if(Auth::attempt(array('usuario'=>Input::get('usuario'),'hash'=>Input::get('pass')))){
+			
+			return '1';
+			
+		} else {
+			
+			return '0';
+		}
+		
+	}
+	
 	
 }
 

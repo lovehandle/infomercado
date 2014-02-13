@@ -43,5 +43,8 @@ Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[
 //ruta para comerciantes
 Route::get('comerciantes','ComerciantesController@principal');
 
-//operaciones en la seccion de comerciantes
+//registro de comerciantes
 Route::post('comerciantes/registro','ComerciantesController@registro');
+
+//login de comerciantes
+Route::post('comerciantes/login','ComerciantesController@login');
