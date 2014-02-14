@@ -29,22 +29,68 @@ class ComerciantesController extends BaseController {
 	//procesar un registro
 	public function registro() {
 	
-		//sacar los datos del POST
-		$nombre = Input::get('nombre');
-		$usuario = strtolower(Input::get('usuario'));
-		$password = Hash::make(Input::get('pass'));
 		
-		//insertar en la db
-		try {
-			DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario));
+		//checar si la operacion es completar
+		if(Auth::check()) {
+			if(Input::has('mercado') && Input::has('local') && Input::has('cat')) {
 			
-			//devolver
-			return "1";
+				//preparar la entrada
+				$updateData = array(
+					rand(1,228),
+					Input::has('cat')	
+				);				
+				
+				//malditas excepciones
+				try {
+					
+					//actualizar, devuelve el numero de rows afectados
+					if(DB::update("UPDATE comerciantes SET mercado_number=?,local=10,categoria_principal=?", $updateData) > 0) {
+						
+						return "1";
+						
+					} else {
+						return "0";
+					}
+					
+					return "1";
+
+				} catch (Exception $ex) {
+					return "0";
+				}
+							
+			} else {
+				
+				return "0";
+			}	
 			
-		} catch (Exception $ex) {
-			return "0";
+		} else {
+			
+			//checar que existan datos
+			if(Input::has('nombre') && Input::has('usuario') && Input::has('pass')) {
+				
+				//sacar los datos del POST
+				$nombre = Input::get('nombre');
+				$usuario = strtolower(Input::get('usuario'));
+				$password = Hash::make(Input::get('pass'));
+				
+				//insertar en la db
+				try {
+					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario));
+					
+					//devolver
+					return "1";
+					
+				} catch (Exception $ex) {
+					return "0";
+				}
+			} else {
+				return "0";
+			}
+			
 		}
 		
+		//si pasa algo y llegamos a este punto
+		return "0";
 	}
 	
 	//login

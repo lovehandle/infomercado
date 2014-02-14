@@ -52,8 +52,8 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-10 col-sm-2">
-				  <a id="go-login" href="#" class="btn btn-success">Guardar</a>
-				  <div id="info-login"></div>
+				  <a id="completar" href="#" class="btn btn-success">Guardar</a>
+				  <div id="info"></div>
 				</div>
 			</div>
 		</form>
@@ -62,5 +62,57 @@
     </div>
     <div class="row"><a href="/comerciantes/logout">Salir</a></div>
 </div>
+<script lang="javascript" type="text/javascript">
+
+$(document).ready(function(){
+
+	$("#completar").click(function(evt){
+		evt.preventDefault();
+		
+		//limpia la info
+		$("#info").empty();
+		
+		//bloquea UI
+		$("#completar").hide();
+		$("#mercado-nombre").prop("disabled",true);
+		$("#mercado-local").prop("disabled",true);
+		$("#mercado-categoria").prop("disabled",true);
+		
+		//validar aqui - pendiente
+		var compData = {
+			mercado : $("#mercado-nombre").val(),
+			local : $("#mercado-local").val(),
+			cat : $("#mercado-categoria").val()
+		};
+		
+		$.ajax({
+			url : '/comerciantes/registro',
+			method : 'post',
+			data : compData,
+			success : function(response) {
+				console.log(response);
+				if(response == '1') {
+					document.location = '/comerciantes';
+				}else{
+					
+					$("#completar").show();
+					$("#mercado-nombre").prop("disabled",true);
+					$("#mercado-local").prop("disabled",true);
+					$("#mercado-categoria").prop("disabled",true);
+					
+					$("#info-login").empty();
+					$("#info-login").append('<p class="bg-danger text-danger" style="padding:15px">Usuario o contraseña invalidos.</p>');
+				}
+				
+			},
+			error : function() {
+				console.log('Error Ajax');
+			}
+		});
+	});
+	
+});
+
+</script>
 </body>
 </html>
