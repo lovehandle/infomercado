@@ -96,12 +96,12 @@ $(document).ready(function(){
 				}else{
 					
 					$("#completar").show();
-					$("#mercado-nombre").prop("disabled",true);
-					$("#mercado-local").prop("disabled",true);
-					$("#mercado-categoria").prop("disabled",true);
+					$("#mercado-nombre").prop("disabled",false);
+					$("#mercado-local").prop("disabled",false);
+					$("#mercado-categoria").prop("disabled",false);
 					
-					$("#info-login").empty();
-					$("#info-login").append('<p class="bg-danger text-danger" style="padding:15px">Usuario o contraseña invalidos.</p>');
+					$("#info").empty();
+					$("#info").append('<p class="bg-danger text-danger" style="padding:15px">Ocurrio un error</p>');
 				}
 				
 			},
