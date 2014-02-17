@@ -15,7 +15,7 @@
 <div id="main-registro" class="container" align="left">
 	<div class="row offset-superior">
     	<h3>Bienvenido <?php print(Auth::user()->nombre);?></h3>
-    	<p>Mercado: <?php print($mercado_datos->nombre);?></p>
+    	<h4>Mercado: <?php print("#".$mercado_datos[0]->numero." - ".$mercado_datos[0]->nombre);?></h4>
     </div>
     <div class="row"><a href="/comerciantes/logout">Salir</a></div>
 </div>
