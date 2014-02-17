@@ -7,6 +7,25 @@
 
 class ComerciantesController extends BaseController {
 
+	//funcion para manejar un array de settings
+	function arrayOfSettings($number) {
+	
+		if($number>999 || $number < 100) {
+			//invalido
+			return array(0,0,0);
+		}
+		
+		$centenas = floor($number / 100);
+		$centenas = $centenas * 100;
+		
+		$decenas = floor(($number - $centenas) / 10);
+		$decenas = $decenas * 10;
+		
+		$unidades = ($number - $centenas) - $decenas;
+	
+		return array($centenas/100,$decenas/10,$unidades);
+		
+	}
 	
 	//procesa la pagina principal de comerciantes
 	public function principal() {
