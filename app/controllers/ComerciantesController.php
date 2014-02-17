@@ -15,10 +15,15 @@ class ComerciantesController extends BaseController {
 		if(Auth::check()) {
 		
 			//checar si el comerciante ya completo su registro
-			if(Auth::user()->mercado_number == 0)
+			if(Auth::user()->mercado_number == 0){
 				return View::make('comerciantes/completareg');
-			else
-				return View::make('comerciantes/dashboard');
+			}else {
+			
+				//obtener la info adicional del comerciante
+				$mercado = DB::select("select numero, nombre from mercados where numero=?",array(Auth::user()->mercado_number));
+				
+				return View::make('comerciantes/dashboard',array("mercado_datos"=>$mercado));
+			}
 			
 		} else {
 		
