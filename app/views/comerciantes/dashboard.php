@@ -23,19 +23,19 @@
     	<h4>Activa los servicios que ofreces en tu local</h4>
     	<div class="col-md-3">
 	    	Servicio a Domicilio<br>
-	    <input type="checkbox" data-on-color="success" class="switched">
+	    <input id="domicilio" type="checkbox" data-on-color="success" class="switched">
     	</div>
     	<div class="col-md-3">
 	    	Acepta tarjetas<br>
-	    <input type="checkbox" data-on-color="success" class="switched">
+	    <input id="tarjetas" type="checkbox" data-on-color="success" class="switched">
     	</div>
     	<div class="col-md-3">
 	    	Acepta Vales<br>
-	    <input type="checkbox" data-on-color="success" class="switched">
+	    <input id="vales" type="checkbox" data-on-color="success" class="switched">
     	</div>
     	<div class="col-md-3">
 	    	Lista de Precios<br>
-	    <input type="checkbox" data-on-color="success" class="switched">
+	    <input id="precios" type="checkbox" data-on-color="success" class="switched">
     	</div>
     	<a id="guardar-servicios" href="#" class="btn btn-success col-md-1" style="margin-top:10px; margin-left:15px;">Guardar</a>
     </div>
@@ -49,6 +49,29 @@
 		
 		$("#guardar-servicios").click(function(){
 			console.log('Guardando...');
+			
+			var settingsData = {
+				domicilio : $("#domicilio").val(),
+				tarjetas : $("#tarjetas").val(),
+				vales : $("#vales").val(),
+				precios : $("#precios").val()
+			};
+			
+			$.ajax({
+				url : '/comerciantes/update',
+				method : 'post',
+				data : settingsData,
+				success : function(response) {
+					if(response == '1') {
+						
+					} else {
+						alert('No se pudo actualizar');
+					}
+				},
+				error : function() {
+					console.log("error");
+				}
+			});
 		});
 	});
 </script>

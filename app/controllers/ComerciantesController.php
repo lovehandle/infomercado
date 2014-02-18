@@ -133,6 +133,18 @@ class ComerciantesController extends BaseController {
 		
 	}
 	
+	//guardar settings
+	public function saveSettings() {
+	
+		if(Auth::check()) {
+			
+			
+		}
+		
+		return "0";
+		
+	}
+	
 }
 
 ?>
