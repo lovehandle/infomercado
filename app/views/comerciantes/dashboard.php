@@ -20,13 +20,33 @@
     	<h4>Mercado: <?php print("#".$mercado_datos[0]->numero." - ".$mercado_datos[0]->nombre);?></h4>
     </div>
     <div class="row">
-	    Test: <input type="checkbox" name="my-checkbox" checked>
+    	<h4>Activa los servicios que ofreces en tu local</h4>
+    	<div class="col-md-2">
+	    	Test<br>
+	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	</div>
+    	<div class="col-md-2">
+	    	Test<br>
+	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	</div>
+    	<div class="col-md-2">
+	    	Test<br>
+	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	</div>
+    	<div class="col-md-2">
+	    	Test<br>
+	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	</div>
+    	<div class="col-md-offset-4"></div>
+    	
     </div>
     <div class="row"><a href="/comerciantes/logout">Salir</a></div>
 </div>
 <script lang="javascript" type="text/javascript">
 	$(document).ready(function(){
-		$("[name='my-checkbox']").bootstrapSwitch();
+		$(".switched").each(function(){
+			$(this).bootstrapSwitch();
+		});
 	});
 </script>
 </body>
