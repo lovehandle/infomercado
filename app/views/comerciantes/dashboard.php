@@ -14,31 +14,30 @@
 <script src="/js/bootstrap.switch.min.js"></script>
 </head>
 <body>
-<div id="main-registro" class="container" align="left">
+<div id="main" class="container" align="left">
 	<div class="row offset-superior">
     	<h3>Bienvenido <?php print(Auth::user()->nombre);?></h3>
     	<h4>Mercado: <?php print("#".$mercado_datos[0]->numero." - ".$mercado_datos[0]->nombre);?></h4>
     </div>
     <div class="row">
     	<h4>Activa los servicios que ofreces en tu local</h4>
-    	<div class="col-md-2">
-	    	Test<br>
-	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	<div class="col-md-3">
+	    	Servicio a Domicilio<br>
+	    <input type="checkbox" data-on-color="success" class="switched">
     	</div>
-    	<div class="col-md-2">
-	    	Test<br>
-	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	<div class="col-md-3">
+	    	Acepta tarjetas<br>
+	    <input type="checkbox" data-on-color="success" class="switched">
     	</div>
-    	<div class="col-md-2">
-	    	Test<br>
-	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	<div class="col-md-3">
+	    	Acepta Vales<br>
+	    <input type="checkbox" data-on-color="success" class="switched">
     	</div>
-    	<div class="col-md-2">
-	    	Test<br>
-	    <input type="checkbox" data-on-color="success" class="switched" checked>
+    	<div class="col-md-3">
+	    	Lista de Precios<br>
+	    <input type="checkbox" data-on-color="success" class="switched">
     	</div>
-    	<div class="col-md-offset-4"></div>
-    	
+    	<a id="guardar-servicios" href="#" class="btn btn-success col-md-1" style="margin-top:10px; margin-left:15px;">Guardar</a>
     </div>
     <div class="row"><a href="/comerciantes/logout">Salir</a></div>
 </div>
@@ -46,6 +45,10 @@
 	$(document).ready(function(){
 		$(".switched").each(function(){
 			$(this).bootstrapSwitch();
+		});
+		
+		$("#guardar-servicios").click(function(){
+			console.log('Guardando...');
 		});
 	});
 </script>
