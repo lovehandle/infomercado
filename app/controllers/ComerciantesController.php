@@ -41,7 +41,10 @@ class ComerciantesController extends BaseController {
 				//obtener la info adicional del comerciante
 				$mercado = DB::select("select numero, nombre from mercados where numero=?",array(Auth::user()->mercado_number));
 				
-				return View::make('comerciantes/dashboard',array("mercado_datos"=>$mercado));
+				//settings
+				$settings = json_decode(Auth::user()->servicios,true);
+				
+				return View::make('comerciantes/dashboard',array("mercado_datos"=>$mercado,"settings"=>$settings));
 			}
 			
 		} else {

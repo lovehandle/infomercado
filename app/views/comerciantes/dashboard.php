@@ -23,19 +23,19 @@
     	<h4>Activa los servicios que ofreces en tu local</h4>
     	<div class="col-md-3">
 	    	Servicio a Domicilio<br>
-	    <input id="domicilio" type="checkbox" data-on-color="success" class="switched">
+	    <input id="domicilio" type="checkbox" data-on-color="success" class="switched" <?php if($settings[0]=='true') print("checked") ; ?>>
     	</div>
     	<div class="col-md-3">
 	    	Acepta tarjetas<br>
-	    <input id="tarjetas" type="checkbox" data-on-color="success" class="switched">
+	    <input id="tarjetas" type="checkbox" data-on-color="success" class="switched" <?php if($settings[1]=='true') print("checked") ; ?>>
     	</div>
     	<div class="col-md-3">
 	    	Acepta Vales<br>
-	    <input id="vales" type="checkbox" data-on-color="success" class="switched">
+	    <input id="vales" type="checkbox" data-on-color="success" class="switched" <?php if($settings[2]=='true') print("checked") ; ?>>
     	</div>
     	<div class="col-md-3">
 	    	Lista de Precios<br>
-	    <input id="precios" type="checkbox" data-on-color="success" class="switched">
+	    <input id="precios" type="checkbox" data-on-color="success" class="switched" <?php if($settings[3]=='true') print("checked") ; ?>>
     	</div>
     	<a id="guardar-servicios" href="#" class="btn btn-success col-md-1" style="margin-top:10px; margin-left:15px;">Guardar</a>
     </div>
