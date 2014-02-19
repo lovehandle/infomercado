@@ -99,7 +99,7 @@ class ComerciantesController extends BaseController {
 				
 				//insertar en la db
 				try {
-					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username) VALUES(?,?,0,0,0,0,?)',array($nombre,$password,$usuario));
+					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username, servicios) VALUES(?,?,0,0,0,0,?,0)',array($nombre,$password,$usuario));
 					
 					//devolver
 					return "1";
@@ -138,6 +138,17 @@ class ComerciantesController extends BaseController {
 	
 		if(Auth::check()) {
 			
+			$domicilio = Input::get("domicilio");
+			$tarjetas = Input::get("tarjetas");
+			$vales = Input::get("vales");
+			$precios = Input::get("precios");
+			
+			$settings = json_encode(array($domicilio,$tarjetas,$vales, $precios),true);
+			
+
+			DB::update("update comerciantes set servicios=? where id=?",array($settings,Auth::user()->id));
+			
+			return "1";
 			
 		}
 		

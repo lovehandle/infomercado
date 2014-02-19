@@ -54,3 +54,6 @@ Route::get('comerciantes/logout',function(){
 	Auth::logout();
 	 return Redirect::to('comerciantes');
 });
+
+//login de comerciantes
+Route::post('comerciantes/update','ComerciantesController@saveSettings');

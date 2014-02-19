@@ -63,7 +63,7 @@
 				data : settingsData,
 				success : function(response) {
 					if(response == '1') {
-						
+						alert('guardados !');
 					} else {
 						alert('No se pudo actualizar');
 					}
