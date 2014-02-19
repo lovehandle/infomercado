@@ -51,10 +51,10 @@
 			console.log('Guardando...');
 			
 			var settingsData = {
-				domicilio : $("#domicilio").val(),
-				tarjetas : $("#tarjetas").val(),
-				vales : $("#vales").val(),
-				precios : $("#precios").val()
+				domicilio : $("#domicilio").bootstrapSwitch('state'),
+				tarjetas : $("#tarjetas").bootstrapSwitch('state'),
+				vales : $("#vales").bootstrapSwitch('state'),
+				precios : $("#precios").bootstrapSwitch('state')
 			};
 			
 			$.ajax({
