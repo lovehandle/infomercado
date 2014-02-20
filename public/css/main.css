@@ -1,7 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Questrial);
 
 body{font-family: 'Oxygen', sans-serif; background-color:#FFF; }
-#main{margin-left:auto; margin-right:auto; width:1000px;}
+@media screen and (max-width: 1440px) {
+	#main{margin-left:auto; margin-right:auto; width:1000px;}
+}
+
+@media screen and (max-width:480px) {
+	#main{margin-left:auto; margin-right:auto; width: 100%;}
+}
+
 #main-registro{margin-left:auto; margin-right:auto; width:800px;}
 #prueba{width:400px; margin-top:80px;}
 .gris{color:#333;} .gris-2{color:#999;}
