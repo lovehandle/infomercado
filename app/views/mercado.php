@@ -104,6 +104,23 @@ google.maps.event.addDomListener(window, 'load', initialize);
          </div>
     </div>
     <?php }//categorias tradicionales ?>
+    <div class="row">
+    <h4>Locatarios Registados</h4>
+    <?php
+	    
+			foreach($locatarios as $locatario ) {
+				
+			?>
+    	<div class="col-md-3" style="margin-bottom:20px;">
+    	<?php print("<p>".$locatario->nombre."</p>"); 
+	    	print("<p>Local #".$locatario->local."</p>");
+    	?>
+    	</div>
+	    <?php
+	    }
+	    
+	    ?>
+    </div>
     <div id="footer" class="row">
     	<div class="col-md-12">
        </div>

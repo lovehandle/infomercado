@@ -63,15 +63,15 @@ class ComerciantesController extends BaseController {
 			
 				//preparar la entrada
 				$updateData = array(
-					rand(1,228),
-					Input::has('cat')	
+					Input::has('cat'),
+					Auth::user()->id	
 				);				
 				
 				//malditas excepciones
 				try {
 					
 					//actualizar, devuelve el numero de rows afectados
-					if(DB::update("UPDATE comerciantes SET mercado_number=?,local=10,categoria_principal=?", $updateData) > 0) {
+					if(DB::update("UPDATE comerciantes SET mercado_number=221,local=10,categoria_principal=? where id=?", $updateData) > 0) {
 						
 						return "1";
 						
