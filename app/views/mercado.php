@@ -26,7 +26,8 @@ function initialize() {
     center: new google.maps.LatLng(<?php print($mercado->latitud); ?>,<?php print($mercado->longitud); ?>),
     zoom: 18,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    scrollwheel: false
+    scrollwheel: false,
+    draggable : false
   };
   map = new google.maps.Map(document.getElementById("map-canvas"),
       mapOptions);
