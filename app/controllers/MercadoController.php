@@ -9,7 +9,7 @@ class MercadoController extends BaseController {
 		//hacer el query al mercado
         //$mercado = DB::select("SELECT * FROM mercados WHERE numero=?",array($id));
         
-        $mercado = Mercado::where('numero','=', $id);
+        $mercado = Mercado::where('numero','=', $id)->get();
 
         $locatarios = DB::select("select * from comerciantes where mercado_number=?",array($id));
 		
