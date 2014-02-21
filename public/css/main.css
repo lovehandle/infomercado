@@ -3,10 +3,12 @@
 body{font-family: 'Oxygen', sans-serif; background-color:#FFF; }
 @media screen and (max-width: 1440px) {
 	#main{margin-left:auto; margin-right:auto; width:1000px;}
+	#map-canvas { height: 400px;}
 }
 
 @media screen and (max-width:480px) {
 	#main{margin-left:auto; margin-right:auto; width: 100%;}
+	#map-canvas { height: 100%;}
 }
 
 #main-registro{margin-left:auto; margin-right:auto; width:800px;}
@@ -60,7 +62,7 @@ body{font-family: 'Oxygen', sans-serif; background-color:#FFF; }
 	background-color:#CCC;
 	overflow:hidden;
 }
- #map-canvas { height: 400px;}
+
  .locales{font-size:60pt; color:#FFF; font-weight:700; margin:0; padding:0; line-height:0.8;}
  .back{display:block;}
  #precios{margin-top:20px; margin-bottom:25px;}

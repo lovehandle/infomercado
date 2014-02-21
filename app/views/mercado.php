@@ -24,7 +24,7 @@ var mercado_marker = new google.maps.Marker({
 function initialize() {
   var mapOptions = {
     center: new google.maps.LatLng(<?php print($mercado->latitud); ?>,<?php print($mercado->longitud); ?>),
-    zoom: 18,
+    zoom: 17,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false,
     draggable : false
@@ -41,12 +41,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <body>
 <div id="main" class="container">
-<ol class="breadcrumb">
-  <li><a href="/">Inicio</a></li>
-  <li>Mercados en <a href="/mercados/<?php print(str_replace(" ","-",strtolower($mercado->delegacion_nombre))); ?>"><?php print($mercado->delegacion_nombre); ?></a></li>
-  <li class="active"><?php print($mercado->nombre); ?></li>
-</ol>
-<div class="row"><!-- row1 -->
+<div class="row">
  <div class="col-md-12">
   <h1>MERCADO #<?php print($mercado->numero); ?> - <?php print($mercado->nombre); ?></h1>
   <h4 class="gris-2"><?php print($mercado->delegacion_nombre); ?></h4>

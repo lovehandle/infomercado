@@ -27,8 +27,6 @@
 	bottom:12px;
 }
 
-ext 107 angelica valencia
-
 .conoce{background-color:#D9B74B;}
 .opina{background-color:#F17A4F;}
 .otro{}
@@ -36,23 +34,19 @@ ext 107 angelica valencia
 </head>
 
 <body>
-<div id="main" class="container" align="center">
-	<div class="row offset-superior">
+<div class="container">
+	<div class="row offset-superior" align="center">
     	<h2 class="site-title">infomercado.mx</h2>
         <p class="headline">Plataforma de información y participación ciudadana en los <br>Mercados Públicos de la Ciudad de México</p>
     </div>
-    <div class="row">
+    <div class="list-group">
     	<?php foreach($delegaciones as $delegacion){ ?>
-    	<div class="col-md-delegaciones rowded">
-	    	<a href="/mercados/<?php print($delegacion->link); ?>" class="delegaciones"><?php print($delegacion->delegacion_nombre); ?></a>
-    	</div>
+	    	<a href="/mercados/<?php print($delegacion->link); ?>" class="list-group-item"><?php print($delegacion->delegacion_nombre); ?></a>
     	<?php } ?>
     </div>
-    <div class="row">
+    <div class="list-group">
 	    <?php foreach($tipos as $tipo){ ?>
-    	<div class="col-md-tipos rowded">
-	    	<a href="/mercados/<?php print($tipo->link); ?>" class="delegaciones"><?php print($tipo->tipo_desc); ?></a>
-    	</div>
+	    	<a href="/mercados/<?php print($tipo->link); ?>" class="list-group-item"><?php print($tipo->tipo_desc); ?></a>
     	<?php } ?>
     </div>
     <div id="footer" class="row" align="left">
