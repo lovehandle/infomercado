@@ -57,3 +57,21 @@ Route::get('comerciantes/logout',function(){
 
 //login de comerciantes
 Route::post('comerciantes/update','ComerciantesController@saveSettings');
+
+
+
+/*
+	Rutas para Twilio
+*/
+
+//Welcome
+Route::get('twilio-connect/welcome','TwilioController@welcome');
+
+//Procesar el input del menu inicial
+Route::post('twilio-connect/start','TwilioController@start');
+
+//Procesar una grabacion de opinion
+Route::post('twilio-connect/opiniones','TwilioController@opiniones');
+
+
+
