@@ -27,7 +27,7 @@ class TwilioController extends BaseController {
 	public function opiniones() {
 		
 		//guardar la referencia a las URL de oipiniones
-		DB::table('grabaciones')->insert(array('twilio_url'=>Input::get('RecordingUrl'),'duracion'=>Input::get('RecordingDuration')));
+		DB::table('opiniones')->insert(array('twilio_url'=>Input::get('RecordingUrl'),'duracion'=>Input::get('RecordingDuration')));
 		return Response::view('twilio/opinion-gracias')->header('Content-Type', 'application/xml');
 		
 	}
