@@ -13,9 +13,7 @@ class TwilioController extends BaseController {
 		$input = Input::get('Digits');
 		
 		if($input == '1') {
-		
 			return Response::view('twilio/opinion')->header('Content-Type', 'application/xml');
-			
 		} elseif($input == '2') {
 			return "0";
 		} else {
