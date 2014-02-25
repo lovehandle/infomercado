@@ -10,6 +10,7 @@
         maxLength="20"
         finishOnKey="#"
         playBeep="true"
+        transcribe="false"
        />
     <Say>No pudimos procesar tu opinion. Hasta luego !</Say>
 </Response>

@@ -73,5 +73,7 @@ Route::post('twilio-connect/start','TwilioController@start');
 //Procesar una grabacion de opinion
 Route::post('twilio-connect/opiniones','TwilioController@opiniones');
 
+//Procesar una transcripcion
+Route::post('twilio-connect/transcripcion','TwilioController@transcripciones');
 
 
