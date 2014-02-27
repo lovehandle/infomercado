@@ -7,7 +7,7 @@ class TwilioController extends BaseController {
 	
 		//crea un nuevo objeto Twiml para generar xml para twilio
 		$twiml = new Services_Twilio_Twiml();
-		$twiml->('Hello');
+		$twiml->say('Hello');
 		
 		//preparar una respuesta http
 		$response = Response::make($twiml);
