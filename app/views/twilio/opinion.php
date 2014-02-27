@@ -3,7 +3,7 @@
 ?>
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Play>http://www.infomercado.mx/raw/Opinion.wav</Play>
+    <Play>http://www.infomercado.mx/raw/03_opinion02.mp3</Play>
     <Record
         action="/twilio-connect/opiniones"
         method="POST"
