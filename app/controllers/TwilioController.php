@@ -85,13 +85,26 @@ class TwilioController extends BaseController {
 
 	}
 	
-	
-	//guardar las opiniones para mostrar posteriormente en la pagina
+	//procesa cuando alguien deja una opinion
 	public function opiniones() {
 		
 		//guardar la referencia a las URL de oipiniones
-		DB::table('opiniones')->insert(array('twilio_url'=>Input::get('RecordingUrl'),'duracion'=>Input::get('RecordingDuration'),'metadata'=>''));
-		return Response::view('twilio/opinion-gracias')->header('Content-Type', 'application/xml');
+		DB::table('opiniones')->insert(array(
+			'twilio_url'=>Input::get('RecordingUrl'),
+			'duracion'=>Input::get('RecordingDuration'),
+			'metadata'=>'')
+		);
+		
+		//Objeto Twiml
+		$twiml = new Services_Twilio_Twiml();
+		//armar la respuesta con el agradecimiento
+		$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+		
+		//rspuesta http
+		$response = Response::make($twiml);
+		$response->header('Content-Type', 'application/xml');
+		
+		return $response;
 		
 	}
 	
