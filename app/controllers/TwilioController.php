@@ -2,6 +2,14 @@
 
 class TwilioController extends BaseController {
 
+	//test
+	public function test() {
+	
+		//crea un nuevo objeto Twiml para generar xml para twilio
+		$response = new Services_Twilio_Twiml();
+		$response->say('Hello');
+		return $response;
+	}
 
 	public function welcome()
 	{

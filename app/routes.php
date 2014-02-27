@@ -64,6 +64,9 @@ Route::post('comerciantes/update','ComerciantesController@saveSettings');
 	Rutas para Twilio
 */
 
+//Test
+Route::get('twilio-connect/test','TwilioController@test');
+
 //Welcome
 Route::get('twilio-connect/welcome','TwilioController@welcome');
 
