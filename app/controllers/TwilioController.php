@@ -67,8 +67,8 @@ class TwilioController extends BaseController {
 			
 		} elseif($input == '2') {
 			
-			//armar la respuesta de registro
-			$twiml->say("Opción en construcción. Gracias.",array("language"=>"es-MX","voice"=>"alice"));
+			//armar la respuesta de registro seleccionado
+			$twiml->play("http://www.infomercado.mx/raw/04_numero02.mp3");
 			
 		} else {
 		

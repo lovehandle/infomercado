@@ -77,6 +77,6 @@ Route::post('twilio-connect/start','TwilioController@start');
 Route::post('twilio-connect/opiniones','TwilioController@opiniones');
 
 //Procesar una transcripcion
-Route::post('twilio-connect/transcripcion','TwilioController@transcripciones');
+//Route::post('twilio-connect/transcripcion','TwilioController@transcripciones');
 
 
