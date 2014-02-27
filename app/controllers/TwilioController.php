@@ -1,13 +1,13 @@
 <?php
 
 class TwilioController extends BaseController {
-
+	
 	//test
 	public function test() {
 	
 		//crea un nuevo objeto Twiml para generar xml para twilio
 		$twiml = new Services_Twilio_Twiml();
-		$twiml->say('Hello');
+		$twiml->('Hello');
 		
 		//preparar una respuesta http
 		$response = Response::make($twiml);
@@ -16,9 +16,27 @@ class TwilioController extends BaseController {
 		return $response;
 	}
 
-	public function welcome()
-	{
-		return Response::view('twilio/welcome')->header('Content-Type', 'application/xml');
+	//bienvenida del sistema telefonico
+	public function welcome(){
+	
+		//Objeto Twiml
+		$twiml = new Services_Twilio_Twiml();
+		$gather = $twiml->gather(array(
+			"timeout"=>"4",
+			"finishOnKey"=>"*",
+			"action"=>"/twilio-connect/start",
+			"method"=>"POST",
+			"numDigits"=>"1"
+		));
+		$gather->play("http://www.infomercado.mx/raw/01_bienvenido01.mp3");
+		$gather->play("http://www.infomercado.mx/raw/02_marca02.mp3");
+		$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+	
+		//rspuesta http
+		$response = Response::make($twiml);
+		$response->header('Content-Type', 'application/xml');
+		
+		return $response;
 	}
 	
 	public function start() {
