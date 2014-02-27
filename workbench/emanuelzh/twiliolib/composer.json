@@ -1,0 +1,23 @@
+{
+    "name": "emanuelzh/twiliolib",
+    "description": "",
+    "authors": [
+        {
+            "name": "Emanuel Zámano H",
+            "email": "emanuelz@emanuelz.com.mx"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Emanuelzh\\Twiliolib\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
