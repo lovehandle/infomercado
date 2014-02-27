@@ -107,15 +107,5 @@ class TwilioController extends BaseController {
 		return $response;
 		
 	}
-	
-	//procesar un posteo de una transcripcion
-	public function transcripciones() {
-		
-		//obtener todas las variables de entrada y convertirlas en json
-		//$json = json_encode(Input::all(),true);
-		
-		//DB::table('opiniones')->update(array('metadata'=>$json));
-		
-	}
 
 }
