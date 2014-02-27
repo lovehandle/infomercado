@@ -39,18 +39,50 @@ class TwilioController extends BaseController {
 		return $response;
 	}
 	
+	//procesar la entrada recibida en welcome
 	public function start() {
-	
+		
+		//obtener el digito presionado
 		$input = Input::get('Digits');
 		
+		//Objeto Twiml
+		$twiml = new Services_Twilio_Twiml();
+
+		//que hacemos?
 		if($input == '1') {
-			return Response::view('twilio/opinion')->header('Content-Type', 'application/xml');
+			
+			//return Response::view('twilio/opinion')->header('Content-Type', 'application/xml');
+			//armar la respuesta de la opinion
+			$twiml->play("http://www.infomercado.mx/raw/03_opinion02.mp3");
+			$twiml->record(array(
+				"action"=>"/twilio-connect/opiniones"
+				"method"=>"POST"
+				"maxLength"=>"20"
+				"finishOnKey"=>"#"
+				"playBeep"=>"true"
+				"transcribe"=>"false"
+			));
+			$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+		
+			
 		} elseif($input == '2') {
-			return "0";
+			
+			//armar la respuesta de registro
+			$twiml->say("Opción en construcción. Gracias.",array("language"=>"es-MX","voice"=>"alice"));
+			
 		} else {
-			return "0";
+		
+			//armar un error standar
+			$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+			
 		}
 		
+		//rspuesta http
+		$response = Response::make($twiml);
+		$response->header('Content-Type', 'application/xml');
+		
+		return $response;
+
 	}
 	
 	
