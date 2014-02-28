@@ -126,8 +126,59 @@ class TwilioController extends BaseController {
 		
 		switch($step) {
 			
+			case 1:
+				
+				//seleccionaste el mercado____ para continuar 1, para seleccionar otro, 2
+				$gather = $twiml->gather(array(
+					"timeout"=>"4",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/2",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/05_seleccion00.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+				
+			case 2:
+				
+				//ingresa el numero de tu local
+				$gather = $twiml->gather(array(
+					"timeout"=>"4",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/3",
+					"method"=>"POST",
+					"numDigits"=>"4"
+				));
+				$gather->play("http://www.infomercado.mx/raw06_local01.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+
+				break;
 			
+			case 3:
 			
+				//ingresa el numero de tu local
+				$gather = $twiml->gather(array(
+					"timeout"=>"4",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/4",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/07_selecciona01.mp3");
+				$gather->play("http://www.infomercado.mx/08_categoria01.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+				
+			case 4:
+				$twiml->say("Gracias.",array("language"=>"es-MX","voice"=>"alice"));				
+				break;
+				
+			default:
+				$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				break;
 		}
 		
 		//rspuesta http
