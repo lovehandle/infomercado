@@ -68,7 +68,16 @@ class TwilioController extends BaseController {
 		} elseif($input == '2') {
 			
 			//armar la respuesta de registro seleccionado
-			$twiml->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+			$gather = $twiml->gather(array(
+				"timeout"=>"4",
+				"finishOnKey"=>"#",
+				"action"=>"/twilio-connect/registro/1",
+				"method"=>"POST",
+				"numDigits"=>"3"
+			));
+			
+			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+			$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 			
 		} else {
 		
