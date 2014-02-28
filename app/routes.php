@@ -78,6 +78,6 @@ Route::post('twilio-connect/opiniones','TwilioController@opiniones');
 
 //Registro de comerciantes via telefonica
 Route::pattern('reg-id', '[0-9]+');
-Route::all('twilio-connect/registro/{reg-id}','TwilioController@registro');
+Route::any('twilio-connect/registro/{reg-id}','TwilioController@registro');
 
 
