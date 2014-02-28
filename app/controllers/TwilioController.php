@@ -55,11 +55,11 @@ class TwilioController extends BaseController {
 			//armar la respuesta de la opinion
 			$twiml->play("http://www.infomercado.mx/raw/03_opinion02.mp3");
 			$twiml->record(array(
-				"action"=>"/twilio-connect/opiniones"
-				"method"=>"POST"
-				"maxLength"=>"20"
-				"finishOnKey"=>"#"
-				"playBeep"=>"true"
+				"action"=>"/twilio-connect/opiniones",
+				"method"=>"POST",
+				"maxLength"=>"20",
+				"finishOnKey"=>"#",
+				"playBeep"=>"true",
 				"transcribe"=>"false"
 			));
 			$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
