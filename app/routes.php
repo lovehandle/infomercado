@@ -76,4 +76,8 @@ Route::post('twilio-connect/start','TwilioController@start');
 //Procesar una grabacion de opinion
 Route::post('twilio-connect/opiniones','TwilioController@opiniones');
 
+//Registro de comerciantes via telefonica
+Route::pattern('reg-id', '[0-9]+');
+Route::post('twilio-connect/registro/{reg-id}','TwilioController@registro');
+
 

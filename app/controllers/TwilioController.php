@@ -65,7 +65,7 @@ class TwilioController extends BaseController {
 			$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 		
 			
-		} elseif($input == '2') {
+		}elseif($input == '2') {
 			
 			//armar la respuesta de registro seleccionado
 			$gather = $twiml->gather(array(
@@ -116,5 +116,27 @@ class TwilioController extends BaseController {
 		return $response;
 		
 	}
+	
+	//procesamiento de los pasos de registro
+	
+	public function registro($step) {
+		
+		//Objeto Twiml
+		$twiml = new Services_Twilio_Twiml();
+		
+		switch($step) {
+			
+			
+			
+		}
+		
+		//rspuesta http
+		$response = Response::make($twiml);
+		$response->header('Content-Type', 'application/xml');
+		
+		return $response;
+		
+	}
+	
 
 }
