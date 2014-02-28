@@ -69,7 +69,7 @@ class TwilioController extends BaseController {
 			
 			//armar la respuesta de registro seleccionado
 			$gather = $twiml->gather(array(
-				"timeout"=>"4",
+				"timeout"=>"3",
 				"finishOnKey"=>"#",
 				"action"=>"/twilio-connect/registro/1",
 				"method"=>"POST",
