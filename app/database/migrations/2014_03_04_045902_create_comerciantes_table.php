@@ -18,7 +18,7 @@ class CreateComerciantesTable extends Migration {
 			$table->string('password');
 			$table->integer('mercado_number');
 			$table->integer('local');
-			$table->integer('tegoria_principal');
+			$table->integer('categoria_principal');
 			$table->integer('categoria_adicional');
 			$table->string('username');
 			$table->text('servicios');
