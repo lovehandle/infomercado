@@ -27,7 +27,7 @@ class CreateMercadosTable extends Migration {
 			$table->datetime('actualizado');
 			$table->text('direccion');
 			$table->integer('cp');
-			$table->textcd('horario');
+			$table->text('horario');
 	//		$table->timestamps();
         });
 	}
