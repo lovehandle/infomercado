@@ -124,7 +124,7 @@ class TwilioController extends BaseController {
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
 		
-		switch($step) {
+		switch(intval($step)) {
 			
 			case 1:
 				
