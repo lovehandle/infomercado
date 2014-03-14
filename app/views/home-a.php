@@ -19,23 +19,19 @@ a, a:link, a:visited {
 }
 a:hover {text-decoration: underline;}
 .fondo {
-	padding: 20px;
-	font-size: 18pt;
-}
-.conoce {background-color: #FFDC7A;}
-.cercano {background-color: #A3CB60;}
-.explora {background-color: #F2C64A;}
-.eventos-ofertas{background-color: #80A7BF;}
-
-.fondo2 {
-	padding: 20px;
+	padding: 30px;
 	font-size: 14pt;
 }
+.conoce {background-color: #FFDC7A;}
+.cercano {background-color: #A3CB60; padding: 30px; font-size: 16pt;}
+.explora {background-color: #F2C64A;}
+.eventos-ofertas{background-color: #80A7BF; font-size: 14pt; padding: 30px;}
+
 .headline {
 	padding: 0 10px 0 10px;
 	font-size: 8pt;
 }
-.spacer{margin-top: 6px;}
+.spacer{margin-top: 2px;}
 </style>
 </head>
 
@@ -46,20 +42,20 @@ a:hover {text-decoration: underline;}
         <p class="headline">Plataforma de información y participación ciudadana en los <br>Mercados Públicos de la Ciudad de México</p>
     </div>
     <div class="row spacer" align="center">
-	    <div class="col-xs-12 fondo2 cercano "><a href="#">MI MERCADO MÁS CERCANO</a></div>
+	    <div class="col-xs-12 cercano"><a href="cercano">MI MERCADO MÁS CERCANO</a></div>
+    </div>
+    <div class="row spacer" align="center">
+	    <div class="col-xs-12 eventos-ofertas"><a href="#">EXPLORA LOS MERCADOS</a></div>
     </div>
     <div class="row spacer">
 	    <div class="col-xs-6 fondo text-center conoce">
-		    <a href="#">CONOCE</a>
+		    <a href="#">FIESTAS</a>
 	    </div>
 	    <div class="col-xs-6 fondo text-center explora">
-		    <a href="#">EXPLORA</a>
+		    <a href="#">PROMOCIONES</a>
 	    </div>
     </div>
-    
-    <div class="row spacer" align="center">
-	    <div class="col-xs-12 fondo2 eventos-ofertas"><a href="#">EVENTOS Y OFERTAS</a></div>
-    </div>
+
 </div>
 </body>
 </html>
