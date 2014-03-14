@@ -12,7 +12,15 @@
 */ 
 
 //ruta principal
-Route::get('/', 'HomeController@showWelcome');
+//Route::get('/', 'HomeController@showWelcome');
+
+Route::get('/', function() {
+	return View::make("home-a");
+});
+
+Route::get('mas-cercano', function() {
+	return View::make("home-a");
+});
 
 //ruta para informacion de PHP
 Route::get('info', function() {
