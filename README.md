@@ -5,11 +5,13 @@ Plataforma de información y participación ciudadana en los Mercados Públicos
 
 ##Instalación del ambiente de desarrollo
 
-La aplicación esta desarrollada en PHP 5.4+ utilizando el Framework Laravel
+La aplicación esta desarrollada en PHP 5.4+ utilizando el Framework [Laravel](http://www.laravel.com)
 
 ###Requerimientos previos
 
-Para actualizar a php 5.4+
+Esta guía esta basada en Ubuntu 12+ pero puede ser facilmente replicado en cualquier otro sistema *nix
+
+Actualizar a php 5.4+
 
 ```
 sudo add-apt-repository ppa:ondrej/php5
