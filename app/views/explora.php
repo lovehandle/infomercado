@@ -19,7 +19,7 @@ body{padding-top:70px;}
 <div class="container">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container" align="center">
-  	<p class="">infomercado.mx</p>
+  	<p class="navbar-brand">infomercado.mx</p>
   </div>
 </nav>
     <div class="list-group">
