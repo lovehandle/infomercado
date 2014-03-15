@@ -45,7 +45,7 @@ a:hover {text-decoration: underline;}
 	    <div class="col-xs-12 cercano"><a href="cercano">MI MERCADO MÁS CERCANO</a></div>
     </div>
     <div class="row spacer" align="center">
-	    <div class="col-xs-12 eventos-ofertas"><a href="#">EXPLORA LOS MERCADOS</a></div>
+	    <div class="col-xs-12 eventos-ofertas"><a href="/explora">EXPLORA LOS MERCADOS</a></div>
     </div>
     <div class="row spacer">
 	    <div class="col-xs-6 fondo text-center conoce">
