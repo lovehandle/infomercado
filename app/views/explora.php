@@ -11,34 +11,17 @@
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 <style>
-* {
-	border-radius:0 !important;
-	moz-border-radius:0;
-}
-.conoce,.opina,.otro{
-	height:100px;
-	color:#000;
-	font-size:20pt;
-	padding:10px;
-	position:relative;
-}
-.textin{
-	position:absolute;
-	bottom:12px;
-}
-
-.conoce{background-color:#D9B74B;}
-.opina{background-color:#F17A4F;}
-.otro{}
+body{padding-top:70px;}
 </style>
 </head>
 
 <body>
 <div class="container">
-	<div class="row offset-superior" align="center">
-    	<h2 class="site-title">infomercado.mx</h2>
-        <p class="headline">Plataforma de información y participación ciudadana en los <br>Mercados Públicos de la Ciudad de México</p>
-    </div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container" align="center">
+  	<p class="">infomercado.mx</p>
+  </div>
+</nav>
     <div class="list-group">
     	<?php foreach($delegaciones as $delegacion){ ?>
 	    	<a href="/mercados/<?php print($delegacion->link); ?>" class="list-group-item"><?php print($delegacion->delegacion_nombre); ?></a>

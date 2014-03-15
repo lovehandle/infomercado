@@ -11,8 +11,8 @@
 |
 */ 
 
-//ruta principal (o explora)
-Route::get('explora', 'HomeController@showWelcome');
+//explora
+Route::get('explora', 'HomeController@explora');
 
 Route::get('/', function() {
 	return View::make("home-a");
