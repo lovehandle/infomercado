@@ -5,7 +5,7 @@
 	moz-border-radius:0;
 }
 
-body{font-family: 'Oxygen', sans-serif; background-color:#FFF; }
+body{font-family: 'Questrial', sans-serif; background-color:#fff; }
 @media screen and (max-width: 1440px) {
 	#main{margin-left:auto; margin-right:auto; width:1000px;}
 	#map-canvas { height: 400px;}
@@ -19,9 +19,7 @@ body{font-family: 'Oxygen', sans-serif; background-color:#FFF; }
 #main-registro{margin-left:auto; margin-right:auto; width:800px;}
 #prueba{width:400px; margin-top:80px;}
 .gris{color:#333;} .gris-2{color:#999;}
-.container div.row {
-	margin-bottom:25px;
-}
+
 .back p{
 	padding:14px;
 }
