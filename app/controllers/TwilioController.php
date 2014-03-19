@@ -130,7 +130,7 @@ class TwilioController extends BaseController {
 				
 				//seleccionaste el mercado____ para continuar 1, para seleccionar otro, 2
 				$gather = $twiml->gather(array(
-					"timeout"=>"4",
+					"timeout"=>"3",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/2",
 					"method"=>"POST",
@@ -139,6 +139,7 @@ class TwilioController extends BaseController {
 				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
 				$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
 				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
+				
 				$twiml->say("Error en paso 1. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
@@ -171,7 +172,7 @@ class TwilioController extends BaseController {
 				
 				//ingresa el numero de tu local
 				$gather = $twiml->gather(array(
-					"timeout"=>"4",
+					"timeout"=>"3",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/3",
 					"method"=>"POST",
@@ -186,7 +187,7 @@ class TwilioController extends BaseController {
 			
 				//selecciona la categoria que pertenece a tu local -	
 				$gather = $twiml->gather(array(
-					"timeout"=>"4",
+					"timeout"=>"3",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/4",
 					"method"=>"POST",
@@ -212,13 +213,95 @@ class TwilioController extends BaseController {
 					"numDigits"=>"1"
 				));
 				$gather->play("http://www.infomercado.mx/raw/09_preguntas02.mp3");
+				//primer pregunta, aceptan vales?
+				$gather->play("http://www.infomercado.mx/raw/10_vales02.mp3");
 				$twiml->say("Lo sentimos, ocurrio un error en paso 4. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
 			case 5:
-				$twiml->say("Paso 5.",array("language"=>"es-MX","voice"=>"alice"));
+			
+				//validar la entrada de vales
+				//<code here>
+				
+				//preguntar si envian a domicilio
+				//a continuacion, preguntas y mas preguntas
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/6",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/11_domicilio02.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
 				break;
+			
+			case 6:
+			
+				//validar la entrada de domicilio
+				//<code here>
+				
+				//preguntar si aceptan tarjetas
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/7",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/12_tarjetas02.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+			
+			case 7:
+			
+				//validar la entrada de tarjetas bancarias
+				//<code here>
+				
+				//preguntar si publican precios
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/8",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/13_precios01.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+			
+			case 8:
+			
+				//validar la entrada de lista de precios
+				//<code here>
+				
+				//preguntar si quieren atencion telefonica
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/9",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/14_telefonica02.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+				
+			case 9:
+			
+				//checar si aceptaron informacion telefonica
+				//si no, continuar
+				
+				$twiml->play("http://www.infomercado.mx/raw/gracias01.mp3");
+				
+				break;
+			
+				
 				
 			default:
 				$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
