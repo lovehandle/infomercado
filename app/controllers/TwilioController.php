@@ -142,6 +142,30 @@ class TwilioController extends BaseController {
 				break;
 				
 			case 2:
+			
+				//checar la seleccion
+				
+				//obtener el digito presionado
+				$input = Input::get('Digits');
+				
+				if($input == '2') {
+				
+					//volver a pedir el numero del mercado
+					//armar la respuesta de registro seleccionado
+					$gather = $twiml->gather(array(
+						"timeout"=>"3",
+						"finishOnKey"=>"#",
+						"action"=>"/twilio-connect/registro/1",
+						"method"=>"POST",
+						"numDigits"=>"3"
+					));
+					
+					$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+					$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+					//salimos de este ciclo
+					break;
+					
+				} 
 				
 				//ingresa el numero de tu local
 				$gather = $twiml->gather(array(
@@ -151,7 +175,7 @@ class TwilioController extends BaseController {
 					"method"=>"POST",
 					"numDigits"=>"4"
 				));
-				$gather->play("http://www.infomercado.mx/raw06_local01.mp3");
+				$gather->play("http://www.infomercado.mx/raw/06_local01.mp3");
 				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 
 				break;
