@@ -139,7 +139,7 @@ class TwilioController extends BaseController {
 				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
 				$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
 				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Error en paso 1. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
@@ -163,7 +163,7 @@ class TwilioController extends BaseController {
 					));
 					
 					$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
-					$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+					$twiml->say("Error en re-mercados. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 					//salimos de este ciclo
 					break;
 					
@@ -178,7 +178,7 @@ class TwilioController extends BaseController {
 					"numDigits"=>"4"
 				));
 				$gather->play("http://www.infomercado.mx/raw/06_local01.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Error en paso 2. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 
 				break;
 			
@@ -194,7 +194,7 @@ class TwilioController extends BaseController {
 				));
 				$gather->play("http://www.infomercado.mx/raw/07_selecciona01.mp3");
 				$gather->play("http://www.infomercado.mx/raw/08_categoria01.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Lo sentimos, ocurrio un error en paso 3. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
@@ -212,7 +212,7 @@ class TwilioController extends BaseController {
 					"numDigits"=>"1"
 				));
 				$gather->play("http://www.infomercado.mx/raw/09_preguntas02.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Lo sentimos, ocurrio un error en paso 4. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
