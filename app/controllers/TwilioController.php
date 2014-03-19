@@ -182,7 +182,7 @@ class TwilioController extends BaseController {
 			
 			case 3:
 			
-				//ingresa el numero de tu local
+				//selecciona la categoria que pertenece a tu local -	
 				$gather = $twiml->gather(array(
 					"timeout"=>"4",
 					"finishOnKey"=>"#",
@@ -190,14 +190,32 @@ class TwilioController extends BaseController {
 					"method"=>"POST",
 					"numDigits"=>"1"
 				));
-				$gather->play("http://www.infomercado.mx/07_selecciona01.mp3");
-				$gather->play("http://www.infomercado.mx/08_categoria01.mp3");
+				$gather->play("http://www.infomercado.mx/raw/07_selecciona01.mp3");
+				$gather->play("http://www.infomercado.mx/raw/08_categoria01.mp3");
 				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
 			case 4:
-				$twiml->say("Gracias.",array("language"=>"es-MX","voice"=>"alice"));				
+				
+				//revisar que categoria seleccionó
+				//<code here>
+			
+				//a continuacion, preguntas y mas preguntas
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/5",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/09_preguntas02.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+				
+			case 5:
+				
 				break;
 				
 			default:
