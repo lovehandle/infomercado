@@ -136,7 +136,9 @@ class TwilioController extends BaseController {
 					"method"=>"POST",
 					"numDigits"=>"1"
 				));
-				$gather->play("http://www.infomercado.mx/raw/05_seleccion00.mp3");
+				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
+				$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
+				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
 				$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
