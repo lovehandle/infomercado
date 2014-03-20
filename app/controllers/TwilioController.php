@@ -20,7 +20,8 @@ class TwilioController extends BaseController {
 	public function welcome(){
 	
 		//logs
-		Log::info('Punto de Entrada', array('sesion' => Session::getId()));
+		Log::info('Punto de Entrada', array('sesion' => Session::getId(),'request_data'=>Input::all()));
+		
 	
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
@@ -248,7 +249,7 @@ class TwilioController extends BaseController {
 				//preguntar si envian a domicilio
 				//a continuacion, preguntas y mas preguntas
 				$gather = $twiml->gather(array(
-					"timeout"=>"2",
+					"timeout"=>"3",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/6",
 					"method"=>"POST",
