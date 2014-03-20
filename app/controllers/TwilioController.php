@@ -154,7 +154,9 @@ class TwilioController extends BaseController {
 			case 1:
 				
 				//ubicar el mercado en la base de datos
-				$mimercado = Mercado::where('numero', '=', Input::get("Digits"));
+				$mimercado = Mercado::where('numero', '=', Input::get("Digits"))->firstOrFail();
+				
+				Log::info('Mercado: '.Input::get('Digits'));
 				
 				//guardar en la session el mercado seleccionado
 				Session::put('mercado',Input::get("Digits"));
@@ -169,7 +171,7 @@ class TwilioController extends BaseController {
 				));
 				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
 				//decir el numero y nombre de mercado roboticamente
-				$gather->say($mercado->numero.". ".$mercado->nombre,array("language"=>"es-MX","voice"=>"alice"));
+				$gather->say($mimercado->numero.". ".$mimercado->nombre,array("language"=>"es-MX","voice"=>"alice"));
 				//$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
 				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
 				
