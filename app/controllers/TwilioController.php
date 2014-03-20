@@ -85,7 +85,7 @@ class TwilioController extends BaseController {
 			
 			//armar la respuesta de registro seleccionado
 			$gather = $twiml->gather(array(
-				"timeout"=>"2",
+				"timeout"=>"4",
 				"finishOnKey"=>"#",
 				"action"=>"/twilio-connect/registro/1",
 				"method"=>"POST",
@@ -163,7 +163,7 @@ class TwilioController extends BaseController {
 				
 				//seleccionaste el mercado____ para continuar 1, para seleccionar otro, 2
 				$gather = $twiml->gather(array(
-					"timeout"=>"2",
+					"timeout"=>"4",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/2",
 					"method"=>"POST",
@@ -171,7 +171,7 @@ class TwilioController extends BaseController {
 				));
 				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
 				//decir el numero y nombre de mercado roboticamente
-				$gather->say($mimercado->numero.". ".$mimercado->nombre,array("language"=>"es-MX","voice"=>"alice"));
+				$gather->say(", ,".$mimercado->numero.", , ".$mimercado->nombre,array("language"=>"es-MX","voice"=>"alice"));
 				//$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
 				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
 				
@@ -407,10 +407,34 @@ class TwilioController extends BaseController {
 				
 				//ejecutar el codigo aqui para generar usuario y password
 				Log::info('=RegistroUsuario=',array('config'=>Session::all()));
+				
+				$nombre = "TELEFONICO";
+				$password_texto = mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9);
+				$usuario_texto = mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9);
+				$password = str_replace(',', '', $password_texto);
+				$usuario = str_replace(',', '', $usuario_texto);
+				$mercado = Session::get('mercado');
+				$local = Session::get('local');
+				$cat = Session::get("categoria");
+				
+				//servicios que ofrece
+				$domicilio = Session::get("a-domicilio");
+				$tarjetas = Session::get("tarjeta");
+				$vales = Session::get("vales");
+				$precios = Session::get("precios");
+				$servicios = json_encode(array($domicilio,$tarjetas,$vales, $precios),true);
+				
+				try {
+					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username, servicios) VALUES(?,?,?,?,?,0,?,0)',array($nombre,$password, $mercado, $local, $cat, $usuario, $servicios));
+					
+					Log::info('**** Se guardo el Registro *****');
+				} catch (Exception $ex) {
+					Log::info('xxxxx NO guardo el Registro xxxxx',array('error'=>$ex));
+				}
 						
 				//reproducir la respuesta
-				$twiml->say("Numero de Usuario: 5. 6. 3. 0. 1. 5",array("language"=>"es-MX","voice"=>"alice"));
-				$twiml->say("Codigo de Acceso: 4. 3. 0. 9",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Numero de Usuario. ".$usuario_texto,array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Codigo de Acceso. ".$password_texto,array("language"=>"es-MX","voice"=>"alice"));
 				$twiml->play("http://www.infomercado.mx/raw/17_gracias02.mp3");
 			
 				break;
