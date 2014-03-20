@@ -23,7 +23,7 @@ class TwilioController extends BaseController {
 		Log::info('Punto de Entrada', array('sesion' => Session::getId(),'request_data'=>Input::all()));
 		
 		//iniciar la sesion guardando el telefono de entrada
-		Session::put('telefono',Input::("From"));
+		Session::put('telefono',Input::get("From"));
 		
 	
 		//Objeto Twiml
@@ -154,10 +154,10 @@ class TwilioController extends BaseController {
 			case 1:
 				
 				//ubicar el mercado en la base de datos
-				$mimercado = Mercado::where('numero', '=', Input::("Digits"));
+				$mimercado = Mercado::where('numero', '=', Input::get("Digits"));
 				
 				//guardar en la session el mercado seleccionado
-				Session::put('mercado',Input::("Digits"));
+				Session::put('mercado',Input::get("Digits"));
 				
 				//seleccionaste el mercado____ para continuar 1, para seleccionar otro, 2
 				$gather = $twiml->gather(array(
@@ -219,7 +219,7 @@ class TwilioController extends BaseController {
 			case 3:
 			
 				//guardar el numero del local seleccionado
-				Session::put('local',Input::("Digits"));
+				Session::put('local',Input::get("Digits"));
 			
 				//selecciona la categoria que pertenece a tu local -	
 				$gather = $twiml->gather(array(
@@ -238,7 +238,7 @@ class TwilioController extends BaseController {
 			case 4:
 				
 				//guardar la categoria seleccionada
-				Session::put('categoria',Input::("Digits"));
+				Session::put('categoria',Input::get("Digits"));
 			
 				//a continuacion, preguntas y mas preguntas
 				$gather = $twiml->gather(array(
@@ -386,7 +386,7 @@ class TwilioController extends BaseController {
 			case 10:
 				
 				//guardar el numero de telefono ingresado
-				Session::put('atencion-tel',Input:;get("Digits");
+				Session::put('atencion-tel',Input::get("Digits"));
 				
 				//te proporcionaremos un usuario y contra. press 1 para continuar
 				$gather = $twiml->gather(array(
@@ -404,7 +404,7 @@ class TwilioController extends BaseController {
 			case 11:
 				
 				//ejecutar el codigo aqui para generar usuario y password
-				Log::info('=RegistroUsuario=','config'=>Session::all());
+				Log::info('=RegistroUsuario=',array('config'=>Session::all()));
 						
 				//reproducir la respuesta
 				$twiml->say("Numero de Usuario: 5. 6. 3. 0. 1. 5",array("language"=>"es-MX","voice"=>"alice"));
