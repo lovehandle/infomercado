@@ -19,6 +19,9 @@ class TwilioController extends BaseController {
 	//bienvenida del sistema telefonico
 	public function welcome(){
 	
+		//logs
+		Log::info('Punto de Entrada', array('sesion' => Session::getId()));
+	
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
 		$gather = $twiml->gather(array(
@@ -41,6 +44,9 @@ class TwilioController extends BaseController {
 	
 	//procesar la entrada recibida en welcome
 	public function start() {
+	
+		//logs
+		Log::info('Primera seleccion', array('sesion' => Session::getId()));
 		
 		//obtener el digito presionado
 		$input = Input::get('Digits');
@@ -50,6 +56,9 @@ class TwilioController extends BaseController {
 
 		//que hacemos?
 		if($input == '1') {
+		
+			//logs
+			Log::info('Opcion 1', array('sesion' => Session::getId()));
 			
 			//return Response::view('twilio/opinion')->header('Content-Type', 'application/xml');
 			//armar la respuesta de la opinion
@@ -66,6 +75,9 @@ class TwilioController extends BaseController {
 		
 			
 		}elseif($input == '2') {
+		
+			//logs
+			Log::info('Opcion 2', array('sesion' => Session::getId()));
 			
 			//armar la respuesta de registro seleccionado
 			$gather = $twiml->gather(array(
@@ -80,7 +92,10 @@ class TwilioController extends BaseController {
 			$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 			
 		} else {
-		
+			
+			//logs
+			Log::info('Opcion Invalida', array('sesion' => Session::getId()));
+			
 			//armar un error standar
 			$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 			
@@ -96,6 +111,9 @@ class TwilioController extends BaseController {
 	
 	//procesa cuando alguien deja una opinion
 	public function opiniones() {
+		
+		//logs
+		Log::info('Guardar opinion', array('sesion' => Session::getId()));
 		
 		//guardar la referencia a las URL de oipiniones
 		DB::table('opiniones')->insert(array(
@@ -120,6 +138,9 @@ class TwilioController extends BaseController {
 	//procesamiento de los pasos de registro
 	
 	public function registro($step) {
+	
+		//logs
+		Log::info('Entry del Registro', array('sesion' => Session::getId(),'step'=>$step));
 		
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
