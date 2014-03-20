@@ -22,7 +22,7 @@ class TwilioController extends BaseController {
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
 		$gather = $twiml->gather(array(
-			"timeout"=>"4",
+			"timeout"=>"2",
 			"finishOnKey"=>"*",
 			"action"=>"/twilio-connect/start",
 			"method"=>"POST",
@@ -69,7 +69,7 @@ class TwilioController extends BaseController {
 			
 			//armar la respuesta de registro seleccionado
 			$gather = $twiml->gather(array(
-				"timeout"=>"3",
+				"timeout"=>"2",
 				"finishOnKey"=>"#",
 				"action"=>"/twilio-connect/registro/1",
 				"method"=>"POST",
@@ -130,7 +130,7 @@ class TwilioController extends BaseController {
 				
 				//seleccionaste el mercado____ para continuar 1, para seleccionar otro, 2
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"2",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/2",
 					"method"=>"POST",
@@ -156,7 +156,7 @@ class TwilioController extends BaseController {
 					//volver a pedir el numero del mercado
 					//armar la respuesta de registro seleccionado
 					$gather = $twiml->gather(array(
-						"timeout"=>"3",
+						"timeout"=>"2",
 						"finishOnKey"=>"#",
 						"action"=>"/twilio-connect/registro/1",
 						"method"=>"POST",
@@ -187,7 +187,7 @@ class TwilioController extends BaseController {
 			
 				//selecciona la categoria que pertenece a tu local -	
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"2",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/4",
 					"method"=>"POST",
@@ -227,7 +227,7 @@ class TwilioController extends BaseController {
 				//preguntar si envian a domicilio
 				//a continuacion, preguntas y mas preguntas
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"2",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/6",
 					"method"=>"POST",
@@ -245,7 +245,7 @@ class TwilioController extends BaseController {
 				
 				//preguntar si aceptan tarjetas
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"2",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/7",
 					"method"=>"POST",
@@ -281,7 +281,7 @@ class TwilioController extends BaseController {
 				
 				//preguntar si quieren atencion telefonica
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"2",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/9",
 					"method"=>"POST",
@@ -303,7 +303,7 @@ class TwilioController extends BaseController {
 					
 					//pedir el numero telefonico
 					$gather = $twiml->gather(array(
-						"timeout"=>"3",
+						"timeout"=>"2",
 						"finishOnKey"=>"#",
 						"action"=>"/twilio-connect/registro/10",
 						"method"=>"POST",
@@ -336,7 +336,7 @@ class TwilioController extends BaseController {
 				
 				//te proporcionaremos un usuario y contra. press 1 para continuar
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"2",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/11",
 					"method"=>"POST",
@@ -353,8 +353,8 @@ class TwilioController extends BaseController {
 				//<code here>
 						
 				//reproducir la respuesta
-				$twiml->say("Numero de Usuario: 5 6 3 0 1 5",array("language"=>"es-MX","voice"=>"alice"));
-				$twiml->say("Codigo de Acceso: 4 3 0 9",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Numero de Usuario: 5. 6. 3. 0. 1. 5",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Codigo de Acceso: 4. 3. 0. 9",array("language"=>"es-MX","voice"=>"alice"));
 				$twiml->play("http://www.infomercado.mx/raw/17_gracias02.mp3");
 			
 				break;
