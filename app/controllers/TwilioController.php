@@ -252,7 +252,7 @@ class TwilioController extends BaseController {
 					"numDigits"=>"1"
 				));
 				$gather->play("http://www.infomercado.mx/raw/12_tarjetas02.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Lo sentimos, ocurrio un error en paso 6. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 			
@@ -270,7 +270,7 @@ class TwilioController extends BaseController {
 					"numDigits"=>"1"
 				));
 				$gather->play("http://www.infomercado.mx/raw/13_precios01.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Lo sentimos, ocurrio un error en paso 7. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 			
@@ -288,21 +288,77 @@ class TwilioController extends BaseController {
 					"numDigits"=>"1"
 				));
 				$gather->play("http://www.infomercado.mx/raw/14_telefonica02.mp3");
-				$twiml->say("Lo sentimos, ocurrio un error en paso 5. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Lo sentimos, ocurrio un error en paso 8. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
 			case 9:
 			
+				//obtener el digito presionado
+				$input = Input::get('Digits');
+				
 				//checar si aceptaron informacion telefonica
 				//si no, continuar
+				if($input == '1') {
+					
+					//pedir el numero telefonico
+					$gather = $twiml->gather(array(
+						"timeout"=>"3",
+						"finishOnKey"=>"#",
+						"action"=>"/twilio-connect/registro/10",
+						"method"=>"POST",
+						"numDigits"=>"10"
+					));
+					$gather->play("http://www.infomercado.mx/raw/15_telefono02.mp3");
+					$twiml->say("Lo sentimos, ocurrio un error en paso 9. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+					
+					break;
+					
+				}
 				
-				$twiml->play("http://www.infomercado.mx/raw/gracias01.mp3");
+				//te proporcionaremos un usuario y contra. press 1 para continuar
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/11",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/16_usuario02.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error en paso 9-b. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 			
+			case 10:
 				
+				//guardar el numero de telefono ingresado
+				//<code here>
 				
+				//te proporcionaremos un usuario y contra. press 1 para continuar
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/11",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/16_usuario02.mp3");
+				$twiml->say("Lo sentimos, ocurrio un error en paso 9-b. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				break;
+			
+			case 11:
+				
+				//ejecutar el codigo aqui para generar usuario y password
+				//<code here>
+						
+				//reproducir la respuesta
+				$twiml->say("Numero de Usuario: 5 6 3 0 1 5",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->say("Codigo de Acceso: 4 3 0 9",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->play("http://www.infomercado.mx/raw/17_gracias02.mp3");
+			
+				break;
+			
 			default:
 				$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				break;
