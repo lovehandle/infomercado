@@ -22,6 +22,9 @@ class TwilioController extends BaseController {
 		//logs
 		Log::info('Punto de Entrada', array('sesion' => Session::getId(),'request_data'=>Input::all()));
 		
+		//iniciar la sesion guardando el telefono de entrada
+		Session::put('telefono',Input::("From"));
+		
 	
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
@@ -150,6 +153,12 @@ class TwilioController extends BaseController {
 			
 			case 1:
 				
+				//ubicar el mercado en la base de datos
+				$mimercado = Mercado::where('numero', '=', Input::("Digits"));
+				
+				//guardar en la session el mercado seleccionado
+				Session::put('mercado',Input::("Digits"));
+				
 				//seleccionaste el mercado____ para continuar 1, para seleccionar otro, 2
 				$gather = $twiml->gather(array(
 					"timeout"=>"2",
@@ -159,7 +168,9 @@ class TwilioController extends BaseController {
 					"numDigits"=>"1"
 				));
 				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
-				$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
+				//decir el numero y nombre de mercado roboticamente
+				$gather->say($mercado->numero.". ".$mercado->nombre,array("language"=>"es-MX","voice"=>"alice"));
+				//$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
 				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
 				
 				$twiml->say("Error en paso 1. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
