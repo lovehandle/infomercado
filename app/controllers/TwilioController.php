@@ -218,6 +218,9 @@ class TwilioController extends BaseController {
 			
 			case 3:
 			
+				//guardar el numero del local seleccionado
+				Session::put('local',Input::("Digits"));
+			
 				//selecciona la categoria que pertenece a tu local -	
 				$gather = $twiml->gather(array(
 					"timeout"=>"2",
@@ -234,8 +237,8 @@ class TwilioController extends BaseController {
 				
 			case 4:
 				
-				//revisar que categoria seleccionó
-				//<code here>
+				//guardar la categoria seleccionada
+				Session::put('categoria',Input::("Digits"));
 			
 				//a continuacion, preguntas y mas preguntas
 				$gather = $twiml->gather(array(
@@ -255,7 +258,11 @@ class TwilioController extends BaseController {
 			case 5:
 			
 				//validar la entrada de vales
-				//<code here>
+				if(Input::get("Digits")=='1') {
+					Session::put('vales','1');
+				} else {
+					Session::put('vales','0');
+				}
 				
 				//preguntar si envian a domicilio
 				//a continuacion, preguntas y mas preguntas
@@ -274,7 +281,11 @@ class TwilioController extends BaseController {
 			case 6:
 			
 				//validar la entrada de domicilio
-				//<code here>
+				if(Input::get("Digits")=='1') {
+					Session::put('a-domicilio','1');
+				} else {
+					Session::put('a-domicilio','0');
+				}
 				
 				//preguntar si aceptan tarjetas
 				$gather = $twiml->gather(array(
@@ -292,7 +303,11 @@ class TwilioController extends BaseController {
 			case 7:
 			
 				//validar la entrada de tarjetas bancarias
-				//<code here>
+				if(Input::get("Digits")=='1') {
+					Session::put('tarjeta','1');
+				} else {
+					Session::put('tarjeta','0');
+				}
 				
 				//preguntar si publican precios
 				$gather = $twiml->gather(array(
@@ -310,7 +325,11 @@ class TwilioController extends BaseController {
 			case 8:
 			
 				//validar la entrada de lista de precios
-				//<code here>
+				if(Input::get("Digits")=='1') {
+					Session::put('precios','1');
+				} else {
+					Session::put('precios','0');
+				}
 				
 				//preguntar si quieren atencion telefonica
 				$gather = $twiml->gather(array(
@@ -349,6 +368,8 @@ class TwilioController extends BaseController {
 					
 				}
 				
+				Session::put('atencion-tel','0');
+				
 				//te proporcionaremos un usuario y contra. press 1 para continuar
 				$gather = $twiml->gather(array(
 					"timeout"=>"3",
@@ -365,7 +386,7 @@ class TwilioController extends BaseController {
 			case 10:
 				
 				//guardar el numero de telefono ingresado
-				//<code here>
+				Session::put('atencion-tel',Input:;get("Digits");
 				
 				//te proporcionaremos un usuario y contra. press 1 para continuar
 				$gather = $twiml->gather(array(
@@ -383,7 +404,7 @@ class TwilioController extends BaseController {
 			case 11:
 				
 				//ejecutar el codigo aqui para generar usuario y password
-				//<code here>
+				Log::info('=RegistroUsuario=','config'=>Session::all());
 						
 				//reproducir la respuesta
 				$twiml->say("Numero de Usuario: 5. 6. 3. 0. 1. 5",array("language"=>"es-MX","voice"=>"alice"));
