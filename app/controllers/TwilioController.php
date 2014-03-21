@@ -409,10 +409,10 @@ class TwilioController extends BaseController {
 				Log::info('=RegistroUsuario=',array('config'=>Session::all()));
 				
 				$nombre = "TELEFONICO";
-				$password_texto = mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9);
-				$usuario_texto = mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9).",".mt_rand(0,9);
-				$password = str_replace(',', '', $password_texto);
-				$usuario = str_replace(',', '', $usuario_texto);
+				$password_texto = mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9);
+				$usuario_texto = mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9);
+				$password = str_replace(';', '', $password_texto);
+				$usuario = str_replace(';', '', $usuario_texto);
 				$mercado = Session::get('mercado');
 				$local = Session::get('local');
 				$cat = Session::get("categoria");
@@ -425,7 +425,7 @@ class TwilioController extends BaseController {
 				$servicios = json_encode(array($domicilio,$tarjetas,$vales, $precios),true);
 				
 				try {
-					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username, servicios) VALUES(?,?,?,?,?,0,?,0)',array($nombre,$password, $mercado, $local, $cat, $usuario, $servicios));
+					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username, servicios) VALUES(?,?,?,?,?,0,?,?)',array($nombre, (string)$password, $mercado, $local, $cat, (string)$usuario, $servicios));
 					
 					Log::info('**** Se guardo el Registro *****');
 				} catch (Exception $ex) {
