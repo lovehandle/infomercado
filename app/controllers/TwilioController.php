@@ -424,6 +424,7 @@ class TwilioController extends BaseController {
 				$vales = Session::get("vales");
 				$precios = Session::get("precios");
 				$servicios = json_encode(array($domicilio,$tarjetas,$vales, $precios),true);
+				$servicios = booleanReplacer($servicios);
 				
 				try {
 					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username, servicios) VALUES(?,?,?,?,?,0,?,?)',array($nombre, (string)$password, $mercado, $local, $cat, (string)$usuario, $servicios));
@@ -451,6 +452,13 @@ class TwilioController extends BaseController {
 		
 		return $response;
 		
+	}
+	
+	//boolean replacer
+	private function booleanReplacer($input) {
+		$input = str_replace("1", "True", $input);
+		$input = str_replace("0", "False", $input);
+		return $input;
 	}
 	
 
