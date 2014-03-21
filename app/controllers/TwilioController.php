@@ -424,7 +424,7 @@ class TwilioController extends BaseController {
 				$vales = Session::get("vales");
 				$precios = Session::get("precios");
 				$servicios = json_encode(array($domicilio,$tarjetas,$vales, $precios),true);
-				$servicios = booleanReplacer($servicios);
+				$servicios = $this->booleanReplacer($servicios);
 				
 				try {
 					DB::insert('INSERT INTO comerciantes(nombre, password, mercado_number, local, categoria_principal, categoria_adicional, username, servicios) VALUES(?,?,?,?,?,0,?,?)',array($nombre, (string)$password, $mercado, $local, $cat, (string)$usuario, $servicios));
