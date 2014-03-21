@@ -412,6 +412,7 @@ class TwilioController extends BaseController {
 				$password_texto = mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9);
 				$usuario_texto = mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9).";".mt_rand(0,9);
 				$password = str_replace(';', '', $password_texto);
+				$password = Hash::make($password);
 				$usuario = str_replace(';', '', $usuario_texto);
 				$mercado = Session::get('mercado');
 				$local = Session::get('local');
