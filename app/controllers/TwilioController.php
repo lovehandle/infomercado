@@ -29,7 +29,7 @@ class TwilioController extends BaseController {
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
 		$gather = $twiml->gather(array(
-			"timeout"=>"2",
+			"timeout"=>"3",
 			"finishOnKey"=>"*",
 			"action"=>"/twilio-connect/start",
 			"method"=>"POST",
@@ -91,9 +91,27 @@ class TwilioController extends BaseController {
 				"method"=>"POST",
 				"numDigits"=>"3"
 			));
-			
 			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
-			$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+			//repetir la primera vez
+			$gather = $twiml->gather(array(
+				"timeout"=>"4",
+				"finishOnKey"=>"#",
+				"action"=>"/twilio-connect/registro/1",
+				"method"=>"POST",
+				"numDigits"=>"3"
+			));
+			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+			//repetir una tercera vez
+			//armar la respuesta de registro seleccionado
+			$gather = $twiml->gather(array(
+				"timeout"=>"4",
+				"finishOnKey"=>"#",
+				"action"=>"/twilio-connect/registro/1",
+				"method"=>"POST",
+				"numDigits"=>"3"
+			));
+			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+			$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 			
 		} else {
 			
@@ -456,8 +474,8 @@ class TwilioController extends BaseController {
 	
 	//boolean replacer
 	private function booleanReplacer($input) {
-		$input = str_replace("1", "True", $input);
-		$input = str_replace("0", "False", $input);
+		$input = str_replace("1", "true", $input);
+		$input = str_replace("0", "false", $input);
 		return $input;
 	}
 	
