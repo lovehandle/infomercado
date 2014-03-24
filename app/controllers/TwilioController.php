@@ -53,7 +53,7 @@ class TwilioController extends BaseController {
 			$gather->play("http://www.infomercado.mx/raw/02_marca02.mp3");
 			
 			//no hay respuesta, redireccionar
-			$twiml->redirect("twilio-connect/welcome?intento=".$next,array("method"=>"GET"));
+			$twiml->redirect("/twilio-connect/welcome?intento=".$next, array("method"=>"GET"));
 			
 		}
 		
