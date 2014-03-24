@@ -147,7 +147,7 @@ class TwilioController extends BaseController {
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
 		//armar la respuesta con el agradecimiento
-		$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+		$twiml->say("Fin de la opinion.",array("language"=>"es-MX","voice"=>"alice"));
 		
 		//rspuesta http
 		$response = Response::make($twiml);
@@ -190,10 +190,30 @@ class TwilioController extends BaseController {
 				$gather->play("http://www.infomercado.mx/raw/mercado0.mp3");
 				//decir el numero y nombre de mercado roboticamente
 				$gather->say(", ,".$mimercado->numero.", , ".$mimercado->nombre,array("language"=>"es-MX","voice"=>"alice"));
-				//$gather->play("http://www.infomercado.mx/raw/ej_mercado221.mp3");
 				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
 				
-				$twiml->say("Error en paso 1. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				//segundo intento
+				$gather = $twiml->gather(array(
+					"timeout"=>"4",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/2",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
+				
+				//tercer intento
+				$gather = $twiml->gather(array(
+					"timeout"=>"4",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/2",
+					"method"=>"POST",
+					"numDigits"=>"1"
+				));
+				$gather->play("http://www.infomercado.mx/raw/otro1.mp3");
+				
+				//no reicibimos respuesta
+				$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 				
 				break;
 				
