@@ -22,24 +22,43 @@ class TwilioController extends BaseController {
 		//logs
 		Log::info('Punto de Entrada', array('sesion' => Session::getId(),'request_data'=>Input::all()));
 		
-		//iniciar la sesion guardando el telefono de entrada
-		Session::put('telefono',Input::get("From"));
-		
-	
 		//Objeto Twiml
 		$twiml = new Services_Twilio_Twiml();
-		$gather = $twiml->gather(array(
-			"timeout"=>"3",
-			"finishOnKey"=>"*",
-			"action"=>"/twilio-connect/start",
-			"method"=>"POST",
-			"numDigits"=>"1"
-		));
-		$gather->play("http://www.infomercado.mx/raw/01_bienvenido01.mp3");
-		$gather->play("http://www.infomercado.mx/raw/02_marca02.mp3");
-		$twiml->say("Lo sentimos, ocurrio un error. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+		
+		//hubo un intento anterior?
+		$intentos = Input::get('intento', '0');
+		
+		
+		//checar si son 3 intentos, drop call
+		if( (int)$intentos >=3 ) {
+			$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+		} else {
+			
+			//iniciar la sesion guardando el telefono de entrada
+			Session::put('telefono',Input::get("From"));
+			
+			$next = (int)$intentos;
+			$next++;
+			
+			$gather = $twiml->gather(array(
+				"timeout"=>"3",
+				"finishOnKey"=>"*",
+				"action"=>"/twilio-connect/start",
+				"method"=>"POST",
+				"numDigits"=>"1"
+			));
+			if( (int)$intentos <= 0) { 
+				$gather->play("http://www.infomercado.mx/raw/01_bienvenido01.mp3");	
+			}
+			$gather->play("http://www.infomercado.mx/raw/02_marca02.mp3");
+			
+			//no hay respuesta, redireccionar
+			$twiml->redirect("twilio-connect/welcome?intento=".$next,array("method"=>"GET"));
+			
+		}
+		
 	
-		//rspuesta http
+		//respuesta http
 		$response = Response::make($twiml);
 		$response->header('Content-Type', 'application/xml');
 		
@@ -252,7 +271,29 @@ class TwilioController extends BaseController {
 					"numDigits"=>"4"
 				));
 				$gather->play("http://www.infomercado.mx/raw/06_local01.mp3");
-				$twiml->say("Error en paso 2. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				
+				//segundo intento
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/3",
+					"method"=>"POST",
+					"numDigits"=>"4"
+				));
+				$gather->play("http://www.infomercado.mx/raw/06_local01.mp3");
+				
+				//tercer intento
+				$gather = $twiml->gather(array(
+					"timeout"=>"3",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/3",
+					"method"=>"POST",
+					"numDigits"=>"4"
+				));
+				$gather->play("http://www.infomercado.mx/raw/06_local01.mp3");
+				
+				//no recibimos una respuesta
+				$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 
 				break;
 			
