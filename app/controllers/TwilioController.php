@@ -129,22 +129,24 @@ class TwilioController extends BaseController {
 				//tres o mas intentos
 				if((int)$intentos >= 3) {
 					$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				} else {
+					
+					$next = (int)$intentos; $next++;
+				
+					//armar la respuesta de registro seleccionado
+					$gather = $twiml->gather(array(
+						"timeout"=>"4",
+						"finishOnKey"=>"#",
+						"action"=>"/twilio-connect/registro/1",
+						"method"=>"POST",
+						"numDigits"=>"3"
+					));
+					$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+					
+					//redirect si no se reciben los digitos
+					$twiml->redirect("/twilio-connect/start?intento=".$next);	
+					
 				}
-				
-				$next = (int)$intentos; $next++;
-				
-				//armar la respuesta de registro seleccionado
-				$gather = $twiml->gather(array(
-					"timeout"=>"4",
-					"finishOnKey"=>"#",
-					"action"=>"/twilio-connect/registro/1",
-					"method"=>"POST",
-					"numDigits"=>"3"
-				));
-				$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
-				
-				//redirect si no se reciben los digitos
-				$twiml->redirect("/twilio-connect/start?intento=".$next);
 				
 				
 			} else {
