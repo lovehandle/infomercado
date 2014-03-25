@@ -328,8 +328,21 @@ class TwilioController extends BaseController {
 			case 3:
 			
 				//checar si el local no ha sido seleccionado anteriormente
-			
+				$existe = Comerciante::where('local', '=', Input::get("Digits"))->count();
+				if($existe >= 1) {
+					$twiml->say("Local seleccionado anteriormente. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+					//redirect para intentar meter otro local
+					break;
+				}
+				
 				//checar si existe el local en el mercado seleccionado
+				$locales = Mercado::where('numero', '=', Session::get('mercado'))->firstOrFail();
+				if(Input::get("Digits") > $locales) {
+					$twiml->say("El local que ingresaste no existe en el mercado seleccionado. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+					
+					//redirect para intentar meter otro local
+					break;
+				}
 			
 				//guardar el numero del local seleccionado
 				Session::put('local',Input::get("Digits"));
