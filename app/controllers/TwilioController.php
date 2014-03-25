@@ -481,7 +481,25 @@ class TwilioController extends BaseController {
 					
 					//pedir el numero telefonico
 					$gather = $twiml->gather(array(
-						"timeout"=>"4",
+						"timeout"=>"5",
+						"finishOnKey"=>"#",
+						"action"=>"/twilio-connect/registro/10",
+						"method"=>"POST",
+						"numDigits"=>"10"
+					));
+					$gather->play("http://www.infomercado.mx/raw/15_telefono02.mp3");
+					$twiml->say(" ",array("language"=>"es-MX","voice"=>"alice"));
+					$gather = $twiml->gather(array(
+						"timeout"=>"5",
+						"finishOnKey"=>"#",
+						"action"=>"/twilio-connect/registro/10",
+						"method"=>"POST",
+						"numDigits"=>"10"
+					));
+					$gather->play("http://www.infomercado.mx/raw/15_telefono02.mp3");
+					$twiml->say(" ",array("language"=>"es-MX","voice"=>"alice"));
+					$gather = $twiml->gather(array(
+						"timeout"=>"5",
 						"finishOnKey"=>"#",
 						"action"=>"/twilio-connect/registro/10",
 						"method"=>"POST",
