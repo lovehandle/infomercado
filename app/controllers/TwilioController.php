@@ -327,12 +327,16 @@ class TwilioController extends BaseController {
 			
 			case 3:
 			
+				//checar si el local no ha sido seleccionado anteriormente
+			
+				//checar si existe el local en el mercado seleccionado
+			
 				//guardar el numero del local seleccionado
 				Session::put('local',Input::get("Digits"));
 			
 				//selecciona la categoria que pertenece a tu local -	
 				$gather = $twiml->gather(array(
-					"timeout"=>"2",
+					"timeout"=>"4",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/4",
 					"method"=>"POST",
@@ -398,7 +402,7 @@ class TwilioController extends BaseController {
 				
 				//preguntar si aceptan tarjetas
 				$gather = $twiml->gather(array(
-					"timeout"=>"2",
+					"timeout"=>"4",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/7",
 					"method"=>"POST",
@@ -442,7 +446,7 @@ class TwilioController extends BaseController {
 				
 				//preguntar si quieren atencion telefonica
 				$gather = $twiml->gather(array(
-					"timeout"=>"2",
+					"timeout"=>"4",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/9",
 					"method"=>"POST",
@@ -464,7 +468,7 @@ class TwilioController extends BaseController {
 					
 					//pedir el numero telefonico
 					$gather = $twiml->gather(array(
-						"timeout"=>"2",
+						"timeout"=>"4",
 						"finishOnKey"=>"#",
 						"action"=>"/twilio-connect/registro/10",
 						"method"=>"POST",
@@ -481,7 +485,7 @@ class TwilioController extends BaseController {
 				
 				//te proporcionaremos un usuario y contra. press 1 para continuar
 				$gather = $twiml->gather(array(
-					"timeout"=>"3",
+					"timeout"=>"4",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/11",
 					"method"=>"POST",
@@ -499,7 +503,7 @@ class TwilioController extends BaseController {
 				
 				//te proporcionaremos un usuario y contra. press 1 para continuar
 				$gather = $twiml->gather(array(
-					"timeout"=>"2",
+					"timeout"=>"4",
 					"finishOnKey"=>"#",
 					"action"=>"/twilio-connect/registro/11",
 					"method"=>"POST",
