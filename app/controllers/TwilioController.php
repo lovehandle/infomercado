@@ -47,6 +47,8 @@ class TwilioController extends BaseController {
 				"method"=>"POST",
 				"numDigits"=>"1"
 			));
+			
+			//cuando no hay intentos posteriores, dar la bienvenida
 			if( (int)$intentos <= 0) { 
 				$gather->play("http://www.infomercado.mx/raw/01_bienvenido01.mp3");	
 			}
@@ -98,7 +100,7 @@ class TwilioController extends BaseController {
 		
 			
 		}elseif($input == '2') {
-		
+
 			//logs
 			Log::info('Opcion 2', array('sesion' => Session::getId()));
 			
@@ -111,34 +113,47 @@ class TwilioController extends BaseController {
 				"numDigits"=>"3"
 			));
 			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
-			//repetir la primera vez
-			$gather = $twiml->gather(array(
-				"timeout"=>"4",
-				"finishOnKey"=>"#",
-				"action"=>"/twilio-connect/registro/1",
-				"method"=>"POST",
-				"numDigits"=>"3"
-			));
-			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
-			//repetir una tercera vez
-			//armar la respuesta de registro seleccionado
-			$gather = $twiml->gather(array(
-				"timeout"=>"4",
-				"finishOnKey"=>"#",
-				"action"=>"/twilio-connect/registro/1",
-				"method"=>"POST",
-				"numDigits"=>"3"
-			));
-			$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
-			$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 			
+			//redirect si no se reciben los digitos
+			$twiml->redirect("/twilio-connect/start?intento=1");
+						
 		} else {
+		
+			if(Input::has('intento')) {
+				
+				//no hay digits, pero hay intento, no introdujo un numero de mercado
+				
+				//hubo un intento anterior?
+				$intentos = Input::get('intento', '0');
+				
+				//tres o mas intentos
+				if((int)$intentos >= 3) {
+					$twiml->say("No recibimos una respuesta. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				}
+				
+				$next = (int)$intentos; $next++;
+				
+				//armar la respuesta de registro seleccionado
+				$gather = $twiml->gather(array(
+					"timeout"=>"4",
+					"finishOnKey"=>"#",
+					"action"=>"/twilio-connect/registro/1",
+					"method"=>"POST",
+					"numDigits"=>"3"
+				));
+				$gather->play("http://www.infomercado.mx/raw/04_numero02.mp3");
+				
+				//redirect si no se reciben los digitos
+				$twiml->redirect("/twilio-connect/start?intento=".$next);
+				
+				
+			} else {
 			
-			//logs
-			Log::info('Opcion Invalida', array('sesion' => Session::getId()));
-			
-			//armar un error standar
-			$twiml->say("Opción invalida. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
+				//no viene intento en el GET, entonces es una opcion invalida
+				$twiml->say("Opción Inválida.",array("language"=>"es-MX","voice"=>"alice"));
+				$twiml->redirect("/twilio-connect/welcome?intento=1", array("method"=>"GET"));
+				
+			}
 			
 		}
 		
