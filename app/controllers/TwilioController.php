@@ -206,9 +206,20 @@ class TwilioController extends BaseController {
 		switch(intval($step)) {
 			
 			case 1:
+			
+				//checar el contador de mercados y verificar que no sea mayor
+				$cuantos = Mercado::all()->count();
+				
+				if(Input::get('Digits')>$cuantos) {
+					$twiml->say("El mercado que ingresaste no existe.",array("language"=>"es-MX","voice"=>"alice"));
+					$twiml->redirect("/twilio-connect/start?intento=2");
+					break;
+				}
 				
 				//ubicar el mercado en la base de datos
 				$mimercado = Mercado::where('numero', '=', Input::get("Digits"))->firstOrFail();
+				
+				
 				
 				Log::info('Mercado: '.Input::get('Digits'));
 				
