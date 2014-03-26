@@ -39,16 +39,6 @@
     	<h2 class="site-title">infomercado.mx</h2>
         <p class="headline">Plataforma de información y participación ciudadana en los <br>Mercados Públicos de la Ciudad de México</p>
     </div>
-    <div class="list-group">
-    	<?php foreach($delegaciones as $delegacion){ ?>
-	    	<a href="/mercados/<?php print($delegacion->link); ?>" class="list-group-item"><?php print($delegacion->delegacion_nombre); ?></a>
-    	<?php } ?>
-    </div>
-    <div class="list-group">
-	    <?php foreach($tipos as $tipo){ ?>
-	    	<a href="/mercados/<?php print($tipo->link); ?>" class="list-group-item"><?php print($tipo->tipo_desc); ?></a>
-    	<?php } ?>
-    </div>
 </div>
 <script language="javascript">
 </script>

@@ -14,6 +14,24 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	
+	//principal
+	public function home () {
+	
+		//deteccion
+		if(Agent::isMobile()){
+			
+			return View::make("home-a");
+			
+		} else {
+			return View::make("hello");
+		}
+		
+	}
+	
+	public function cerca() {
+		return "aqui va un mapa";
+	}
 
 	public function explora()
 	{
