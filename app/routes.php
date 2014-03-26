@@ -13,34 +13,8 @@
 
 //explora
 Route::get('explora', 'HomeController@explora');
-
-Route::get('/', function() {
-	return View::make("home-a");
-});
-
-Route::get('mas-cercano', function() {
-	return View::make("home-a");
-});
-
-//ruta para informacion de PHP
-Route::get('info', function() {
-	phpinfo();
-});
-
-Route::get('dump-ubicaciones', function () {
-	
-	$results = DB::select('select * from mercados');
-	
-	//var_dump($results);
-	print("<pre>");
-	print("INSERT INTO ubicaciones(nombre, id_delegacion, direccion, id_categoria, dataset, coordenadas)\n VALUES\n"); 
-	
-	foreach($results as $mercado) {
-		print("('MERCADO ".$mercado->nombre."', ".$mercado->delegacion.", '".$mercado->numero."', 2, 'mercados', ST_GeomFromText('SRID=4326; POINT(".$mercado->longitud." ".$mercado->latitud.")')),\n");
-	}
-	print("</pre>");
-	
-});
+Route::get('/', 'HomeController@home');
+Route::get('mas-cercano', 'HomeController@cerca');
 
 //ruta para el mercado
 Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
@@ -48,7 +22,11 @@ Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero'
 //ruta para listado de mercados
 Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');
 
-//ruta para comerciantes
+
+
+//rutas para comerciantes
+
+//principal
 Route::get('comerciantes','ComerciantesController@principal');
 
 //registro de comerciantes
@@ -60,7 +38,7 @@ Route::post('comerciantes/login','ComerciantesController@login');
 //logout
 Route::get('comerciantes/logout',function(){
 	Auth::logout();
-	 return Redirect::to('comerciantes');
+	return Redirect::to('comerciantes');
 });
 
 //login de comerciantes
@@ -96,6 +74,28 @@ Route::post('twilio-connect/start','TwilioController@start');
 
 //Procesar una grabacion de opinion
 Route::post('twilio-connect/opiniones','TwilioController@opiniones');
+
+//ruta para informacion de PHP
+Route::get('info', function() {
+	phpinfo();
+});
+
+//########### Rutas para pruebas ############################
+
+Route::get('dump-ubicaciones', function () {
+	
+	$results = DB::select('select * from mercados');
+	
+	//var_dump($results);
+	print("<pre>");
+	print("INSERT INTO ubicaciones(nombre, id_delegacion, direccion, id_categoria, dataset, coordenadas)\n VALUES\n"); 
+	
+	foreach($results as $mercado) {
+		print("('MERCADO ".$mercado->nombre."', ".$mercado->delegacion.", '".$mercado->numero."', 2, 'mercados', ST_GeomFromText('SRID=4326; POINT(".$mercado->longitud." ".$mercado->latitud.")')),\n");
+	}
+	print("</pre>");
+	
+});
 
 
 
