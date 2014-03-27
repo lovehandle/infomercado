@@ -40,7 +40,7 @@ class MercadoController extends BaseController {
 	    
 	    //query
 	    $mercados = DB::table('mercados')
-                     ->select(DB::raw("nombre, numero, latitud, longitud, ST_Distance(coordenadas, ST_GeomFromText('POINT(".$longitud." ". $latitud.")',4326)) as distancia"))
+                     ->select(DB::raw("nombre, numero, locales, latitud, longitud, tipo_desc, ST_Distance(coordenadas, ST_GeomFromText('POINT(".$longitud." ". $latitud.")',4326)) as distancia"))
                      ->where(DB::raw("ST_DWithin(coordenadas,ST_GeomFromText('POINT(".$longitud." ".$latitud.")',4326),800) and not latitud is null"))
                      ->orderBy('distancia','asc')
                      ->get();

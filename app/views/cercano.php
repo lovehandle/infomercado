@@ -32,6 +32,7 @@
 .row-nombre {
 	border-bottom: 1px solid #797979;
 }
+.info{padding: 10px; font-weight: bold;}
 </style>
 </head>
 
@@ -44,7 +45,7 @@
 	</div>
 	<div class="row mini-nav" align="center">
 		<div class="col-xs-6 nav-inicio"><a href="/">INICIO</a></div>
-		<div class="col-xs-6 nav-cerca"><a href="explora">EXPLORA</a></div>
+		<div class="col-xs-6 nav-cerca"><a href="/explora">EXPLORA</a></div>
 	</div>
 </div>
 
@@ -58,6 +59,7 @@ var mercado_latlng;
 var mercado_marker;
 var yo_marker;
 var centro;
+var infowindow
  
 function initialize() {
 
@@ -81,7 +83,17 @@ function localizar_mercado(mercado) {
 		draggable:false,
 	});
 	
+	var infocontenido = '<div class="info"><p>Mercado #'+mercado.numero+' '+mercado.nombre+'</p><p>'+mercado.locales+' locales, '+mercado.tipo_desc+'</p></div>';
+	
+	infowindow = new google.maps.InfoWindow({
+      content: infocontenido
+    });
+	
 	mercado_marker.setMap(map);
+	
+	google.maps.event.addListener(mercado_marker, 'click', function() {
+    	infowindow.open(map,mercado_marker);
+	});
 }
 
 function initiate_geolocation() {
