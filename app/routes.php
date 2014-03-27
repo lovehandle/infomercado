@@ -14,13 +14,17 @@
 //explora
 Route::get('explora', 'HomeController@explora');
 Route::get('/', 'HomeController@home');
-Route::get('mas-cercano', 'HomeController@cerca');
+
+//mercado mas cercano segun lat+lng
+Route::get('mercados/cercano', 'MercadoController@mercadoCercanoView');
 
 //ruta para el mercado
 Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
 
 //ruta para listado de mercados
 Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');
+
+Route::post('mercados/cercano.json','MercadoController@mercadoCercano');
 
 
 

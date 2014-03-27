@@ -36,7 +36,7 @@ a,a:hover,a:link{
 		</div>
 	</div>
     <div class="row spacer" align="center">
-	    <div class="col-xs-12 cercano"><a href="/cercano">MI MERCADO MÁS CERCANO</a></div>
+	    <div class="col-xs-12 cercano"><a href="/mercados/cercano">MI MERCADO MÁS CERCANO</a></div>
     </div>
     <div class="row spacer" align="center">
 	    <div class="col-xs-12 eventos-ofertas"><a href="/explora">EXPLORA LOS MERCADOS</a></div>

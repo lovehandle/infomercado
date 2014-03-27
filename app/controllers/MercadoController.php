@@ -16,6 +16,39 @@ class MercadoController extends BaseController {
        return View::make('mercado', array('mercado' => $mercado[0],'locatarios'=>$locatarios));
     }
     
+    /***
+    *	Mercado mas cercano
+    */
+    
+    public function mercadoCercanoView() {
+		if(Agent::isMobile()){
+			
+			//dame un pinche mercado, el que sea
+			//$mercado = DB::table('mercados')->orderBy(DB::raw("RANDOM()"))->take(1)->get();
+			return View::make("cercano");
+			
+		} else {
+			return View::make("hello");
+		}
+    }
+    
+    public function mercadoCercano() {
+	    
+	    //lat / lng del input
+	    $latitud = Input::get('lat');
+	    $longitud = Input::get('lng');
+	    
+	    //query
+	    $mercados = DB::table('mercados')
+                     ->select(DB::raw("nombre, numero, latitud, longitud, ST_Distance(coordenadas, ST_GeomFromText('POINT(".$longitud." ". $latitud.")',4326)) as distancia"))
+                     ->where(DB::raw("ST_DWithin(coordenadas,ST_GeomFromText('POINT(".$longitud." ".$latitud.")',4326),800) and not latitud is null"))
+                     ->orderBy('distancia','asc')
+                     ->get();
+        
+        return Response::json(array('mercados' => $mercados));
+	    
+    }
+    
     /**
     *	Lista mercados correspondientes a una ruta (delegacion, tipo, 
     */

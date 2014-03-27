@@ -46,11 +46,6 @@
 		<div class="col-xs-6 nav-inicio"><a href="/">INICIO</a></div>
 		<div class="col-xs-6 nav-cerca"><a href="explora">EXPLORA</a></div>
 	</div>
-	<div class="row" align="center">
-		<div class="col-xs-12 row-nombre">
-			<p class="nombrecito">MERCADO <?php print($mercado->nombre); ?></p>
-		</div>
-	</div>
 </div>
 
 <div class="google-map-canvas" id="map-canvas"></div>
@@ -59,24 +54,81 @@
 
 //google maps
 var map;
-var mercado_latlng = new google.maps.LatLng(<?php print($mercado->latitud); ?>,<?php print($mercado->longitud); ?>);
-var mercado_marker = new google.maps.Marker({
-  title:"Mercado <?php print($mercado->nombre); ?>",
-  position:mercado_latlng,
-  draggable:false
-});
+var mercado_latlng;
+var mercado_marker;
+var yo_marker;
+var centro;
  
 function initialize() {
+
   var mapOptions = {
-    center: new google.maps.LatLng(<?php print($mercado->latitud); ?>,<?php print($mercado->longitud); ?>),
-    zoom: 17,
+    center: centro,
+    zoom: 16,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false,
-    draggable : false
+    draggable : true
   };
   map = new google.maps.Map(document.getElementById("map-canvas"),
       mapOptions);
-  mercado_marker.setMap(map);
+      
+}
+
+function localizar_mercado(mercado) {
+	mercado_latlng = new google.maps.LatLng(mercado.latitud, mercado.longitud);
+	mercado_marker = new google.maps.Marker({
+		title:"Mercado #"+mercado.numero+" "+mercado.nombre,
+		position:mercado_latlng,
+		draggable:false,
+	});
+	
+	mercado_marker.setMap(map);
+}
+
+function initiate_geolocation() {
+    navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+}
+
+function handle_geolocation_query(position){
+	
+	//establecer el centro
+	centro = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+	
+	
+	//generar el maldito mapa
+	initialize();
+	
+	yo_marker = new google.maps.Marker({
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		position:centro,
+		draggable:false
+	});
+	
+	yo_marker.setMap(map);
+	
+	var request = {
+		lat:position.coords.latitude,
+		lng:position.coords.longitude
+	};
+	
+	$.ajax({
+		url:'/mercados/cercano.json',
+		method:'post',
+		data: request,
+		dataType:'json',
+		success:function(response) {
+			
+			console.log(response.mercados[0]);
+			
+			localizar_mercado(response.mercados[0]);
+			
+		},
+		error:function(){
+			alert('ajax error');
+		}
+	});
+
+    //alert('Lat: ' + position.coords.latitude + ' ' +
+      //    'Lon: ' + position.coords.longitude);
 }
 
 
@@ -88,7 +140,8 @@ $(document).ready(function(){
 	//alert(mapa_alto);
 	$("#map-canvas").height(mapa_alto);
 	
-	initialize();
+	 //geolocalizacion nativa
+	 initiate_geolocation();
 	
 });
 

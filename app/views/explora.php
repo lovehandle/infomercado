@@ -32,7 +32,7 @@
 </div>
 <div class="row mini-nav" align="center">
 	<div class="col-xs-6 nav-inicio"><a href="/">INICIO</a></div>
-	<div class="col-xs-6 nav-cerca"><a href="mas-cercano">UN MERCADO CERCA</a></div>
+	<div class="col-xs-6 nav-cerca"><a href="/mercados/cercano">UN MERCADO CERCA</a></div>
 </div>
     <div class="list-group">
     	<?php foreach($delegaciones as $delegacion){ ?>

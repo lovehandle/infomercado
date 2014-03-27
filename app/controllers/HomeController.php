@@ -28,20 +28,6 @@ class HomeController extends BaseController {
 		}
 		
 	}
-	
-	public function cerca() {
-		if(Agent::isMobile()){
-			
-			//dame un pinche mercado, el que sea
-			$mercado = DB::table('mercados')->orderBy(DB::raw("RANDOM()"))->take(1)->get();
-			
-			
-			return View::make("cercano",array("mercado"=>$mercado[0]));
-			
-		} else {
-			return View::make("hello");
-		}
-	}
 
 	public function explora()
 	{
