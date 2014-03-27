@@ -14,17 +14,17 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGEM2AtRMpdnI3yoQTOu9hMQsOz3yvBaE&sensor=true">
     </script>
 <style>
-.el-header{height: 80px; background-color: #f4f4f4;}
-.header-titulo{ font-size: 20pt; margin-top: 24px; color:#ea890d; display: block;}
+.el-header{background-color: #f4f4f4;}
+.header-titulo{ font-size: 18pt; color:#ea890d; display: block; margin: 10px 0 10px 0;}
 .el-hader a:hover, .el-header a:link{
 	color:#ea890d;
 }
-.mini-nav a{color: #FFF; font-size: 12pt; display: block; height: 60px; line-height: 64px;}
+.mini-nav a{color: #FFF; font-size: 12pt; display: block; height: 50px; line-height: 53px;}
 .nav-inicio{background-color: #d8682a; }
 .nav-cerca{background-color: #ea890d; }
 .list-group{font-size: 14pt !important; margin-top: 10px;}
 
-#map-canvas {background-color: #37e9e6;}
+#map-canvas {background-color: #f4f4f4;}
 
 .nombrecito{
 	padding: 10px;
@@ -65,7 +65,7 @@ function initialize() {
 
   var mapOptions = {
     center: centro,
-    zoom: 16,
+    zoom: 15,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false,
     draggable : true
@@ -83,7 +83,7 @@ function localizar_mercado(mercado) {
 		draggable:false,
 	});
 	
-	var infocontenido = '<div class="info"><p>Mercado #'+mercado.numero+' '+mercado.nombre+'</p><p>'+mercado.locales+' locales, '+mercado.tipo_desc+'</p></div>';
+	var infocontenido = '<div class="info"><p>Mercado #'+mercado.numero+' '+mercado.nombre+'</p><p>'+mercado.locales+' locales, '+mercado.tipo_desc+'</p><p><a href="/mercados/'+mercado.numero+'">Conocer &gt;</a></p></div>';
 	
 	infowindow = new google.maps.InfoWindow({
       content: infocontenido
