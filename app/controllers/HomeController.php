@@ -42,7 +42,7 @@ class HomeController extends BaseController {
 		//$results = DB::select('SELECT * FROM mercados ORDER BY RANDOM() LIMIT 5');	
 		
 		//genera la vista
-		return View::make('explora', array("delegaciones"=>$delegaciones,"tipos"=>$tipos));
+		return View::make('movil.explora', array("delegaciones"=>$delegaciones,"tipos"=>$tipos));
 	}
 
 }

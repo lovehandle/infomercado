@@ -1,4 +1,4 @@
-@extends('movil');
+@extends('movil')
 
 @section('contenido')
 
@@ -7,7 +7,7 @@
 		<div class="col-xs-6 nav-cerca"><a href="/explora">EXPLORA</a></div>
 	</div>
 
-@end
+@stop
 
 @section('complemento')
 
@@ -122,4 +122,4 @@ $(document).ready(function(){
 </script>
 
 
-@end
+@stop
