@@ -33,6 +33,9 @@
 	border-bottom: 1px solid #797979;
 }
 .info{padding: 10px; font-weight: bold;}
+
+.nav-home a{color: #f4f4f4; font-size: 12pt; display: block; height: 70px; line-height: 73px;}
+.nav-home .col-xs-12 {background-color: #ea890d;}
 </style>
 </head>
 
