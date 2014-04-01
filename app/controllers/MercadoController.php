@@ -25,7 +25,7 @@ class MercadoController extends BaseController {
 			
 			//dame un pinche mercado, el que sea
 			//$mercado = DB::table('mercados')->orderBy(DB::raw("RANDOM()"))->take(1)->get();
-			return View::make("cercano");
+			return View::make("movil.cercano");
 			
 		} else {
 			return View::make("hello");
