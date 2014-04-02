@@ -11,7 +11,7 @@ class OfertaTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			Ofertum::create([
+			Oferta::create([
 
 			]);
 		}
