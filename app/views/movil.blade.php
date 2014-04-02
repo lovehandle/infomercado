@@ -3,13 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/main.css">
 <title>infomercado.mx</title>
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGEM2AtRMpdnI3yoQTOu9hMQsOz3yvBaE&sensor=true">
     </script>
@@ -34,8 +32,8 @@
 }
 .info{padding: 10px; font-weight: bold;}
 
-.nav-home a{color: #f4f4f4; font-size: 12pt; display: block; height: 70px; line-height: 73px;}
-.nav-home .col-xs-12 {background-color: #ea890d;}
+@yield('extra-css')
+
 </style>
 </head>
 

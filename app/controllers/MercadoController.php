@@ -11,9 +11,15 @@ class MercadoController extends BaseController {
         
         $mercado = Mercado::where('numero','=', $id)->get();
         $locatarios = Comerciante::where('mercado_number','=',$id);
+        
+        $vista = 'mercado';
+        
+        if(Agent::isMobile()){
+	    	$vista = 'movil.mercado';    
+        }
 		
 		//armar la vista
-       return View::make('mercado', array('mercado' => $mercado[0],'locatarios'=>$locatarios));
+       return View::make($vista, array('mercado' => $mercado[0],'locatarios'=>$locatarios));
     }
     
     /***

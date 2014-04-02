@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Questrial);
+@import url(http://fonts.googleapis.com/css?family=Architects+Daughter|Imprima);
 
 * {
 	border-radius:0 !important;
@@ -11,7 +12,7 @@ body{font-family: 'Questrial', sans-serif; background-color:#fff; }
 	#map-canvas { height: 400px;}
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:560px) {
 	#main{margin-left:auto; margin-right:auto; width: 100%;}
 	#map-canvas { height: 100%;}
 }

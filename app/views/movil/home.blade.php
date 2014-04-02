@@ -1,5 +1,13 @@
 @extends('movil')
 
+@section('extra-css')
+
+.nav-home{ font-family: 'Architects Daughter', sans-serif;}
+.nav-home .col-xs-12 {background-color: #ea890d;}
+.nav-home a{color: #f4f4f4; font-size: 14pt; display: block; height: 80px; line-height: 83px;}
+
+@stop
+
 @section('contenido')
 
 <div class="row nav-home" align="center">
