@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"way/generators": "2.*",
-		"jenssegers/agent": "*"
+		"jenssegers/agent": "*",
+		"fzaninotto/faker": "1.3.*@dev"
 	},
 	"autoload": {
 		"classmap": [
