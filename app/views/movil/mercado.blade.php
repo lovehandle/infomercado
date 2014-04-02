@@ -2,8 +2,8 @@
 
 @section('extra-css')
 
-h1 {font-size: 17pt;}
-h4 {font-size: 11pt;}
+h1 {font-size: 16pt;}
+h4 {font-size: 10pt;}
 .mercado-imagen { background-color:#ccc; height:120px; background: url(/img/mercados/mercado.jpg) no-repeat center }
 
 @stop
