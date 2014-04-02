@@ -13,7 +13,7 @@
     </script>
 <style>
 .el-header{background-color: #f4f4f4;}
-.header-titulo{ font-size: 18pt; color:#ea890d; display: block; margin: 10px 0 10px 0;}
+.header-titulo{ font-size: 14pt; color:#ea890d; display: block; margin: 6px 0 6px 0;}
 .el-hader a:hover, .el-header a:link{
 	color:#ea890d;
 }
