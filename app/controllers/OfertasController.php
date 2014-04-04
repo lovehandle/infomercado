@@ -20,6 +20,13 @@ class OfertasController extends \BaseController {
 	public function create()
 	{
 		//
+		$oferta = new Oferta;
+		$oferta->mercado = Auth::user()->mercado_number;
+		$oferta->local = Auth::user()->local;
+		$oferta->oferta = Input::get("oferta");
+		$oferta->save();
+		
+		return "1";
 	}
 
 	/**

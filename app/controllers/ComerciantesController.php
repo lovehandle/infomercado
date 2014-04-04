@@ -44,7 +44,10 @@ class ComerciantesController extends BaseController {
 				//settings
 				$settings = json_decode(Auth::user()->servicios,true);
 				
-				return View::make('comerciantes/dashboard',array("mercado_datos"=>$mercado,"settings"=>$settings));
+				//ofertas
+				$ofertas = Oferta::whereRaw('mercado = ? and local = ?',array(Auth::user()->mercado_number, Auth::user()->local))->get();
+				
+				return View::make('comerciantes/dashboard',array("mercado_datos"=>$mercado,"settings"=>$settings, "ofertas"=>$ofertas));
 			}
 			
 		} else {

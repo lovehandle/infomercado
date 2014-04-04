@@ -16,7 +16,7 @@
 <body>
 <div id="main" class="container" align="left">
 	<div class="row offset-superior">
-    	<h3>Bienvenido <?php print(Auth::user()->nombre);?></h3>
+    	<h3>Bienvenido <?php print(Auth::user()->nombre);?> <span class="small"><a class="" href="/comerciantes/logout">Salir</a></span></h3>
     	<h4>Mercado: <?php print("#".$mercado_datos[0]->numero." - ".$mercado_datos[0]->nombre);?></h4>
     </div>
     <div class="row">
@@ -39,7 +39,49 @@
     	</div>
     	<a id="guardar-servicios" href="#" class="btn btn-success col-md-1" style="margin-top:10px; margin-left:15px;">Guardar</a>
     </div>
-    <div class="row"><a href="/comerciantes/logout">Salir</a></div>
+    <hr>
+    <div class="row">
+    	<h4>Ofertas</h4>
+	    <div class="col-md-12">
+		    <table class="table table-striped">
+		      <thead>
+		        <tr>
+		          <th>Oferta</th>
+		          <th>Cuando se Aplica</th>
+		          <th></th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		      <?php foreach($ofertas as $oferta) { ?>
+		        <tr>
+		          <td><?php print($oferta->oferta); ?></td>
+		          <td>Solo Hoy</td>
+		          <td></td>
+		        </tr>
+		       <?php } ?>
+		      </tbody>
+		    </table>
+		    <hr>
+		    <h5>Publicar nueva Oferta</h5>
+		    <form class="form" role="form">
+			  <div class="form-group">
+			    <label class="sr-only" for="oferta">Texto de la Oferta</label>
+			    <input type="text" class="form-control" id="oferta" placeholder="Ej. En la compra de 1Kg de pollo llevate 2 piernas">
+			  </div>
+			  <div class="form-group">
+			     <select class="form-control" id="aplica">
+			     	<option value="1">Solo Hoy</option>
+			     	<option value="2">Toda la Semana</option>
+			     	<option value="3">Todo el Mes</option>
+			     	<option value="4">Siempre</option>
+			     </select>
+			  </div>
+			  <a href="#" id="publicar-oferta" class="btn btn-success">Publicar</a>
+			</form>
+	    </div>
+    </div>
+    <div class="row"></div>
+    
 </div>
 <script lang="javascript" type="text/javascript">
 	$(document).ready(function(){
@@ -66,6 +108,32 @@
 						alert('guardados !');
 					} else {
 						alert('No se pudo actualizar');
+					}
+				},
+				error : function() {
+					console.log("error");
+				}
+			});
+		});
+		
+		//agrega oferta
+		$("#publicar-oferta").click(function(){
+			console.log('Guardando oferta...');
+			
+			var ofertaData = {
+				oferta : $("#oferta").val(),
+				aplica : $("#aplica").val()
+			};
+			
+			$.ajax({
+				url : '/comerciantes/nuevaoferta',
+				method : 'post',
+				data : ofertaData,
+				success : function(response) {
+					if(response == '1') {
+						document.location.reload();
+					} else {
+						alert('No se pudo agregar la oferta');
 					}
 				},
 				error : function() {

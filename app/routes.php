@@ -39,6 +39,9 @@ Route::post('comerciantes/registro','ComerciantesController@registro');
 //login de comerciantes
 Route::post('comerciantes/login','ComerciantesController@login');
 
+//postear una promocion
+Route::post('comerciantes/nuevaoferta','OfertasController@create');
+
 //logout
 Route::get('comerciantes/logout',function(){
 	Auth::logout();
