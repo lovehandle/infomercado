@@ -1,12 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Questrial);
-@import url(http://fonts.googleapis.com/css?family=Architects+Daughter|Imprima);
+@import url(http://fonts.googleapis.com/css?family=Imprima);
 
 * {
 	border-radius:0 !important;
 	moz-border-radius:0;
 }
 
-body{font-family: 'Questrial', sans-serif; background-color:#fff; }
+body{font-family: 'Imprima', sans-serif; background-color:#fff; }
 @media screen and (max-width: 1440px) {
 	#main{margin-left:auto; margin-right:auto; width:1000px;}
 	#map-canvas { height: 400px;}
