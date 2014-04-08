@@ -83,6 +83,25 @@ class MercadoController extends BaseController {
 	    
     }
 
+    //mostrar las ofertas por mercado
+    public function ofertas_por_mercado($id) {
+
+        if(Agent::isMobile()) {
+
+            //buscar el mercado y las ofertas correspondientes
+            $mercado = Mercado::where('numero','=', $id)->get();
+            $ofertas = Oferta::where('mercado','=', $id)->get();
+
+            //generar la vista
+            return View::make('movil.ofertas',array("$mercado"=>$mercado,"ofertas"=>$ofertas));
+
+        } else {
+
+            return "0k";
+
+        }
+    }
+
 }
 
 ?>

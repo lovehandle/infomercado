@@ -21,6 +21,9 @@ Route::get('mercados/cercano', 'MercadoController@mercadoCercanoView');
 //ruta para el mercado
 Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
 
+//ruta para las ofertas
+Route::get('mercados/{numero}/ofertas','MercadoController@ofertas_por_mercado')->where('numero', '[0-9]+');
+
 //ruta para listado de mercados
 Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');
 
