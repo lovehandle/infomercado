@@ -98,6 +98,7 @@ body{font-family: 'Imprima', sans-serif; background-color:#fff; }
  
  .offset-superior {
 	 margin-top: 25px !important;
+     margin-bottom: 35px !important;
  }
  .site-title {
  color: #F2C64A;
@@ -105,11 +106,7 @@ body{font-family: 'Imprima', sans-serif; background-color:#fff; }
  font-family: 'Questrial', Helvetica, sans-serif;
  }
  
- .headline {
-	 font-size: 14pt;
-	 color:#777;
-	 font-family: 'Questrial', Helvetica, sans-serif;
- }
+
  /* lista de mercados */
 .mercado {
 	position: relative;

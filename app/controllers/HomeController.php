@@ -24,7 +24,7 @@ class HomeController extends BaseController {
 			return View::make("movil.home");
 			
 		} else {
-			return View::make("hello");
+			return View::make("desktop.home");
 		}
 		
 	}
