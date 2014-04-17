@@ -11,12 +11,33 @@
 |
 */ 
 
-//explora
-Route::get('explora', 'HomeController@explora');
+//home
 Route::get('/', 'HomeController@home');
+
+/*
+ * Rutas para Mercados /////////////////////////////////////////////////////////////////////////////
+ */
+
+//listado de tipos
+Route::get('mercados/tipos', 'MercadoController@lista_tipos');
+
+//listado de delegaciones
+Route::get('mercados/delegaciones', 'MercadoController@lista_delegaciones');
+
+//ubicador de rutas
+Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[0-9A-Za-z\-]+');
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+Route::get('explora', 'HomeController@explora');
 
 //mercado mas cercano segun lat+lng
 Route::get('mercados/cercano', 'MercadoController@mercadoCercanoView');
+
+
 
 //ruta para el mercado
 Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
@@ -24,8 +45,7 @@ Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero'
 //ruta para las ofertas
 Route::get('mercados/{numero}/ofertas','MercadoController@ofertas_por_mercado')->where('numero', '[0-9]+');
 
-//ruta para listado de mercados
-Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[A-Za-z\-]+');
+
 
 Route::post('mercados/cercano.json','MercadoController@mercadoCercano');
 

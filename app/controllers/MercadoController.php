@@ -1,6 +1,38 @@
 <?php
 class MercadoController extends BaseController {
 
+    /*
+     *  Algunas variables chidas ===========================================
+     */
+    
+
+    //======================================================================
+
+    /*
+     * Listados
+     */
+
+    //por tipo de mercado
+    public function lista_tipos() {
+
+        //lista de tipos
+        $tipos = DB::select("SELECT DISTINCT tipo_desc, replace(lower(tipo_desc),' ','-') as link FROM mercados ORDER BY tipo_desc ASC");
+
+        //retornar la vista correspondiente
+        if(Agent::isMobile()){
+            return View::make('movil.lista_tipos',array('tipos'=>$tipos));
+        }else{
+            return View::make('desktop.lista_tipos',array('tipos'=>$tipos));
+        }
+    }
+    public function lista_delegaciones() {
+        //
+
+    }
+
+    //por delegacion
+
+
     /**
      * Muestra la informacion base del mercado seleccionado
      */

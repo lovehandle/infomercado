@@ -17,16 +17,12 @@ class HomeController extends BaseController {
 	
 	//principal
 	public function home () {
-	
 		//deteccion
 		if(Agent::isMobile()){
-			
 			return View::make("movil.home");
-			
 		} else {
 			return View::make("desktop.home");
 		}
-		
 	}
 
 	public function explora()
@@ -36,7 +32,6 @@ class HomeController extends BaseController {
 		$tipos = DB::select("SELECT DISTINCT tipo_desc, replace(lower(tipo_desc),' ','-') as link FROM mercados ORDER BY tipo_desc ASC");
 		
 		//var_dump($delegaciones);
-		
 		
 		//hace la consulta con los mercados aleatorios para la prueba
 		//$results = DB::select('SELECT * FROM mercados ORDER BY RANDOM() LIMIT 5');	
