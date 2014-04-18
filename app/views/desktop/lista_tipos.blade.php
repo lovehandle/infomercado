@@ -14,8 +14,8 @@
             margin: 15px;
             display: inline-block;
             background-color: #000;
-            padding: 15px;
-            font-size: 20pt;
+            padding: 12px;
+            font-size: 18pt;
             color: #fff;
         }
 
@@ -97,13 +97,35 @@
     <div class="container">
         <div class="row">
 
-            @foreach ($tipos as $tipo)
-            <a href="/mercados/{{$tipo->link}}" class="col-md-6 spacer">
+            <a href="/mercados/tradicional" class="col-md-6 spacer">
                 <div class="tipos">
-                    <p class="seccion-heading">{{$tipo->tipo_desc}}</p>
+                    <p class="seccion-heading">TRADICIONAL</p>
                 </div>
             </a>
-            @endforeach
+
+            <a href="/mercados/especializado" class="col-md-6 spacer">
+                <div class="tipos">
+                    <p class="seccion-heading">ESPECIALIZADO</p>
+                </div>
+            </a>
+
+            <a href="/mercados/turistico-y-especializado" class="col-md-4 spacer">
+                <div class="tipos">
+                    <p class="seccion-heading">TURISTICO Y ESPECIALIZADO</p>
+                </div>
+            </a>
+
+            <a href="/mercados/tradicional-y-turistico" class="col-md-4 spacer">
+                <div class="tipos">
+                    <p class="seccion-heading">TRADICIONAL Y TURISTICO</p>
+                </div>
+            </a>
+
+            <a href="/mercados/regional" class="col-md-4 spacer">
+                <div class="tipos">
+                    <p class="seccion-heading">REGIONAL</p>
+                </div>
+            </a>
         </div>
     </div>
 </div>
