@@ -5,7 +5,6 @@ class MercadoController extends BaseController {
      *  Algunas variables chidas ===========================================
      */
 
-
     //======================================================================
 
     /*
@@ -21,10 +20,19 @@ class MercadoController extends BaseController {
         }else{
             return View::make('desktop.lista_tipos');
         }
+
     }
     public function lista_delegaciones() {
-        //
 
+        //agarrar todas las delegaciones
+        $delegaciones = DB::table('delegaciones')->get();
+
+        //retornar la vista correspondiente
+        if(Agent::isMobile()){
+            return View::make('movil.lista_delegaciones');
+        }else{
+            return View::make('desktop.lista_delegaciones',array("delegaciones"=>$delegaciones));
+        }
     }
 
     //por delegacion
