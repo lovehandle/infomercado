@@ -96,10 +96,24 @@ class MercadoController extends BaseController {
     *	Lista mercados correspondientes a una ruta (delegacion, tipo, 
     */
     
-    public function listaMercados($ruta) {
+    public function lista_mercados($ruta) {
 	    
 	    //checar la ruta del mercado
-	    
+        $mercados = DB::table("mercados")
+                                ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
+                                ->select("mercados.nombre","mercados.numero")
+                                ->where("delegaciones.route","=",$ruta)
+                                ->get();
+
+        //var_dump($mercados);
+
+        if(Agent::isMobile()){
+            return View::make("movil.lista_mercados",array("mercados"=>$mercados));
+        }else{
+            return View::make("desktop.lista_mercados",array("mercados"=>$mercados,"titulo"=>"Mercados en Delegacion X"));
+        }
+
+        /*
 	    //rutas por delegacion
 	    $mercados = DB::select("SELECT * FROM mercados WHERE replace(lower(delegacion_nombre),' ','-')=?",array($ruta));
 	    
@@ -117,6 +131,8 @@ class MercadoController extends BaseController {
 	    } else {
 	    	return Response::view('404', array(), 404);
 	    }
+
+        */
 	    
     }
 

@@ -14,8 +14,8 @@
             margin: 15px;
             display: inline-block;
             background-color: #000;
-            padding: 15px;
-            font-size: 20pt;
+            padding: 12px;
+            font-size: 18pt;
             color: #fff;
         }
 
@@ -90,16 +90,16 @@
 @section('contenido')
 <div class="explora">
     <div class="container">
-        <p class="headline-1 ">MERCADOS POR DELEGACI&Oacute;N</p>
+        <p class="headline-1 ">{{$titulo}}</p>
     </div>
 </div>
 <div class="contenido">
     <div class="container">
         <div class="row">
-            @foreach($delegaciones as $delegacion)
-            <a href="/mercados/{{$delegacion->route}}" class="col-md-4 spacer">
+            @foreach($mercados as $mercado)
+            <a href="/mercados/{{$mercado->numero}}" class="col-md-6 spacer">
                 <div class="tipos">
-                    <p class="seccion-heading">{{$delegacion->nombre}}</p>
+                    <p class="seccion-heading">{{ $mercado->nombre }}</p>
                 </div>
             </a>
             @endforeach

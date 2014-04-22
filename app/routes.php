@@ -24,8 +24,8 @@ Route::get('mercados/tipos', 'MercadoController@lista_tipos');
 //listado de delegaciones
 Route::get('mercados/delegaciones', 'MercadoController@lista_delegaciones');
 
-//ubicador de rutas
-Route::get('mercados/{ruta}','MercadoController@listaMercados')->where('ruta','[0-9A-Za-z\-]+');
+//ubicador de rutas mixtas
+Route::get('mercados/{ruta}','MercadoController@lista_mercados')->where('ruta','[0-9A-Za-z\-]+');
 
 
 
