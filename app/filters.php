@@ -13,7 +13,10 @@
 
 App::before(function($request)
 {
-	//
+	//bajar el sitio movil
+    if(Agent::isMobile()){
+        return View::make('mantenimiento');
+    }
 });
 
 
