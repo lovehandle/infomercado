@@ -126,18 +126,24 @@ Route::get('nombres',function(){
 
 });
 
-Route::get('dump-ubicaciones', function () {
-	
-	$results = DB::select('select * from mercados');
-	
+Route::get('data.json', function () {
+
+    //$results = DB::select('select *  from mercados where tipo = 1');
+	$results = DB::select('select distinct tipo, tipo_desc from mercados order by tipo asc');
+
+    return Response::json($results);
+
+
+
 	//var_dump($results);
-	print("<pre>");
-	print("INSERT INTO ubicaciones(nombre, id_delegacion, direccion, id_categoria, dataset, coordenadas)\n VALUES\n"); 
+	//print("<pre>");
+	//print("INSERT INTO ubicaciones(nombre, id_delegacion, direccion, id_categoria, dataset, coordenadas)\n VALUES\n");
 	
-	foreach($results as $mercado) {
-		print("('MERCADO ".$mercado->nombre."', ".$mercado->delegacion.", '".$mercado->numero."', 2, 'mercados', ST_GeomFromText('SRID=4326; POINT(".$mercado->longitud." ".$mercado->latitud.")')),\n");
-	}
-	print("</pre>");
+	//foreach($results as $mercado) {
+		//print("('MERCADO ".$mercado->nombre."', ".$mercado->delegacion.", '".$mercado->numero."', 2, 'mercados', ST_GeomFromText('SRID=4326; POINT(".$mercado->longitud." ".$mercado->latitud.")')),\n");
+	//}
+
+	//print("</pre>");
 	
 });
 

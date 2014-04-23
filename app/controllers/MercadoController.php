@@ -37,6 +37,46 @@ class MercadoController extends BaseController {
         }
     }
 
+    /**
+     *	Lista mercados correspondientes a una ruta (delegacion, tipo,
+     */
+
+    public function lista_mercados($ruta) {
+
+        //buscar mercados por delegacion
+        $mercados_delegacion = DB::table("mercados")
+            ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
+            ->select("mercados.nombre","mercados.numero")
+            ->where("delegaciones.route","=",$ruta)->get();
+        //buscar mercados por tipo
+        $mercados_tipo = DB::table("mercados")
+            ->join("tipos","mercados.tipo","=","tipos.tipo")
+            ->select("mercados.nombre","mercados.numero")
+            ->where("tipos.route","=",$ruta)->get();
+
+        //armar los objetos
+        $mercados = NULL;
+        if(count($mercados_delegacion)>0 ){
+            $delegacion = Delegacion::where("route","=",$ruta)->firstOrFail();
+            $titulo = "Mercados en ".$delegacion->nombre;
+            $mercados = $mercados_delegacion;
+        }
+        if(count($mercados_tipo)>0){
+            $tipo = Tipo::where("route","=",$ruta)->firstOrFail();
+            $titulo = "".$tipo->nombre;
+            $mercados = $mercados_tipo;
+        }
+
+        //var_dump($mercados);
+        //aventar la vista
+        if(Agent::isMobile()){
+            return View::make("movil.lista_mercados",array("mercados"=>$mercados));
+        }else{
+            return View::make("desktop.lista_mercados",array("mercados"=>$mercados,"titulo"=>$titulo));
+        }
+
+    }
+
     //por delegacion
     /**
      * Muestra la informacion del mercado seleccionado
@@ -93,58 +133,7 @@ class MercadoController extends BaseController {
 	    
     }
     
-    /**
-    *	Lista mercados correspondientes a una ruta (delegacion, tipo, 
-    */
-    
-    public function lista_mercados($ruta) {
-	    
-	    //checar la ruta del mercado
-        $mercados = DB::table("mercados")
-                                ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
-                                ->select("mercados.nombre","mercados.numero")
-                                ->where("delegaciones.route","=",$ruta)
-                                ->get();
 
-        if(count($mercados)<=0){
-            //checar la ruta del mercado
-            $mercados = DB::table("mercados")
-                ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
-                ->select("mercados.nombre","mercados.numero")
-                ->where("delegaciones.route","=",$ruta)
-                ->get();
-        }
-
-        //var_dump($mercados);
-
-        if(Agent::isMobile()){
-            return View::make("movil.lista_mercados",array("mercados"=>$mercados));
-        }else{
-            return View::make("desktop.lista_mercados",array("mercados"=>$mercados,"titulo"=>"Mercados en Delegacion X"));
-        }
-
-        /*
-	    //rutas por delegacion
-	    $mercados = DB::select("SELECT * FROM mercados WHERE replace(lower(delegacion_nombre),' ','-')=?",array($ruta));
-	    
-	    //checar si existen o si la ruta no refleja nada
-	    
-	    if(sizeof($mercados) <= 0) {
-	    	//buscar por categoria
-			$mercados = DB::select("SELECT * FROM mercados WHERE replace(lower(tipo_desc),' ','-')=?",array($ruta));		  
-	    }
-	    
-	    //checar nuevamente y lanzar la respuesta correcta
-	    if(sizeof($mercados) > 0){
-	    	$delegacion = str_replace("-"," ",strtoupper($ruta));
-	    	return View::make('lista-mercados', array('mercados' => $mercados,'delegacion'=>$delegacion));
-	    } else {
-	    	return Response::view('404', array(), 404);
-	    }
-
-        */
-	    
-    }
 
     //mostrar las ofertas por mercado
     public function ofertas_por_mercado($id) {

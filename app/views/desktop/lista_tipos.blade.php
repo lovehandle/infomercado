@@ -110,13 +110,13 @@
                 </div>
             </a>
 
-            <a href="/mercados/turistico-y-especializado" class="col-md-4 spacer">
+            <a href="/mercados/turistico-especializado" class="col-md-4 spacer">
                 <div class="tipos">
                     <p class="seccion-heading">TURISTICO Y ESPECIALIZADO</p>
                 </div>
             </a>
 
-            <a href="/mercados/tradicional-y-turistico" class="col-md-4 spacer">
+            <a href="/mercados/tradicional-turistico" class="col-md-4 spacer">
                 <div class="tipos">
                     <p class="seccion-heading">TRADICIONAL Y TURISTICO</p>
                 </div>
