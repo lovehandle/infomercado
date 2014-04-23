@@ -48,6 +48,8 @@ class MercadoController extends BaseController {
             ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
             ->select("mercados.nombre","mercados.numero")
             ->where("delegaciones.route","=",$ruta)->get();
+
+        //ya estaba esta parte por tipo
         //buscar mercados por tipo
         $mercados_tipo = DB::table("mercados")
             ->join("tipos","mercados.tipo","=","tipos.tipo")
