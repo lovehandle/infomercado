@@ -70,10 +70,10 @@
 
         .fondo-header {
             background: url(/img/home.jpg) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
         }
 
         .tipos {
@@ -87,6 +87,7 @@
     </style>
 @stop
 
+@include('desktop.mini-header')
 @section('contenido')
 <div class="explora">
     <div class="container">
@@ -97,7 +98,7 @@
     <div class="container">
         <div class="row">
             @foreach($mercados as $mercado)
-            <a href="/mercados/{{$mercado->numero}}" class="col-md-6 spacer">
+            <a href="/mercados/{{$mercado->numero}}-abc" class="col-md-6 spacer">
                 <div class="tipos">
                     <p class="seccion-heading">{{ $mercado->nombre }}</p>
                 </div>

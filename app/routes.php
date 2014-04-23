@@ -25,7 +25,10 @@ Route::get('mercados/tipos', 'MercadoController@lista_tipos');
 Route::get('mercados/delegaciones', 'MercadoController@lista_delegaciones');
 
 //ubicador de rutas mixtas
-Route::get('mercados/{ruta}','MercadoController@lista_mercados')->where('ruta','[0-9A-Za-z\-]+');
+Route::get('mercados/{ruta}','MercadoController@lista_mercados')->where('ruta','[A-Za-z\-]+');
+
+//ruta para el mercado
+Route::get('mercados/{mercado}', 'MercadoController@show_mercado')->where('mercado', '[0-9]{1,3}-[A-Za-z0-9\-]+');
 
 
 
@@ -40,8 +43,7 @@ Route::get('mercados/cercano', 'MercadoController@mercadoCercanoView');
 
 
 
-//ruta para el mercado
-Route::get('mercados/{numero}', 'MercadoController@showMercado')->where('numero', '[0-9]+');
+
 
 //ruta para las ofertas
 Route::get('mercados/{numero}/ofertas','MercadoController@ofertas_por_mercado')->where('numero', '[0-9]+');
@@ -112,6 +114,17 @@ Route::get('info', function() {
 });
 
 //########### Rutas para pruebas ############################
+Route::get('nombres',function(){
+
+    $mercados = DB::table("mercados")->get();
+
+    print("<pre>");
+    foreach($mercados as $mercado) {
+        print($mercado->nombre."\n");
+    }
+    print("</pre>");
+
+});
 
 Route::get('dump-ubicaciones', function () {
 	

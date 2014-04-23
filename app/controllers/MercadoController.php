@@ -22,6 +22,8 @@ class MercadoController extends BaseController {
         }
 
     }
+
+    //lista por delegaciones
     public function lista_delegaciones() {
 
         //agarrar todas las delegaciones
@@ -36,33 +38,32 @@ class MercadoController extends BaseController {
     }
 
     //por delegacion
-
-
     /**
-     * Muestra la informacion base del mercado seleccionado
+     * Muestra la informacion del mercado seleccionado
      */
-    public function showMercado($id)
+    public function show_mercado($route)
     {
-		//hacer el query al mercado
-        //$mercado = DB::select("SELECT * FROM mercados WHERE numero=?",array($id));
-        
-        $mercado = Mercado::where('numero','=', $id)->get();
-        $locatarios = Comerciante::where('mercado_number','=',$id);
-        
-        $vista = 'mercado';
-        
+
+        //obtener el numero del mercado
+        $parts = explode('-',$route);
+        $numero = $parts[0];
+
+        //obtener mercado y locatarios
+        $mercado = Mercado::where('numero','=', $numero)->firstOrFail();
+        //$locatarios = Comerciante::where('mercado_number','=',$mercado->numero);
+
+        //aventar la vista con los datos
+        $vista = 'desktop.mercado';
         if(Agent::isMobile()){
-	    	$vista = 'movil.mercado';    
+	    	$vista = 'movil.mercado';
         }
-		
-		//armar la vista
-       return View::make($vista, array('mercado' => $mercado[0],'locatarios'=>$locatarios));
+        return View::make($vista, array('mercado' => $mercado));
     }
     
     /***
     *	Mercado mas cercano
     */
-    
+
     public function mercadoCercanoView() {
 		if(Agent::isMobile()){
 			
@@ -104,6 +105,15 @@ class MercadoController extends BaseController {
                                 ->select("mercados.nombre","mercados.numero")
                                 ->where("delegaciones.route","=",$ruta)
                                 ->get();
+
+        if(count($mercados)<=0){
+            //checar la ruta del mercado
+            $mercados = DB::table("mercados")
+                ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
+                ->select("mercados.nombre","mercados.numero")
+                ->where("delegaciones.route","=",$ruta)
+                ->get();
+        }
 
         //var_dump($mercados);
 

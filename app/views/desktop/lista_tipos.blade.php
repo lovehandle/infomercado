@@ -87,6 +87,7 @@
     </style>
 @stop
 
+@include('desktop.mini-header')
 @section('contenido')
 <div class="explora">
     <div class="container">
