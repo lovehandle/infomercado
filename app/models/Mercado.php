@@ -8,5 +8,3 @@ class Mercado extends Eloquent {
 	protected $table = 'mercados';
 
 }
-
-?>

@@ -28,6 +28,8 @@ class CreateMercadosTable extends Migration {
 			$table->text('direccion');
 			$table->integer('cp');
 			$table->text('horario');
+            $table->boolean('estacionamiento');
+            $table->datetime('aniversario');
 	//		$table->timestamps();
         });
 	}

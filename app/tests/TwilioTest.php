@@ -2,14 +2,16 @@
 
 class TwilioTest extends TestCase {
 
-    //probar que todas las rutas de twilio funcionan
-
     public function test_rutas_twilio() {
 
         print("Probando rutas de twilio ... \n");
 
+        //correr la migracion
+        Artisan::call('migrate');
+
+
         //ruta inicial
-        $this->call('GET','twilio-connect/welcome');
+        $this->call('GET','/twilio-connect/welcome');
         $this->assertResponseOk();
 
         //testear opciones de la 1 a la 3, la 3 es una entrada incorrecta
@@ -21,7 +23,22 @@ class TwilioTest extends TestCase {
         }
 
         //probar el proceso de registro
+        //1 ingresar un numero de mercado (1 a 4 digitos) y que no truene
+        $post_data = array("Digits"=>4);
+        $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
+        $this->assertResponseOk();
 
+        $post_data = array("Digits"=>14);
+        $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
+        $this->assertResponseOk();
+
+        $post_data = array("Digits"=>300);
+        $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
+        $this->assertResponseOk();
+
+        $post_data = array("Digits"=>6666);
+        $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
+        $this->assertResponseOk();
 
 
     }
