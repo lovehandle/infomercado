@@ -80,26 +80,11 @@ Route::post('comerciantes/update','ComerciantesController@saveSettings');
 
 
 /*
+ *  #########################################################################################
 	Rutas para Twilio
 */
 
-//Registro de comerciantes via telefonica
-//Route::get('/registro/{step}','TwilioController@registro');
-
-Route::any('twilio-connect/registro/{id}','TwilioController@registro');
-//Route::pattern('id', '[0-9]+');
-
-/*
-Route::any('twilio-connect/registro/{id}', function($id)
-{
-    // Only called if {id} is numeric.
-    return Redirect::action('TwilioController@registro', array($id));
-});*/
-
-//Test
-Route::get('twilio-connect/test','TwilioController@test');
-
-//Welcome
+//endpoint inicial
 Route::get('twilio-connect/welcome','TwilioController@welcome');
 
 //Procesar el input del menu inicial
@@ -107,6 +92,13 @@ Route::post('twilio-connect/start','TwilioController@start');
 
 //Procesar una grabacion de opinion
 Route::post('twilio-connect/opiniones','TwilioController@opiniones');
+
+//Registro de comerciantes via telefonica
+Route::any('twilio-connect/registro/{id}','TwilioController@registro');
+
+
+// termina twilio ###############################################################################
+
 
 //ruta para informacion de PHP
 Route::get('info', function() {
