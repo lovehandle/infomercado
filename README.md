@@ -2,6 +2,7 @@ infomercado
 ===========
 
 [![Build Status](https://travis-ci.org/LabPLC/infomercado.svg?branch=master)](https://travis-ci.org/LabPLC/infomercado)
+[![Coverage Status](https://coveralls.io/repos/LabPLC/infomercado/badge.png?branch=master)](https://coveralls.io/r/LabPLC/infomercado?branch=master)
 
 Plataforma de información y participación ciudadana en los Mercados Públicos
 
