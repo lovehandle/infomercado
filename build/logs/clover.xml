@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1398454487">
-  <project timestamp="1398454487">
+<coverage generated="1398463383">
+  <project timestamp="1398463383">
     <file name="/var/webapps/infomercado/app/config/app.php">
       <line num="16" type="stmt" count="1"/>
       <line num="29" type="stmt" count="1"/>
