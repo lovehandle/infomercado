@@ -1,6 +1,8 @@
 infomercado
 ===========
 
+[![Build Status](https://travis-ci.org/LabPLC/infomercado.svg?branch=master)](https://travis-ci.org/LabPLC/infomercado)
+
 Plataforma de información y participación ciudadana en los Mercados Públicos
 
 ##Instalación del ambiente de desarrollo
