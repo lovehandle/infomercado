@@ -6,9 +6,6 @@ class TwilioTest extends TestCase {
 
         print("Probando rutas de twilio ... \n");
 
-        //correr la migracion
-        Artisan::call('migrate');
-
 
         //ruta inicial
         $this->call('GET','/twilio-connect/welcome');
