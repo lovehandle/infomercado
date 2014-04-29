@@ -57,7 +57,7 @@
 
     .topic {
         position: relative;
-        padding: 20px 0 40px;
+        padding: 10px 0 10px;
         margin-bottom: 0px;
     }
 
@@ -77,12 +77,12 @@
 
     .site-head {
         color: #F2C64A;
-        font-size: 28pt;
-        padding: 12px;
+        font-size: 24pt;
+        padding: 15px;
         background-color: #000;
         max-width: 400px;
         font-family: 'Comfortaa', sans-serif;
-        font-weight: 600;
+        font-weight: 400;
     }
     .site-headline {
         font-size: 12pt;
@@ -140,7 +140,7 @@
 @section('contenido')
 <div class="topic fondo-header">
     <div class="container">
-        <h2 class="site-head">MERCADO {{$mercado->nombre}}</h2>
+        <h2 class="site-head">MERCADO #{{$mercado->numero}} {{$mercado->nombre}}</h2>
     </div>
 </div>
 <div class="contenido">

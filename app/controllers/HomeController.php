@@ -21,9 +21,19 @@ class HomeController extends BaseController {
 		if(Agent::isMobile()){
 			return View::make("movil.home");
 		} else {
-			return View::make("desktop.home");
+			return View::make("desktop.pre");
 		}
 	}
+
+    //principal pruebas
+    public function home_ab () {
+        //deteccion
+        if(Agent::isMobile()){
+            return View::make("movil.home");
+        } else {
+            return View::make("desktop.home_b");
+        }
+    }
 
 	public function explora()
 	{

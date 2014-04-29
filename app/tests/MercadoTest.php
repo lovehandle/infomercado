@@ -3,9 +3,10 @@
 class MercadoTest extends TestCase {
 
     //probar que todas las rutas de twilio funcionan
-    public function test_mercado_model() {
+    public function test_nuevo_mercado() {
 
-        //dar de alta un mercado
+        print("Crear mercado... \n");
+
         $this->assertTrue(true);
 
     }

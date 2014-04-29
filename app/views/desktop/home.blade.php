@@ -13,10 +13,11 @@
     }
 
     .seccion{
-        height: 180px;
+        height: 200px;
+        background-color: #5bc0de;
     }
     .seccion-heading {
-        margin: 15px;
+        margin: 10px;
         display: inline-block;
         background-color: #000;
         padding: 15px;
@@ -33,12 +34,12 @@
 
     .topic {
         position: relative;
-        padding: 40px 0 60px;
+        padding: 20px 0 30px;
         margin-bottom: 15px;
     }
 
     .explora {
-        padding: 30px 0 20px;
+        padding: 10px 0 20px;
         background-image: url("http://subtlepatterns.com/patterns/pw_maze_white.png");
     }
 
@@ -81,6 +82,10 @@
         background-size: cover;
     }
 
+    .spacer {
+        margin-bottom: 30px;
+    }
+
 </style>
 
 @stop
@@ -100,7 +105,7 @@
 </div>
 <div class="contenido">
     <div class="container">
-        <div class="row">
+        <div class="row spacer">
             <a href="/mercados/tipos" class="col-md-6">
                 <div class="seccion home-tipo">
                     <p class="seccion-heading">POR TIPO</p>
@@ -109,6 +114,23 @@
             <a href="/mercados/delegaciones" class="col-md-6">
                 <div class="seccion home-delegacion">
                     <p class="seccion-heading">POR DELEGACION</p>
+                </div>
+            </a>
+        </div>
+        <div class="row spacer">
+            <a href="/" class="col-md-4">
+                <div class="seccion">
+                    <p class="seccion-heading">COMENTARIOS</p>
+                </div>
+            </a>
+            <a href="/" class="col-md-4">
+                <div class="seccion">
+                    <p class="seccion-heading">EVENTOS Y ROMERIAS</p>
+                </div>
+            </a>
+            <a href="/comerciantes" class="col-md-4">
+                <div class="seccion">
+                    <p class="seccion-heading">SOY COMERCIANTE</p>
                 </div>
             </a>
         </div>

@@ -23,11 +23,16 @@ body{font-family: 'Monserrat', sans-serif; background-color:#fff; }
     color: #d9534f;
 }
 .elheader p {
-    font-size: 12pt;
+    font-size: 12pt;x
     padding: 10px;
 }
 .navbar{
     margin-bottom: 0px;
+}
+
+.footer {
+    height: 200px;
+    background-color: #eee;
 }
 
 #main-registro{margin-left:auto; margin-right:auto; width:800px;}

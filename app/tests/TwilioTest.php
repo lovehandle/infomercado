@@ -4,7 +4,7 @@ class TwilioTest extends TestCase {
 
     public function test_rutas_twilio() {
 
-        print("Probando rutas de twilio ... \n");
+        print("Twilio... \n");
 
 
         //ruta inicial

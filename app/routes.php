@@ -14,6 +14,8 @@
 //home
 Route::get('/', 'HomeController@home');
 
+Route::get('/home', 'HomeController@home_ab');
+
 /*
  * Rutas para Mercados /////////////////////////////////////////////////////////////////////////////
  */
