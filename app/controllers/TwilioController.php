@@ -172,13 +172,14 @@ class TwilioController extends BaseController {
 		
 		//logs
 		Log::info('Guardar opinion', array('sesion' => Session::getId()));
+
+        $opinion = new Opinion;
+        $opinion->url = Input::get('RecordingUrl');
+        $opinion->duracion  = Input::get('RecordingDuration');
+        $opinion->metadata = "[]";
+        $opinion->save();
 		
 		//guardar la referencia a las URL de oipiniones
-		DB::table('opiniones')->insert(array(
-			'url'=>Input::get('RecordingUrl'),
-			'duracion'=>Input::get('RecordingDuration'),
-			'metadata'=>'[]')
-		);
 
 		//Objeto Twimll
 		$twiml = new Services_Twilio_Twiml();
