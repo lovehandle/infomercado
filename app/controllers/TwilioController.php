@@ -179,8 +179,8 @@ class TwilioController extends BaseController {
 			'duracion'=>Input::get('RecordingDuration'),
 			'metadata'=>'')
 		);
-		
-		//Objeto Twiml
+
+		//Objeto Twimll
 		$twiml = new Services_Twilio_Twiml();
 		//armar la respuesta con el agradecimiento
 		$twiml->say("Fin de la opinion.",array("language"=>"es-MX","voice"=>"alice"));

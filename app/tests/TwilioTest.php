@@ -21,7 +21,7 @@ class TwilioTest extends TestCase {
 
         //probar el post al endpoint de opiniones
         $post_data = array();
-        $response = $this->call('POST','/twilio-connect/',$post_data);
+        $response = $this->call('POST','/twilio-connect/opiniones',$post_data);
         $this->assertResponseOk();
 
         //probar el proceso de registro
@@ -41,7 +41,6 @@ class TwilioTest extends TestCase {
         $post_data = array("Digits"=>6666);
         $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
         $this->assertResponseOk();
-
 
     }
 
