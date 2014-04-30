@@ -6,7 +6,7 @@ class RutasTest extends TestCase {
 
         print("Rutas generales...\n");
 
-        $this->asserTrue(true);
+        $this->assertTrue(true);
 
     }
 
