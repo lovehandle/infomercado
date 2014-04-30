@@ -1,6 +1,6 @@
 <?php
 
-public class TwilioTest extends TestCase {
+class TwilioTest extends TestCase {
 
     public function test_rutas_twilio() {
 
