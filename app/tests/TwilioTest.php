@@ -1,10 +1,10 @@
 <?php
 
-class TwilioTest extends TestCase {
+public class TwilioTest extends TestCase {
 
     public function test_rutas_twilio() {
 
-        print("Twilio... \n");
+        print("Rutas Twilio... \n");
 
         //ruta inicial
         $this->call('GET','/twilio-connect/welcome');
@@ -43,4 +43,4 @@ class TwilioTest extends TestCase {
 
     }
 
-} 
+}
