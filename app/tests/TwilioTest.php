@@ -20,7 +20,7 @@ class TwilioTest extends TestCase {
         }
 
         //probar el post al endpoint de opiniones
-        $post_data = array();
+        $post_data = array("RecordingUrl"=>"http://www.url.com/test.mp3","RecordingDuration"=>"12");
         $response = $this->call('POST','/twilio-connect/opiniones',$post_data);
         $this->assertResponseOk();
 

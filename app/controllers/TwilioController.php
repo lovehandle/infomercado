@@ -175,9 +175,9 @@ class TwilioController extends BaseController {
 		
 		//guardar la referencia a las URL de oipiniones
 		DB::table('opiniones')->insert(array(
-			'twilio_url'=>Input::get('RecordingUrl'),
+			'url'=>Input::get('RecordingUrl'),
 			'duracion'=>Input::get('RecordingDuration'),
-			'metadata'=>'')
+			'metadata'=>'[]')
 		);
 
 		//Objeto Twimll
