@@ -6,7 +6,6 @@ class TwilioTest extends TestCase {
 
         print("Twilio... \n");
 
-
         //ruta inicial
         $this->call('GET','/twilio-connect/welcome');
         $this->assertResponseOk();

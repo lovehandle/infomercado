@@ -220,8 +220,7 @@ class TwilioController extends BaseController {
 				//ubicar el mercado en la base de datos
 				$mimercado = Mercado::where('numero', '=', Input::get("Digits"))->firstOrFail();
 				
-				
-				
+
 				Log::info('Mercado: '.Input::get('Digits'));
 				
 				//guardar en la session el mercado seleccionado
