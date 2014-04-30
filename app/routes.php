@@ -123,7 +123,9 @@ Route::get('nombres',function(){
 Route::get('data.json', function () {
 
     //$results = DB::select('select *  from mercados where tipo = 1');
-	$results = DB::select('select distinct tipo, tipo_desc from mercados order by tipo asc');
+	//$results = DB::select('select distinct tipo, tipo_desc from mercados order by tipo asc');
+
+    $results = Comerciante::all();
 
     return Response::json($results);
 

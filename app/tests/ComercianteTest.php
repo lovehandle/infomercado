@@ -2,10 +2,11 @@
 
 class ComercianteTest extends TestCase {
 
-    public function test_crear_comerciante() {
+    public function test_crud_comerciante() {
 
-        print("Nuevo comerciante... \n");
+        print("Comerciantes... \n");
 
+        //crear
         $comerciante = new Comerciante;
         $comerciante->nombre = "el comerciante";
         $comerciante->password = "*comerciante*";
@@ -15,8 +16,21 @@ class ComercianteTest extends TestCase {
         $comerciante->categoria_adicional = 1;
         $comerciante->username = "comerciante33";
         $comerciante->servicios = "data";
-
         $this->assertTrue($comerciante->save());
+
+        //buscar
+        $buscar = Comerciante::find($comerciante->id);
+        $this->assertEquals($buscar->nombre, $comerciante->nombre);
+
+        //actualizar
+        $buscar->servicios = "[true,true,false,true]";
+        $this->assertTrue($buscar->save());
+
+        //eliminar
+        $this->assertTrue($buscar->delete());
+        //verificar la eliminacion
+        $buscar = Comerciante::find($comerciante->id);
+        $this->assertNull($buscar);
 
     }
 
