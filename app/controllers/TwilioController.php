@@ -336,7 +336,7 @@ class TwilioController extends BaseController {
 				}
 				
 				//checar si existe el local en el mercado seleccionado
-				$locales = Mercado::where('numero', '=', Session::get('mercado'))->firstOrFail();
+				$locales = Mercado::where('numero', '=', Session::get('mercado'))->firstOrFail()->locales;
 				if(Input::get("Digits") > $locales) {
 					$twiml->say("El local que ingresaste no existe en el mercado seleccionado. Hasta luego.",array("language"=>"es-MX","voice"=>"alice"));
 					

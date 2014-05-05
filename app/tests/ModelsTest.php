@@ -10,8 +10,6 @@ class ModelsTest extends TestCase {
         print("Mercado... \n");
 
         $mercado = FactoryMuff::create('Mercado');
-
-        print($mercado->nombre);
        
         $this->assertTrue($mercado->save());
 

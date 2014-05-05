@@ -29,10 +29,6 @@ class TwilioTest extends TestCase {
         $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
         $this->assertResponseOk();
 
-        $post_data = array("Digits"=>14);
-        $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
-        $this->assertResponseOk();
-
         $post_data = array("Digits"=>300);
         $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
         $this->assertResponseOk();
@@ -40,6 +36,63 @@ class TwilioTest extends TestCase {
         $post_data = array("Digits"=>6666);
         $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
         $this->assertResponseOk();
+
+        //seleccionar mercado
+        $post_data = array("Digits"=>14);
+        $response = $this->call('POST','/twilio-connect/registro/1',$post_data);
+        $this->assertResponseOk();
+
+        //seleccione un mercado, me dijo cual, le doy uno para continuar
+        $post_data = array("Digits"=>1);
+        $response = $this->call('POST','/twilio-connect/registro/2',$post_data);
+        $this->assertResponseOk();
+
+        //tengo que seleccionar un local
+        $post_data = array("Digits"=>20);
+        $response = $this->call('POST','/twilio-connect/registro/3',$post_data);
+        $this->assertResponseOk();
+
+        //me dijo un monton de categorias, selecciono una
+        $post_data = array("Digits"=>5);
+        $response = $this->call('POST','/twilio-connect/registro/4',$post_data);
+        $this->assertResponseOk();
+
+        //acepto vales, le digo que si
+        $post_data = array("Digits"=>1);
+        $response = $this->call('POST','/twilio-connect/registro/5',$post_data);
+        $this->assertResponseOk();
+
+        //entrego a domicilio, le digo que no
+        $post_data = array("Digits"=>2);
+        $response = $this->call('POST','/twilio-connect/registro/6',$post_data);
+        $this->assertResponseOk();
+
+        //acepto tarjetas, le digo que no
+        $post_data = array("Digits"=>2);
+        $response = $this->call('POST','/twilio-connect/registro/7',$post_data);
+        $this->assertResponseOk();
+
+        //no quiero lista de precios
+        $post_data = array("Digits"=>2);
+        $response = $this->call('POST','/twilio-connect/registro/8',$post_data);
+        $this->assertResponseOk();
+
+        //si doy atencion telefonica
+        $post_data = array("Digits"=>1);
+        $response = $this->call('POST','/twilio-connect/registro/9',$post_data);
+        $this->assertResponseOk();
+
+        //meto mi numero
+        $post_data = array("Digits"=>55270991);
+        $response = $this->call('POST','/twilio-connect/registro/10',$post_data);
+        $this->assertResponseOk();
+
+        //le doy continuar para que me diga mis datos de registro
+        $post_data = array("Digits"=>1);
+        $response = $this->call('POST','/twilio-connect/registro/11',$post_data);
+        $this->assertResponseOk();
+
+        //creo que es todo, hay que verificar la session
 
     }
 

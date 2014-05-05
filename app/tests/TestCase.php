@@ -1,5 +1,7 @@
 <?php
 
+use Zizaco\FactoryMuff\Facade\FactoryMuff;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 	/**
@@ -28,6 +30,15 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     private function prepareForTests()
     {
         Artisan::call('migrate');
+
+        //meter unos mercados, 100
+        for($x = 1; $x<100; $x++) {
+            $mercado = FactoryMuff::create('Mercado');
+            $mercado->numero = $x;
+            $mercado->locales = 200;
+            $mercado->save();
+        }
+
         Mail::pretend(true);
     }
 
