@@ -1,5 +1,7 @@
 <?php
 
+use Zizaco\FactoryMuff\Facade\FactoryMuff;
+
 class ModelsTest extends TestCase {
 
     //probar que todas las rutas de twilio funcionan
@@ -7,7 +9,25 @@ class ModelsTest extends TestCase {
 
         print("Mercado... \n");
 
-        $this->assertTrue(true);
+        $mercado = FactoryMuff::create('Mercado');
+
+        print($mercado->nombre);
+       
+        $this->assertTrue($mercado->save());
+
+        //buscar
+        $buscar = Mercado::find($mercado->id);
+        $this->assertEquals($buscar->numero, $mercado->numero);
+
+        //actualizar
+        $buscar->nombre = "Mercado Chido";
+        $this->assertTrue($buscar->save());
+
+        //eliminar
+        $this->assertTrue($buscar->delete());
+        //verificar la eliminacion
+        $buscar = Mercado::find($mercado->id);
+        $this->assertNull($buscar);
 
     }
 

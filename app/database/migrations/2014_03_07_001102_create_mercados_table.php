@@ -13,7 +13,7 @@ class CreateMercadosTable extends Migration {
 	public function up()
 	{
         Schema::create('mercados', function(Blueprint $table) {
-         //   $table->increments('id');
+         	$table->increments('id');
 			$table->integer('numero');
 			$table->string('nombre');
 			$table->integer('fid');
@@ -30,10 +30,9 @@ class CreateMercadosTable extends Migration {
 			$table->text('horario');
             $table->boolean('estacionamiento');
             $table->datetime('aniversario');
-	//		$table->timestamps();
+			$table->timestamps();
         });
 	}
-
 
 	/**
 	 * Reverse the migrations.
