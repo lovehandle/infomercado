@@ -18,7 +18,7 @@
             center: mercado_latlng,
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: true,
+            scrollwheel: false,
             draggable : true
         };
         map = new google.maps.Map(document.getElementById("mapa"),
@@ -75,8 +75,9 @@
 
     .topic {
         position: relative;
-        padding: 20px 0 30px;
+        padding: 150px 0 30px 100px;
         margin-bottom: 15px;
+        height: 775px;
     }
 
     .explora {
@@ -138,6 +139,14 @@
         padding: 0;
         margin: 0;
     }
+    nav#primary {
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+    }
+    #the-head {
+        margin-top: 15px;
+    }
 
 
 </style>
@@ -145,7 +154,7 @@
 @stop
 
 @section('contenido')
-<nav class="navbar navbar-inverse" role="navigation">
+<nav id="primary" class="navbar navbar-inverse" role="navigation">
     <div class="amigo">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -161,8 +170,14 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div id="mapa">
+
+<div class="topic fondo-header">
+    <div class="container">
+        <h2 class="site-head">infomercado.mx</h2>
+        <p class="site-headline">Plataforma de información y participación ciudadana en los Mercados Públicos de la Ciudad de México</p>
+    </div>
 </div>
+
 <div id="opciones" class="container">
     <div class="row">
         <div class="col-md-6">
@@ -177,4 +192,20 @@
         </div>
     </div>
 </div>
+<div id="mapa">
+</div>
+
+@endsection
+
+@section('javascript')
+<script language="javascript">
+$(document).ready(function($){
+    $(window).scroll( function()
+    {
+        var scroll = $(window).scrollTop(), slowScroll = scroll/8.5;
+        $('.topic').css({ transform: "translateY(" + slowScroll + "px)" });
+        $('#the-head').css({ transform: "translateY(" + slowScroll + "px)" });
+    });
+});
+</script>
 @endsection

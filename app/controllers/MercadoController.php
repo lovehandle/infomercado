@@ -43,6 +43,39 @@ class MercadoController extends BaseController {
 
     public function lista_mercados($ruta) {
 
+        //es por tipo o por delegación ?
+        $tipo = Tipo::where('route','=',$ruta);
+        $delegacion = Delegacion::where('route','=',$ruta);
+
+        //return Response::json(array('tipos'=>$tipo,'delegaciones'=>$delegacion));
+
+        //variables
+        $titulo = 'Mercados';
+        $mercados = NULL;
+
+        //buscar deacuerdo a los resultados de tipo/delegacion
+        if($tipo->count()>0) {
+            $titulo .= ' de tipo '.$tipo->firstOrFail()->nombre;
+            $mercados = Mercado::where('tipo','=',$tipo->firstOrFail()->tipo);
+        }
+
+        if($delegacion->count()>0) {
+            $titulo .= ' en la delegación '.$delegacion->firstOrFail()->nombre;
+            $mercados = Mercado::where('delegacion','=',$delegacion->firstOrFail()->numero);
+        }
+
+        //aventar la vista
+        $vista = 'desktop.lista_mercados';
+        if(Agent::isMobile()){
+            $vista = 'movil.lista_mercados';
+        }
+
+        //retorna la vista
+        return View::make($vista,array('mercados'=>$mercados,'titulo'=>$titulo));
+
+
+        /*
+
         //buscar mercados por delegacion
         $mercados_delegacion = DB::table("mercados")
             ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
@@ -69,6 +102,10 @@ class MercadoController extends BaseController {
             $mercados = $mercados_tipo;
         }
 
+        if($mercados == NULL) {
+            App::abort(404);
+        }
+
         //var_dump($mercados);
         //aventar la vista
         if(Agent::isMobile()){
@@ -76,6 +113,8 @@ class MercadoController extends BaseController {
         }else{
             return View::make("desktop.lista_mercados",array("mercados"=>$mercados,"titulo"=>$titulo));
         }
+
+        */
 
     }
 
