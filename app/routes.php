@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@home_ab');
  */
 
 //listado de tipos
+Route::get('mercados/tipo', 'MercadoController@lista_tipos');
 Route::get('mercados/tipos', 'MercadoController@lista_tipos');
 
 //listado de delegaciones
