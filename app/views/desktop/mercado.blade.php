@@ -14,7 +14,7 @@
 
     function initialize() {
         var mapOptions = {
-            center: new google.maps.LatLng({{$mercado->latitud}},{{$mercado->longitud}}),
+            center: mercado_latlng,
     zoom: 17,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scrollwheel: false,
@@ -156,6 +156,7 @@
                     <div class="col-md-12">
                         <div class="info-height color2">
                             <p>Calle tres esq. con Calle dos. Col. Cinco</p>
+                            <p>Abierto de Lunes a Domingo de 9:00 AM a 7:00 PM</p>
                         </div>
                     </div>
                 </div>

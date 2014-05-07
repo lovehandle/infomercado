@@ -7,15 +7,6 @@
 }
 
 body{font-family: 'Monserrat', sans-serif; background-color:#fff; }
-@media screen and (max-width: 1440px) {
-	#main{margin-left:auto; margin-right:auto; width:1000px;}
-	#map-canvas { height: 350px;}
-}
-
-@media screen and (max-width:560px) {
-	#main{margin-left:auto; margin-right:auto; width: 100%;}
-	#map-canvas { height: 100%;}
-}
 
 /* para el mini header */
 .elheader{

@@ -77,7 +77,7 @@
         }
 
         .tipos {
-            height: 200px;
+            height: 260px;
             background-color: #5bc0de;
         }
         .spacer {
@@ -98,35 +98,14 @@
     <div class="container">
         <div class="row">
 
-            <a href="/mercados/tradicional" class="col-md-6 spacer">
+            @foreach($tipos as $tipo)
+            <a href="/mercados/{{$tipo->route}}" class="col-md-4 spacer">
                 <div class="tipos">
-                    <p class="seccion-heading">TRADICIONAL</p>
+                    <p class="seccion-heading">{{$tipo->nombre}}</p>
                 </div>
             </a>
+            @endforeach
 
-            <a href="/mercados/especializado" class="col-md-6 spacer">
-                <div class="tipos">
-                    <p class="seccion-heading">ESPECIALIZADO</p>
-                </div>
-            </a>
-
-            <a href="/mercados/turistico-especializado" class="col-md-4 spacer">
-                <div class="tipos">
-                    <p class="seccion-heading">TURISTICO Y ESPECIALIZADO</p>
-                </div>
-            </a>
-
-            <a href="/mercados/tradicional-turistico" class="col-md-4 spacer">
-                <div class="tipos">
-                    <p class="seccion-heading">TRADICIONAL Y TURISTICO</p>
-                </div>
-            </a>
-
-            <a href="/mercados/regional" class="col-md-4 spacer">
-                <div class="tipos">
-                    <p class="seccion-heading">REGIONAL</p>
-                </div>
-            </a>
         </div>
     </div>
 </div>

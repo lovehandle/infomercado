@@ -14,12 +14,15 @@ class MercadoController extends BaseController {
     //por tipo de mercado
     public function lista_tipos() {
 
+        //agarrar todas las delegaciones
+        $tipos = Tipo::all();
+
         //retornar la vista correspondiente
+        $vista = 'desktop.lista_tipos';
         if(Agent::isMobile()){
-            return View::make('movil.lista_tipos');
-        }else{
-            return View::make('desktop.lista_tipos');
+            $vista = 'movil.lista_tipos';
         }
+        return View::make($vista, array("tipos"=>$tipos));
 
     }
 
@@ -27,14 +30,14 @@ class MercadoController extends BaseController {
     public function lista_delegaciones() {
 
         //agarrar todas las delegaciones
-        $delegaciones = DB::table('delegaciones')->get();
+        $delegaciones = Delegacion::all();
 
         //retornar la vista correspondiente
+        $view = 'desktop.lista_delegaciones';
         if(Agent::isMobile()){
-            return View::make('movil.lista_delegaciones');
-        }else{
-            return View::make('desktop.lista_delegaciones',array("delegaciones"=>$delegaciones));
+            $view='movil.lista_delegaciones';
         }
+        return View::make($view, array("delegaciones"=>$delegaciones));
     }
 
     /**
@@ -72,49 +75,6 @@ class MercadoController extends BaseController {
 
         //retorna la vista
         return View::make($vista,array('mercados'=>$mercados,'titulo'=>$titulo));
-
-
-        /*
-
-        //buscar mercados por delegacion
-        $mercados_delegacion = DB::table("mercados")
-            ->join("delegaciones","mercados.delegacion","=","delegaciones.numero")
-            ->select("mercados.nombre","mercados.numero")
-            ->where("delegaciones.route","=",$ruta)->get();
-
-        //ya estaba esta parte por tipo
-        //buscar mercados por tipo
-        $mercados_tipo = DB::table("mercados")
-            ->join("tipos","mercados.tipo","=","tipos.tipo")
-            ->select("mercados.nombre","mercados.numero")
-            ->where("tipos.route","=",$ruta)->get();
-
-        //armar los objetos
-        $mercados = NULL;
-        if(count($mercados_delegacion)>0 ){
-            $delegacion = Delegacion::where("route","=",$ruta)->firstOrFail();
-            $titulo = "Mercados en ".$delegacion->nombre;
-            $mercados = $mercados_delegacion;
-        }
-        if(count($mercados_tipo)>0){
-            $tipo = Tipo::where("route","=",$ruta)->firstOrFail();
-            $titulo = "".$tipo->nombre;
-            $mercados = $mercados_tipo;
-        }
-
-        if($mercados == NULL) {
-            App::abort(404);
-        }
-
-        //var_dump($mercados);
-        //aventar la vista
-        if(Agent::isMobile()){
-            return View::make("movil.lista_mercados",array("mercados"=>$mercados));
-        }else{
-            return View::make("desktop.lista_mercados",array("mercados"=>$mercados,"titulo"=>$titulo));
-        }
-
-        */
 
     }
 

@@ -10,14 +10,7 @@
         .seccion{
             height: 180px;
         }
-        .seccion-heading {
-            margin: 15px;
-            display: inline-block;
-            background-color: #000;
-            padding: 15px;
-            font-size: 20pt;
-            color: #fff;
-        }
+       
 
         .home-tipo {
             background-image: url('/img/tipo.jpg');
@@ -34,7 +27,7 @@
 
         .explora {
             padding: 30px 0 20px;
-            background-image: url("http://subtlepatterns.com/patterns/pw_maze_white.png");
+            background-image: url('http://subtlepatterns.com/patterns/pw_maze_white.png');
         }
 
         .headline-1 {
@@ -76,13 +69,29 @@
             background-size: cover;
         }
 
-        .tipos {
-            height: 200px;
+        .item {
+            position: relative;
+            height: 280px;
             background-color: #5bc0de;
         }
+         .seccion-heading {
+            display: inline-block;
+            background-color: #000;
+            padding: 15px;
+            font-size: 20pt;
+            color: #fff;
+            z-index: 999;
+            position: absolute;
+            top:20px;
+            left:15px;
+
+        }
+
         .spacer {
             margin-bottom: 30px;
+
         }
+
 
     </style>
 @stop
@@ -99,7 +108,7 @@
         <div class="row">
             @foreach($delegaciones as $delegacion)
             <a href="/mercados/{{$delegacion->route}}" class="col-md-4 spacer">
-                <div class="tipos">
+                <div class="item">
                     <p class="seccion-heading">{{$delegacion->nombre}}</p>
                 </div>
             </a>
