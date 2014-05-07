@@ -53,12 +53,13 @@ class MercadoController extends BaseController {
         //buscar deacuerdo a los resultados de tipo/delegacion
         if($tipo->count()>0) {
             $titulo .= ' de tipo '.$tipo->firstOrFail()->nombre;
-            $mercados = Mercado::where('tipo','=',$tipo->firstOrFail()->tipo);
+            $mercados = Mercado::where('tipo','=',$tipo->firstOrFail()->tipo)->get();
         }
 
         if($delegacion->count()>0) {
             $titulo .= ' en la delegación '.$delegacion->firstOrFail()->nombre;
-            $mercados = Mercado::where('delegacion','=',$delegacion->firstOrFail()->numero);
+            $mercados = Mercado::where('delegacion','=',$delegacion->firstOrFail()->numero)->get();
+		//var_dump($mercados->count());
         }
 
         //aventar la vista

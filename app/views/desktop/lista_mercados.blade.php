@@ -97,7 +97,7 @@
 <div class="contenido">
     <div class="container">
         <div class="row">
-            @foreach($mercados as $mercado)
+            @foreach ($mercados as $mercado)
             <a href="/mercados/{{$mercado->numero}}-abc" class="col-md-6 spacer">
                 <div class="tipos">
                     <p class="seccion-heading">#{{$mercado->numero}} {{ $mercado->nombre }}</p>
