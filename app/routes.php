@@ -37,14 +37,10 @@ Route::get('mercados/{mercado}', 'MercadoController@show_mercado')->where('merca
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 Route::get('explora', 'HomeController@explora');
 
 //mercado mas cercano segun lat+lng
 Route::get('mercados/cercano', 'MercadoController@mercadoCercanoView');
-
-
 
 
 
