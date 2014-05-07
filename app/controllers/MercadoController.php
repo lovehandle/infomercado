@@ -2,12 +2,6 @@
 class MercadoController extends BaseController {
 
     /*
-     *  Algunas variables chidas ===========================================
-     */
-
-    //======================================================================
-
-    /*
      * Listados
      */
 
