@@ -31,7 +31,7 @@ class HomeController extends BaseController {
         if(Agent::isMobile()){
             return View::make("movil.home");
         } else {
-            return View::make("desktop.home_b");
+            return View::make("desktop.home_c");
         }
     }
 
